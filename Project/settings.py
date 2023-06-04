@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'Project',
     'accounts',
     'main',
+    'post',
     'users',
 ]
 
@@ -132,6 +133,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, ' static')
 
 
 
+
 # 이메일 인증을 받기 위함
 # 하루 2000개 송신가능
 EMAIL_HOST = 'smtp.gmail.com'
@@ -146,3 +148,8 @@ EMAIL_USE_TLS = True
 # TLS 보안 방법
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # 사이트와 관련한 자동응답을 받을 이메일 주소,'webmaster@localhost'
+
+# image
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
