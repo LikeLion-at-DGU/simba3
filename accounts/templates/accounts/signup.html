@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ko">
 
 <head>
@@ -11,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}">
     <title>회원가입</title>
 
 </head>
@@ -26,43 +29,62 @@
     <!-- 로그인 글씨 -->
 
     <div class="top">
-        <img src="logo.png" alt="로고" width="100px">
+        <img src="{% static 'images/logo.png' %}" alt="로고" width="100px">
         <p><span style="font-size: 30px;"><b>회원가입</b><br></span>
             SIGN UP</p>
     </div>
+    <form method="POST" action="{% url 'accounts:signup' %}">
+        <!-- 입력칸 -->
+        {% csrf_token %}
+        <section>
+            <input type="text" placeholder="이름" name="name" required>
+        </section>
+        <section>
+            <input type="email" placeholder="@dgu.ac.kr" name="email" id="email" required>
 
-    <!-- 입력칸 -->
-
-    <section>
-        이름
-    </section>
-    <section>
-        동국대학교 이메일
-    </section>
-    <section>
-        이메일 인증
-    </section>
-    <section>
-        닉네임
-    </section>
-    <section>
-        비밀번호
-    </section>
-    <section>
-        비밀번호 확인
-    </section>
+        </section>
+        <section>
+            <a onclick="sendEmail()">인증코드 보내기</a>
+            <input type="text" placeholder="code" name="code" id="code" required>
+        </section>
+        <!-- <section> 구현 고민중
+            <input type="text" placeholder="코드" name="code" required>
+        </section> -->
+        <section>
+            <input type="text" placeholder="nickname" name="nickname" required>
+        </section>
+        <section>
+            <input type="password" placeholder="password" name="password" required>
+        </section>
+        <section>
+            <input type="password" placeholder="confirm" name="confirm" required>
+        </section>
 
 
-    <!-- 동의하기 -->
+        <!-- 동의하기 -->
 
-    <div class="check">
-        동의함
-    </div>
-    <section>
-        <button style="border: none;">가입하기</button>
-        </form>
+        <div class="check">
+            동의함
+        </div>
+        <section>
+            <button style="border: none;">가입하기</button>
+    </form>
     </section>
     </div>
 </body>
+
+<script>
+    function sendEmail() {
+        var emailInput = document.getElementById("email");
+        var email = emailInput.value;
+
+        // AJAX를 사용하여 이메일 값을 서버로 전송하는 코드
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', "{% url 'accounts:send_email' %}");
+        xhr.setRequestHeader('X-CSRFToken', '{{ csrf_token }}');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({ email: email }));
+    }
+</script>
 
 </html>
