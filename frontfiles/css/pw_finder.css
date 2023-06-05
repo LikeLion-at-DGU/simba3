@@ -11,7 +11,6 @@ body {
 *{
     box-sizing: border-box;
     font-family: 'Noto Sans KR', sans-serif;
-
 }
 
 header {
@@ -22,21 +21,26 @@ header {
 
 section {
     display: flex;
+    margin: 20px 10px 28px 10px;
+    padding: 22px;
     justify-content: center;
 }
 
-#top {
+#lock {
     display: flex;
-    margin: 10px;
+    justify-content: center;
+    margin: 90px;
 }
 
 #input {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin-top:60px;
 }
 
 input {
+    display: flex;
     background: #ECE3D9;
     border-radius: 5px;
     border: none;
@@ -51,51 +55,42 @@ form {
 }
 
 label {
-    padding-bottom: 8px;
+    padding: 30px 0 10px 0;
     font-size: 20px;
 }
 
-#find_pw {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 30px;
-    margin: 14px 0 100px 0;
+label:nth-child(1) {
+    padding-top: 0px;
 }
 
-#join {
+#check {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 64px;
     background-color: #FF8859;
-    border-radius: 30px;
-    width: 25vh;
-    color: white;
-    margin-top: 15px;
-    box-shadow: 2px 2px 5px gray;
-    font-size: 20px;
-    text-decoration: none;
+    width: 70px;
+    height: 31px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    position: absolute;
+    top: 472px;
+    left: 314px;
 }
 
 button {
     display: block;
     width: 25vh;
     height: 64px;
-    background-color: #66C081;
+    background-color: #003A38;
     line-height: 46px;
     border-radius: 30px;
     color: white;
     box-shadow: 2px 2px 5px gray;
     font-size: 20px;
 }
-    
-a:link { /*링크 방문 전*/
-    color: white;
-    text-decoration-line: none;
-}
 
-a:visited { /*링크를 방문한 이후*/
-    color: white;
-    text-decoration-line: none;
+p {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
