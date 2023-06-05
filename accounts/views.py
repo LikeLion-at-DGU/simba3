@@ -28,21 +28,28 @@ def login(request):
     elif request.method == 'GET':
         return render(request, 'accounts/login.html')
 
+def logout(request):
+    auth.logout(request)
+    return redirect("main:mainpage")
+
 def signup(request):
     if request.method == 'POST':
-        if request.POST['password'] == request.POST['confirm']:
+        code = request.POST['code']
+        email = request.POST['email']
+
+        if request.POST['password'] == request.POST['confirm'] and verify_email(email, code):
             user = User.objects.create_user(
-                email=request.POST['email'],
+                email= email,
                 password=request.POST['password'],
             )
+            nickname = request.POST['nickname']
+            name = request.POST['name']
+            profile = Profile(user = user,nickname=nickname,name=name)
+            profile.save()
 
             auth.login(request,user)
             return redirect('/')
-        nickname = request.POST['nickname']
-        name = request.POST['name']
-
-        profile = Profile(user = user,nickname=nickname,name=name)
-        profile.save()
+        
 
     return render(request,'accounts/signup.html')
 
@@ -59,15 +66,17 @@ def send_email(request):
 
         mail_title = "CO끼리 이메일 인증코드 발송"
         to_email = EmailMessage(mail_title, message, to=[email])
-        to_email.send()
+        # to_email.send() 개발 기간동안은 이메일 전송 비활성화
 
+        cache_key = f"auth_code_{email}"
+        cached_code = cache.get(cache_key)
         response_data = {
             'message': 'Email 처리 완료',
             'email': email,
             'token': token, #임시로 token 값을 Jsonresponse로 보내도록 세팅
+            'cached_code':cached_code,
         }
         return JsonResponse(response_data)
-
     # POST 요청 이외의 경우는 에러 처리
     response_data = {
         'error': 'Invalid request method'
@@ -89,7 +98,7 @@ def verify_email(email, code):
     cache_key = f"auth_code_{email}"
     cached_code = cache.get(cache_key)
 
-    if cached_code and cached_code == entered_code:
+    if cached_code and cached_code == code:
         cache.delete(cache_key)
         return True
     else:
