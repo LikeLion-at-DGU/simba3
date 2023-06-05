@@ -10,6 +10,8 @@ body {
 
 * {
     box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+
 }
 
 header {
@@ -23,42 +25,79 @@ section {
     justify-content: center;
 }
 
-.top {
+#top {
     display: flex;
     margin: 10px;
 }
 
-.input {
+#input {
     display: flex;
     justify-content: center;
     margin-top: 60px;
 }
 
-.find_pw {
+input {
+    background: #ECE3D9;
+    border-radius: 5px;
+    border: none;
+    padding: 12px 15px;
+    width: 100%;
+}
+
+form {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    padding-bottom: 8px;
+    font-size: 20px;
+}
+
+#find_pw {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 30px;
-    margin: 6px 0 100px 0;
+    margin: 14px 0 100px 0;
 }
 
-.join {
+#join {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 46px;
-    background-color: rgba(255, 127, 80, 0.63);
+    height: 64px;
+    background-color: #FF8859;
     border-radius: 30px;
-    width: 20vh;
+    width: 25vh;
     color: white;
+    margin-top: 15px;
+    box-shadow: 2px 2px 5px gray;
+    font-size: 20px;
+    text-decoration: none;
 }
 
 button {
     display: block;
-    width: 20vh;
-    background-color: rgba(139, 195, 132, 0.646);
+    width: 25vh;
+    height: 64px;
+    background-color: #66C081;
     line-height: 46px;
     border-radius: 30px;
     color: white;
+    box-shadow: 2px 2px 5px gray;
+    font-size: 20px;
+}
 
+a:link {
+    /*링크 방문 전*/
+    color: white;
+    text-decoration-line: none;
+}
+
+a:visited {
+    /*링크를 방문한 이후*/
+    color: white;
+    text-decoration-line: none;
 }
