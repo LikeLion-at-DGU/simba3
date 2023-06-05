@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: black;
+    max-width: 430px;
+    height: 100vh;
+    border: solid 1px black;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+}
+
+.top {
+    display: flex;
+    margin: 10px;
+}
+
+.input {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.find_pw {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    margin: 6px 0 100px 0;
+}
+
+.join {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 46px;
+    background-color: rgba(255, 127, 80, 0.63);
+    border-radius: 30px;
+    width: 20vh;
+    color: white;
+}
+
+button {
+    display: block;
+    width: 20vh;
+    background-color: rgba(139, 195, 132, 0.646);
+    line-height: 46px;
+    border-radius: 30px;
+    color: white;
+
+}
