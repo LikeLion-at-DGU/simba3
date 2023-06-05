@@ -29,6 +29,6 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []  # createsuperuser 커맨드 사용 시 필요한 정보
     
     objects = UserManager()
-    # 추가적인 필드들을 정의할 수 있습니다.
+    # 추가적인 필드들을 정의
 
 
