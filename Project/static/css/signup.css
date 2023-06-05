@@ -5,10 +5,12 @@ body {
     color: black;
     max-width: 430px;
     height: 100vh;
+    border: solid 1px black;
 }
 
 * {
     box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 header {
@@ -17,35 +19,114 @@ header {
     margin: 10px;
 }
 
-section {
+section[join] {
     display: flex;
-    margin: 20px 10px 28px 10px;
-    padding: 22px;
     justify-content: center;
-    border: solid 1px black;
+    padding: 40px 0 60px 0;
 }
 
-.top {
+#top {
     display: flex;
     margin: 10px;
 }
 
-.input {
+#input {
     display: flex;
     justify-content: center;
     margin-top: 60px;
 }
 
-.check {
-    margin: 10px;
-    padding: 80px 0 80px 0;
+input {
+    display: flex;
+    background: #ECE3D9;
+    border-radius: 5px;
+    border: none;
+    padding: 12px 15px;
+    width: 100%;
+}
+
+input[type=checkbox] {
+    width: 18px;
+    display: flex;
+    margin-right: 10px;
+}
+
+form {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+}
+
+label {
+    padding: 30px 0 10px 0;
+    font-size: 20px;
+}
+
+label:nth-child(1) {
+    padding-top: 0px;
 }
 
 button {
     display: block;
-    width: 20vh;
-    background-color: rgba(255, 127, 80, 0.63);
+    width: 25vh;
+    height: 64px;
+    background-color: #FF8859;
     line-height: 46px;
     border-radius: 30px;
     color: white;
+    box-shadow: 2px 2px 5px gray;
+    font-size: 20px;
+}
+
+#check {
+    display: flex;
+    position: absolute;
+    right: 15px;
+    top: 157px;
+    background-color: #FF8859;
+    width: 70px;
+    height: 31px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+
+#check_2 {
+    display: flex;
+    position: relative;
+    left: 265px;
+    top: -37px;
+    background-color: #66C081;
+    width: 70px;
+    height: 31px;
+    border-radius: 10px;
+    font-size: 14px;
+    justify-content: center;
+    align-items: center;
+}
+
+.agree {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 16px;
+    padding-top: 15px;
+}
+
+a:link {
+    /*링크 방문 전*/
+    color: white;
+    text-decoration-line: none;
+}
+
+a:visited {
+    /*링크를 방문한 이후*/
+    color: white;
+    text-decoration-line: none;
+}
+
+.detail {
+    display: flex;
+    float: right;
 }
