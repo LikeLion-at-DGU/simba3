@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 MAIN PAGE
+<hr>
+<a href="{%url 'accounts:login' %}">login</a>
+<hr>
+<a href="{%url 'accounts:signup' %}">signup</a>
+<hr>
 {% endblock %}

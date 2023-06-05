@@ -63,7 +63,8 @@ def send_email(request):
 
         response_data = {
             'message': 'Email 처리 완료',
-            'email': email
+            'email': email,
+            'token': token, #임시로 token 값을 Jsonresponse로 보내도록 세팅
         }
         return JsonResponse(response_data)
 
