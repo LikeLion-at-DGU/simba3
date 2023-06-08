@@ -43,29 +43,26 @@
             <label for="name">이름</label>
             <input type="text" placeholder="이름을 입력해주세요" name="name" required>
 
-            <div id="check">
-                <a href="#">인증 확인</a>
-            </div>
 
             <label for="name">동국대학교 이메일</label>
-            <input type="email" placeholder="예 likelion@dgu.ac.kr" name="email" id="email" required>
+            <input type="email" placeholder="예 likelion@dgu.ac.kr" name="email" id="input_email" required>
 
             <!-- 임시로 버튼 하나 추가해뒀어요! -->
-            <div>
-                <!-- "인증코드 보내기"가 눌리면 sendEmail()실행 : 아래 스크립트 확인 -->
-                <a onclick="sendEmail()">인증코드 보내기</a>
-            </div>
+
             <label for="name">이메일 인증</label>
-
-            <input type="text" placeholder="인증번호를 입력해주세요" name="code" required>
-
-            <div id="check_2">
-                <a href="#">중복 확인</a>
+            <!-- "인증코드 보내기"가 눌리면 sendEmail()실행 : 아래 스크립트 확인 -->
+            <a onclick="sendEmail()">인증코드 보내기</a>
+            <input type="text" placeholder="인증번호를 입력해주세요" name="code" id="input_code" required>
+            <div id="check">
+                <a onclick="verify_code()">인증 확인</a>
             </div>
-
             <label for="name" style="padding-top: 0;">닉네임</label>
-            <input type="text" placeholder="닉네임은 추후 수정 불가능합니다" name="nickname" required>
 
+
+            <input type="text" placeholder="닉네임은 추후 수정 불가능합니다" name="nickname" id="input_nickname" equired>
+            <div id="check_2">
+                <a onclick="nickname_redundant_check()">중복 확인</a>
+            </div>
             <label for="name">비밀번호</label>
             <input type="password" placeholder="영문/숫자/특수문자 조합 가능 (8자 이상)" name="password" required>
 
@@ -106,27 +103,92 @@
         </form>
     </div>
     </div>
+    <script>
+        function sendEmail() {
+            var emailInput = document.getElementById("input_email");
+            var email = emailInput.value;
+
+            fetch("{% url 'accounts:send_email' %}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({ email: email })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    console.log(data);
+                })
+                .catch(error => {
+                    // 에러 처리
+                    alert("error");
+                });
+        }
+
+        function verify_code() {
+            var emailInput = document.getElementById("input_email");
+            var codeInput = document.getElementById("input_code");
+            var email = emailInput.value, code = codeInput.value;
+            fetch("{% url 'accounts:verify_email' %}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({ email: email, code: code })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.is_same === true) {
+                        //인증이 완료되었을 때 페이지 내부 변에 인증이 완료된 'email'과 인증 완료됨을 알 수 있는 "boolean"갑을 저장
+                        console.log("일치");
+                    } else if (data.is_same === false) {
+                        //인증 안될떄
+                        console.log("불일치");
+                    } else {
+                        console.log("예외 처리");
+                    }
+                })
+                .catch(error => {
+                    alert("error");
+                });
+        }
+
+        function nickname_redundant_check() {
+            var nicknameInput = document.getElementById("input_nickname");
+            var nickname = nicknameInput.value;
+
+            fetch("{% url 'accounts:nickname_redundant_check' %}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({ nickname: nickname })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.is_redundant === true) {
+                        //중복될 때
+                        console.log("중복");
+                    } else if (data.is_redundant === false) {
+                        //중복되지 않을때
+                        console.log("중복X");
+                    } else {
+                        console.log("예외 처리");
+                    }
+                })
+                .catch(error => {
+                    alert("error");
+                });
+        }
+    </script>
 
 </body>
 
 
-<script>
-    // 이메일을 보내기 위해 정보 보내기
-    function sendEmail() {
-        //id값이 "email"인 요소의 값을 임시저장
-        var emailInput = document.getElementById("email");
-        //임시저장된 값을 'email'이라는 변수에 저장
-        var email = emailInput.value;
-
-        // AJAX를 사용하여 이메일 값을 서버로 전송하는 코드
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', "{% url 'accounts:send_email' %}");
-        xhr.setRequestHeader('X-CSRFToken', '{{ csrf_token }}');
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        //서버에 'email'을 보내줌
-        xhr.send(JSON.stringify({ email: email }));
-    }
-</script>
 
 
 </html>
