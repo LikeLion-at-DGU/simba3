@@ -13,7 +13,7 @@ def mainpage_supporters(request):
 
 def mainpage_entrepreneur(request):
     return render(request, 'main/mainpage_entrepreneur.html')
-  
+
 def search(request):
     if request.method == 'POST':
         search_word = request.POST.get('word')  # 검색어
