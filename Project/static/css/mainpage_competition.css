@@ -1,5 +1,5 @@
-.p {
-    /* font-family: 'Nanum Myeongjo', serif; */
+p {
+    font-family: 'Nanum Myeongjo', serif;
     font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -44,13 +44,13 @@
     width: 25%;
     height: 100%;
     background-size: 100% 100%;
-    background-image: url("/image/logo.png");
+    background-image: url("../images/logo.png");
 }
 
 #logo_letter {
     width: 55%;
     height: 55%;
-    background-image: url("/image/name.png");
+    background-image: url("../images/name.png");
     background-size: 100% 100%;
     margin-left: 10px;
 }
@@ -88,7 +88,7 @@
 #banner_image {
     height: 100%;
     width: 100%;
-    background-image: url("/image/banner.jpg");
+    background-image: url("../images/banner.jpg");
     background-size: cover;
     border-radius: 10px;
 }
