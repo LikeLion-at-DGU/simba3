@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main_대외활동.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@100;400&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mainpage_supporters.css' %}">
+    <title>mainpage</title>
+</head>
+
+<body>
+    <section class="container">
+        <section class="header">
+            <section class="logo">
+                <section class="logobar">
+                    <div class="logo_left">
+                        <div id="logo_image"></div>
+                        <div id="logo_letter"></div>
+                    </div>
+                    <div class="logo_right">
+                        <div class="login">
+                            <p>로그인</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <section class="banner">
+                <div id="banner_image"></div>
+            </section>
+
+            <section class="iconbar">
+                <section class="iconbar_box">
+                    <div class="icon_1">
+                        <i class="fas fa-pen-alt" style="color: #70c488;"></i>
+                        <p>글쓰기</p>
+                    </div>
+                    <div class="icon_2">
+                        <i class="fas fa-home"></i>
+                        <p>홈</p>
+                    </div>
+
+                    <div class="icon_3">
+                        <i class="fas fa-user-alt" style="color: #66c081;"></i>
+                        <p>마이</p>
+                    </div>
+                </section>
+            </section>
+
+            <section class="searchbar">
+                <section class="searchbar_box">
+                    <div class="search_input">
+                        <p>Search</p>
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="searchbar_two">
+                        <div id="search_section">
+                            <p>모집 분야</p>
+                            <i class="fas fa-hand-pointer" style="color: #ff8859;"></i>
+                        </div>
+                        <div id="search_track">
+                            <p>모집 트랙</p>
+                            <i class="fas fa-hand-pointer" style="color: #66C081;"></i>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <section class="categorybar">
+                <section class="category_box">
+                    <div id="track1">
+                        <a href="{% url 'main:mainpage_competition' %}">
+                            <p>공모전,프로젝트</p>
+                        </a>
+                    </div>
+                    <div id="track2">
+                        <a href="{% url 'main:mainpage_supporters' %}">
+                            <p>대외활동</p>
+                        </a>
+                    </div>
+                    <div id="track3">
+                        <a href="{% url 'main:mainpage_entrepreneur' %}">
+                            <p>창업</p>
+                        </a>
+                    </div>
+                </section>
+            </section>
+
+            <section class="showteambar">
+                <p>지금 모집중인 팀</p>
+                <section class="team_box">
+                    <div class="team1">
+                        <div id="team1_pic"></div>
+                        <div id="team1_exp">
+                            <p>할 수 있조</p>
+                            <div></div>
+                            <p>[녹색환경실천본부]</p>
+                            <p>2023 탈플라스틱 실천활동</p>
+                        </div>
+                    </div>
+
+                    <div class="team2">
+                        <div id="team2_pic"></div>
+                        <div id="team2_exp">
+                            <p>할 수 있조</p>
+                            <div></div>
+                            <p>[녹색환경실천본부]</p>
+                            <p>2023 탈플라스틱 실천활동</p>
+                        </div>
+                    </div>
+
+                    <div class="team3">
+                        <div id="team3_pic"></div>
+                        <div id="team3_exp">
+                            <p>할 수 있조</p>
+                            <div></div>
+                            <p>[녹색환경실천본부]</p>
+                            <p>2023 탈플라스틱 실천활동</p>
+                        </div>
+                    </div>
+                </section>
+                <h1>더보기 ▶</h1>
+            </section>
+
+            <section class="emptybar">
+                <p>ver 1.1</p>
+                <p>likeliondgu 똑쟁이들</p>
+                <p>develop by. 김혜수, 박지호, 이주원, 전병현, 차은호</p>
+            </section>
+        </section>
+    </section>
+
+
+
+</body>
+
+</html>
