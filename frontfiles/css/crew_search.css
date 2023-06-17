@@ -10,7 +10,6 @@ body {
 *{
     box-sizing: border-box;
     font-family: 'Noto Sans KR', sans-serif;
-    /* border: 1px solid black; */
 }
 
 
@@ -119,3 +118,8 @@ header {
     font-size: 20px;
     margin-bottom: 7px;
 }
+
+a:link, a:visited {
+    text-decoration: none;
+    color: white;
+    }

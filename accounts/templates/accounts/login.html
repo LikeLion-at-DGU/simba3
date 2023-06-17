@@ -29,14 +29,16 @@
 
     <!-- 로그인 글씨 -->
 
-    <div id="top">
-        <img src="{% static 'images/logo.png' %}" alt="로고" width="100px">
+    <div class="top">
+        <div class="logo"></div>
         <p><span style="font-size: 40px;"><b>로그인</b><br></span>
             <span style="font-size: 20px;">login</span>
         </p>
+    
     </div>
 
     <!-- 입력칸 ~ 로그인 버튼 -->
+
     <div id="input">
         <form action="{% url 'accounts:login' %}" method="POST">
             {% csrf_token %}
