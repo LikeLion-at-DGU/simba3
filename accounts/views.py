@@ -31,6 +31,9 @@ def login(request):
 def terms_of_use(request):
     return render(request,'accounts/terms_of_use.html')
 
+def privacy(request):
+    return render(request,'accounts/privacy.html')
+
 def mainpage_supporters(request):
     return render(request, 'main/mainpage_supporters.html')
 
