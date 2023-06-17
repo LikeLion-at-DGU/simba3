@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/pw_finder.css' %}">
+
+    <title>비밀번호 찾기</title>
+
+</head>
+
+<body>
+
+    <!-- 고정 시계바 -->
+
+    <header>
+        <a>9:41</a>
+        <a>정보입력</a>
+    </header>
+
+
+    <div id="lock">
+        <p style="font-size: 28px;">비밀번호 찾기<br><br>
+            <a><i class="fas fa-lock" style="font-size: 100px; color:#003A38"></i></a>
+    </div>
+
+    <div id="input">
+        <form action="./login.html">
+            <label for="name">동국대학교 이메일</label>
+            <input type="email" placeholder="예) likelion@dgu.ac.kr" name="id" required>
+
+            <label for="name">이메일 인증</label>
+            <input type="text" placeholder="인증번호를 입력해주세요" name="id" required>
+
+            <div id="check">
+                <a href="#" style="color:white;">인증 전송</a>
+            </div>
+
+            <div id="check2">
+                <a href="#" style="color:white;">인증 확인</a>
+            </div>
+
+            <label for="name">새로운 비밀번호 입력</label>
+            <input type="text" placeholder="영문/숫자/특수문자 조합 가능 (8자 이상)" name="id" required>
+
+            <label for="name">새로운 비밀번호 확인</label>
+            <input type="text" placeholder="비밀번호를 다시 한 번 입력해주세요" name="id" required>
+
+    </div>
+
+    </div>
+    <section>
+        <button style="border: none;">비밀번호 저장하기</button>
+        </form>
+    </section>
+    </div>
+
+</body>
+
+</html>

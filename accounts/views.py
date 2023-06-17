@@ -55,7 +55,12 @@ def signup(request):
 
 def pw_finder(request):
     if request.method == 'POST':
-        pass
+        email = request.POST['email']
+        if request.POST['password'] == request.POST['confirm']:
+            user = User.objects.get(email = email)
+            user.set_password(request.POST['password'])
+            user.save()
+            return redirect('accounts:login')
     else:
         return render(request,'accounts/pw_finder.html')
 
@@ -63,8 +68,13 @@ def send_email(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         email = data.get('email')
-        
-        
+        if data.get('pagename') == 'pw_finder':
+            if not User.objects.filter(email = email).exists():
+                response_data = {
+                'message': '존재하지 않는 이메일입니다.',
+                'token': 'None', #임시로 token 값을 Jsonresponse로 보내도록 세팅
+                }
+                return JsonResponse(response_data)
         token = generate_auth_code(email)
         message = render_to_string('accounts/email_verify.html', {
             'token': token,
