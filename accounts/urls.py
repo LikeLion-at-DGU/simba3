@@ -10,5 +10,6 @@ urlpatterns = [
     path('send_email/',send_email,name="send_email"),
     path('verify_email/',verify_email,name="verify_email"),
     path('pw_finder/',pw_finder,name="pw_finder"),
+    path('terms_of_use/',terms_of_use,name="terms_of_use"),
     path('nickname_redundant_check/',nickname_redundant_check,name="nickname_redundant_check"),
 ]

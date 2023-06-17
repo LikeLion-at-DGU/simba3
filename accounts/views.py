@@ -28,6 +28,13 @@ def login(request):
     elif request.method == 'GET':
         return render(request, 'accounts/login.html')
 
+def terms_of_use(request):
+    return render(request,'accounts/terms_of_use.html')
+
+def mainpage_supporters(request):
+    return render(request, 'main/mainpage_supporters.html')
+
+
 def logout(request):
     auth.logout(request)
     return redirect("main:mainpage")
