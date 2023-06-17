@@ -4,10 +4,16 @@ from django.db.models import Q
 
 # Create your views here.
 
-def mainpage(request):
-    return render(request, 'main/mainpage.html')
 
-# 검색
+def mainpage_competition(request):
+    return render(request, 'main/mainpage_competition.html')
+
+def mainpage_supporters(request):
+    return render(request, 'main/mainpage_supporters.html')
+
+def mainpage_entrepreneur(request):
+    return render(request, 'main/mainpage_entrepreneur.html')
+  
 def search(request):
     if request.method == 'POST':
         search_word = request.POST.get('word')  # 검색어
@@ -33,3 +39,4 @@ def search(request):
         post_list = Post.objects.filter(q) 
 
         return render(request, 'main/searchpage.html', {'post_list':post_list})
+
