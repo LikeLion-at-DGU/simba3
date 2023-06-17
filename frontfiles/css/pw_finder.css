@@ -52,6 +52,7 @@ form {
     width: 350px;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 label {
@@ -68,13 +69,27 @@ label:nth-child(1) {
     background-color: #FF8859;
     width: 70px;
     height: 31px;
+    top: 46px;
+    right: 5px;
     border-radius: 10px;
     justify-content: center;
     align-items: center;
     font-size: 14px;
     position: absolute;
-    top: 472px;
-    left: 314px;
+}
+
+#check2 {
+    display: flex;
+    background-color: #FF8859;
+    width: 70px;
+    height: 31px;
+    top: 159px;
+    right: 5px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    position: absolute;
 }
 
 button {
