@@ -4,7 +4,7 @@ MAIN PAGE
 <hr>
 {% if user.is_authenticated %}
 {{user.email}}
-<a href="{%url 'accounts:logout' %}">logout</a>
+<a href=" {%url 'accounts:logout' %}">logout</a>
 {% else %}
 <a href="{%url 'accounts:login' %}">login</a>
 <hr>
