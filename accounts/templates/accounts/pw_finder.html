@@ -34,23 +34,25 @@
     </div>
 
     <div id="input">
-        <form action="#" method="POST">
+        <form action="{% url 'accounts:pw_finder' %}" method="POST">
+            {% csrf_token %}
             <label for="name">동국대학교 이메일</label>
-            <input type="email" placeholder="예) likelion@dgu.ac.kr" name="id" required>
+            <input type="email" placeholder="예) likelion@dgu.ac.kr" name="email" id="input_email" required>
+
+            <a onclick="sendEmail()">임시메일전송</a>
 
             <label for="name">이메일 인증</label>
-            <input type="text" placeholder="인증번호를 입력해주세요" name="id" required>
+            <input type="text" placeholder="인증번호를 입력해주세요" name="code" id="input_code" required>
 
             <div id="check">
-                <a href="#" style="color:white;">인증 확인</a>
+                <a onclick="verify_code()" style="color:white;">인증 확인</a>
             </div>
 
             <label for="name">새로운 비밀번호 입력</label>
-            <input type="text" placeholder="영문/숫자/특수문자 조합 가능 (8자 이상)" name="id" required>
+            <input type="password" placeholder="영문/숫자/특수문자 조합 가능 (8자 이상)" name="password" required>
 
             <label for="name">새로운 비밀번호 확인</label>
-            <input type="text" placeholder="비밀번호를 다시 한 번 입력해주세요" name="id" required>
-
+            <input type="password" placeholder="비밀번호를 다시 한 번 입력해주세요" name="confirm" required>
     </div>
 
     </div>
@@ -59,7 +61,60 @@
         </form>
     </section>
     </div>
+    <script>
+        function sendEmail() {
+            var emailInput = document.getElementById("input_email");
+            var email = emailInput.value;
+            var pagename = 'pw_finder';
 
+            fetch("{% url 'accounts:send_email' %}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({ email: email, pagename: pagename })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    console.log(data);
+                })
+                .catch(error => {
+                    // 에러 처리
+                    alert("error");
+                });
+        }
+
+        function verify_code() {
+            var emailInput = document.getElementById("input_email");
+            var codeInput = document.getElementById("input_code");
+            var email = emailInput.value, code = codeInput.value;
+            fetch("{% url 'accounts:verify_email' %}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({ email: email, code: code })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.is_same === true) {
+                        //인증이 완료되었을 때 페이지 내부 변에 인증이 완료된 'email'과 인증 완료됨을 알 수 있는 "boolean"갑을 저장
+                        console.log("일치");
+                    } else if (data.is_same === false) {
+                        //인증 안될떄
+                        console.log("불일치");
+                    } else {
+                        console.log("예외 처리");
+                    }
+                })
+                .catch(error => {
+                    alert("error");
+                });
+        }</script>
 </body>
+
 
 </html>
