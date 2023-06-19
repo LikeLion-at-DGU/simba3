@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from accounts.models import Profile
 # Create your views here.
+
 def detail_mypage(request):
     if request.method == 'POST':
         edit_profile = Profile.objects.get(user=request.user)
