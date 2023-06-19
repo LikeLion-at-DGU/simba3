@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from accounts.models import Profile
 # Create your views here.
-def detail_mypage(request):
+def mypage(request):
     if request.method == 'POST':
         edit_profile = Profile.objects.get(user=request.user)
         edit_profile.age = request.POST['age']
@@ -11,6 +11,8 @@ def detail_mypage(request):
         edit_profile.about_me = request.POST['about_me']
         edit_profile.save()
         return render(request, 'users/mypage.html')
-        pass
+
     else:
+        if request.user is not None:
+            return redirect('accounts:login')
         return render(request, 'users/mypage.html')
