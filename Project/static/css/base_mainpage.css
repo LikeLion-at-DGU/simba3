@@ -322,25 +322,19 @@ p {
     align-items: center;
 }
 
-#team1_pic,
-#team2_pic,
-#team3_pic {
+#team_pic {
     width: 30%;
     height: 80%;
     background-color: yellow;
     margin-left: 15px;
 }
 
-#team1_exp,
-#team2_exp,
-#team3_exp {
+#team_exp {
     width: 70%;
     height: 80%;
 }
 
-#team1_exp p,
-#team2_exp p,
-#team3_exp p {
+#team_exp p {
     margin: 0%;
     margin-left: 15px;
 }

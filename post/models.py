@@ -22,6 +22,7 @@ class Post(models.Model):
     trackKey = models.ManyToManyField(TrackKey, related_name='post', blank=False)
     recruit_date = models.TextField()
     link = models.TextField()
+    member = models.TextField()
     about_us = models.TextField()
 
     writer = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)

@@ -4,21 +4,23 @@ from django.db.models import Q
 
 
 # Create your views here.
-
-
 def mainpage_competition(request):
     competition = FieldKey.objects.get(fieldKey = "competition")
-    posts = competition.post.all()
+    project = FieldKey.objects.get(fieldKey = "project")
+    posts_com = competition.post.all()
+    posts_pro = project.post.all()
+    posts = posts_com.union(posts_pro)[:4]
+
     return render(request, 'main/mainpage_competition.html', {'posts':posts})
 
 def mainpage_supporters(request):
     supporters = FieldKey.objects.get(fieldKey = "supporters")
-    posts = supporters.post.all()
+    posts = supporters.post.all()[:4]
     return render(request, 'main/mainpage_supporters.html', {'posts':posts})
 
 def mainpage_entrepreneur(request):
     entrepreneur = FieldKey.objects.get(fieldKey = "entrepreneur")
-    posts = entrepreneur.post.all()
+    posts = entrepreneur.post.all()[:4]
     return render(request, 'main/mainpage_entrepreneur.html', {'posts':posts})
 
 def search(request):

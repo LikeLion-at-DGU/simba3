@@ -12,6 +12,7 @@ def write(request):
     new_post.trackKey = request.POST['trackKey']
     new_post.recruit_date = request.POST['recruit_date']
     new_post.link = request.POST['link']
+    new_post.member = request.POST['member']
     new_post.about_us = request.POST['about_us']
 
     new_post.writer = request.user  # ForeignKey로 수정
@@ -45,6 +46,7 @@ def update(request, id):
     update_post.trackKey = request.POST['trackKey']
     update_post.recruit_date = request.POST['recruit_date']
     update_post.link = request.POST['link']
+    update_post.member = request.POST['member']
     update_post.about_us = request.POST['about_us']
 
     update_post.writer = request.user  # ForeignKey로 수정
