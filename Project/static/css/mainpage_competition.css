@@ -295,85 +295,68 @@ p {
 
 /*지금 모집 중인 팀*/
 
-.showteambar {
-    width: 430px;
+.showteambar{
+    width:430px;
     height: 600px;
     background-color: rgba(102, 192, 129, 0.7);
     display: flex;
     flex-direction: column;
 }
 
-.showteambar>p {
+.showteambar> p{
     font-size: 24px;
     font-weight: 500;
     margin-left: 20px;
+    color: #003A38;
 }
 
-.team_box {
-    width: 90%;
-    height: 80%;
-    margin-left: 20px;
+.team_box{
+    width:90%;
+    height:80%;
+    margin-left:20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.team1,
-.team2,
-.team3 {
-    width: 100%;
-    height: 30%;
-    background-color: white;
+.team{
+    width:100%;
+    height:30%;
+    background-color:white;
     border-radius: 10px;
-    display: flex;
+    display:flex;
     justify-self: center;
     align-items: center;
 }
 
-#team1_pic,
-#team2_pic,
-#team3_pic {
-    width: 30%;
-    height: 80%;
+.team_pic{
+    width:30%;
+    height:80%;
     background-color: yellow;
     margin-left: 15px;
 }
 
-#team1_exp,
-#team2_exp,
-#team3_exp {
-    width: 70%;
-    height: 80%;
+.team_exp{
+    width:70%;
+    height:80%;
 }
 
-#team1_exp p,
-#team2_exp p,
-#team3_exp p {
-    margin: 0%;
+.team_exp p{
+    margin:0%;
     margin-left: 15px;
 }
 
-#team1_exp p:nth-child(1),
-#team2_exp p:nth-child(1),
-#team3_exp p:nth-child(1) {
-    color: rgba(102, 192, 129);
+.team_exp > p:first-child{
+    color:rgba(102, 192, 129);
     font-weight: 600;
     font-size: 23px;
 }
 
-#team1_exp p:nth-child(3),
-#team1_exp p:nth-child(4),
-#team2_exp p:nth-child(3),
-#team2_exp p:nth-child(4),
-#team3_exp p:nth-child(3),
-#team3_exp p:nth-child(4) {
+.team_exp > p:nth-child(2),
+.team_exp > p:nth-child(3)
+{
     font-size: 19px;
     color: #003A38;
-}
-
-.showteambar h1 {
-    font-size: 20px;
-    margin-left: 320px;
 }
 
 /*마지막 공백 */
@@ -401,3 +384,9 @@ p {
     text-decoration: none;
     color: white;
 }
+
+/* 홈버튼
+a.icon_2:link, a.icon_2:visited {
+    text-decoration: none;
+    color: #003A38;
+} */
