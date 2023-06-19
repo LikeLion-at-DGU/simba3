@@ -15,35 +15,17 @@
 <section class="showteambar">
     <p>지금 모집중인 팀</p>
     <section class="team_box">
-        <div class="team1">
-            <div id="team1_pic"></div>
-            <div id="team1_exp">
-                <p>할 수 있조</p>
-                <div></div>
-                <p>[녹색환경실천본부]</p>
-                <p>2023 탈플라스틱 실천활동</p>
+        {% for post in posts %}
+        <div class="team">
+            <div id="team_pic">
+                <img src="{{ post.image.url }}" alt="사진">
+            </div>
+            <div id="team_exp">
+                <p>{{ post.team_name }}</p>
+                <p>{{ post.title }}</p>
             </div>
         </div>
-
-        <div class="team2">
-            <div id="team2_pic"></div>
-            <div id="team2_exp">
-                <p>할 수 있조</p>
-                <div></div>
-                <p>[녹색환경실천본부]</p>
-                <p>2023 탈플라스틱 실천활동</p>
-            </div>
-        </div>
-
-        <div class="team3">
-            <div id="team3_pic"></div>
-            <div id="team3_exp">
-                <p>할 수 있조</p>
-                <div></div>
-                <p>[녹색환경실천본부]</p>
-                <p>2023 탈플라스틱 실천활동</p>
-            </div>
-        </div>
+        {% endfor %}
     </section>
     <h1>더보기 ▶</h1>
 </section>

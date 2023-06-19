@@ -1,18 +1,23 @@
 from django.shortcuts import render
-from post.models import Post
+from post.models import Post, TrackKey
 from django.db.models import Q
+
 
 # Create your views here.
 
 
 def mainpage_competition(request):
-    return render(request, 'main/mainpage_competition.html')
+    # 공모전, 프로젝트 AND 연산
+    posts = TrackKey.objects.filter(Q(trackKey="competition") & Q(trackKey="projects"))
+    return render(request, 'main/mainpage_competition.html', {'posts':posts})
 
 def mainpage_supporters(request):
-    return render(request, 'main/mainpage_supporters.html')
+    posts = TrackKey.objects.filter(trackKey="supporters")
+    return render(request, 'main/mainpage_supporters.html', {'posts':posts})
 
 def mainpage_entrepreneur(request):
-    return render(request, 'main/mainpage_entrepreneur.html')
+    posts = TrackKey.objects.filter(trackKey="entrepreneurs")
+    return render(request, 'main/mainpage_entrepreneur.html', {'posts':posts})
 
 def search(request):
     if request.method == 'POST':
@@ -39,4 +44,5 @@ def search(request):
         post_list = Post.objects.filter(q) 
 
         return render(request, 'main/searchpage.html', {'post_list':post_list})
+
 
