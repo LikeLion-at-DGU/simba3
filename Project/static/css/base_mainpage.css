@@ -295,19 +295,10 @@ p {
 
 /*지금 모집 중인 팀*/
 
-.showteambar {
-    width: 430px;
-    height: 600px;
-    background-color: rgba(0, 58, 56, 0.9);
-    display: flex;
-    flex-direction: column;
-}
-
 .showteambar>p {
     font-size: 24px;
     font-weight: 500;
     margin-left: 20px;
-    color: white;
 }
 
 .team_box {
@@ -401,4 +392,9 @@ p {
 #track2>a {
     text-decoration: none;
     color: #003A38;
+}
+
+#track3>a {
+    text-decoration: none;
+    color: white;
 }
