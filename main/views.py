@@ -9,6 +9,7 @@ def mainpage_competition(request):
     project = FieldKey.objects.get(fieldKey = "project")
     posts_com = competition.post.all()
     posts_pro = project.post.all()
+    
     posts = posts_com.union(posts_pro)[:4]
 
     return render(request, 'main/mainpage_competition.html', {'posts':posts})
