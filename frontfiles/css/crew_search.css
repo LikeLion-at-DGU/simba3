@@ -1,0 +1,125 @@
+body {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: black;
+    max-width: 430px;
+    border: solid 1px black;
+}
+
+*{
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+#top {
+    display: flex;
+    justify-content: space-around;
+    font-size: 23px;
+    border: solid 3px #66c081;
+    border-radius: 5px;
+    margin: 15px 30px 15px 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: #66c081;
+}
+
+#top p {
+    margin: 0;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#banner {
+    width: 370px;
+    height: 297.74px;
+    border-radius: 18px;
+    margin-top: 10px;
+    box-shadow: 3px 3px 5px gray;
+}
+
+#title {
+    margin: 50px 0 20px 0;
+    width: 370px;
+    height: 49px;
+    border: solid 2px #003A38;
+    background-color: #FFF9F2;
+    border-radius: 10px;
+}
+
+#title2 {
+    width: 370px;
+    height: 49px;
+    background-color: #ECE3D9;
+    border-radius: 10px;
+}
+
+#tag {
+    width: 370px;
+    justify-content: space-around;
+    margin: 18px 0 30px 0;
+}
+
+#tag a {
+    background-color: #66c081;
+    color: #003A38;
+    padding: 4px 8px 4px 8px;
+    border-radius: 15px;
+    margin-right: 10px;
+}
+
+#apply {
+    display: flex;
+    width: 190px;
+    height: 45px;
+    border-radius: 30px;
+    margin-top: 10px;
+    box-shadow: 8px 4px 4px rgba(0, 0, 0, 0.25);
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #66c081;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+#notice {
+    width: 370px;
+    height: 245px;
+    border-radius: 10px;
+    border: solid 3px #ff8859;
+    margin: 40px 0 20px 0;
+    padding: 16px;
+    color: #003A38;
+}
+
+#block {
+    width: 370px;
+    border-radius: 10px;
+    background-color: #ECE3D9;
+    padding: 20px;
+}
+
+.center p {
+    width: 370px;
+    font-weight: 700;
+    justify-content: left;
+    font-size: 20px;
+    margin-bottom: 7px;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: white;
+    }
