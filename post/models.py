@@ -15,11 +15,11 @@ class TrackKey(models.Model):
         return self.trackKey
 
 class Post(models.Model):
-    image = models.ImageField(upload_to='post/', blank=True, null=True)
+    image = models.ImageField(upload_to='post/', blank=True, null=True, default='default/profile_pic_default.png')
     team_name = models.CharField(max_length=30, blank=False)
     title = models.TextField(blank=False)
-    fieldKey = models.ManyToManyField(FieldKey, related_name='field_Key', blank=False)
-    trackKey = models.ManyToManyField(TrackKey, related_name='track_Key', blank=False)
+    fieldKey = models.ManyToManyField(FieldKey, related_name='post', blank=False)
+    trackKey = models.ManyToManyField(TrackKey, related_name='post', blank=False)
     recruit_date = models.TextField()
     link = models.TextField()
     about_us = models.TextField()

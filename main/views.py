@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from post.models import Post, TrackKey
+from post.models import Post, TrackKey, FieldKey
 from django.db.models import Q
 
 
@@ -7,16 +7,18 @@ from django.db.models import Q
 
 
 def mainpage_competition(request):
-    # 공모전, 프로젝트 AND 연산
-    posts = TrackKey.objects.filter(Q(trackKey="competition") & Q(trackKey="projects"))
+    competition = FieldKey.objects.get(fieldKey = "competition")
+    posts = competition.post.all()
     return render(request, 'main/mainpage_competition.html', {'posts':posts})
 
 def mainpage_supporters(request):
-    posts = TrackKey.objects.filter(trackKey="supporters")
+    supporters = FieldKey.objects.get(fieldKey = "supporters")
+    posts = supporters.post.all()
     return render(request, 'main/mainpage_supporters.html', {'posts':posts})
 
 def mainpage_entrepreneur(request):
-    posts = TrackKey.objects.filter(trackKey="entrepreneurs")
+    entrepreneur = FieldKey.objects.get(fieldKey = "entrepreneur")
+    posts = entrepreneur.post.all()
     return render(request, 'main/mainpage_entrepreneur.html', {'posts':posts})
 
 def search(request):

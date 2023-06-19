@@ -26,11 +26,20 @@
                         <div id="logo_letter"></div>
                     </div>
                     <div class="logo_right">
+                        {% if user.is_authenticated %}
+                        <!-- 아래부분은 아이디 개발동안 임시 표시  -->
+                        <div class="login">
+                            <a href="{% url 'accounts:login' %}">
+                                <p>{{user.profile.name}}</p>
+                            </a>
+                        </div>
+                        {% else %}
                         <div class="login">
                             <a href="{% url 'accounts:login' %}">
                                 <p>로그인</p>
                             </a>
                         </div>
+                        {% endif %}
                     </div>
                 </section>
             </section>

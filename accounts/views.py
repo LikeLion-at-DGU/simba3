@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import auth
 from .models import User,Profile
 import json,secrets
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.core.cache import cache
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
@@ -13,6 +13,7 @@ from django.core.mail import EmailMessage
 
 def login(request):
     if request.method == 'POST':
+        
         email = request.POST['email']
         password = request.POST['password']
 
@@ -20,7 +21,7 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            return redirect('main:mainpage')
+            return redirect('main:mainpage_competition')
         
         else:
             return render(request,'accounts/login.html')
@@ -140,3 +141,4 @@ def nickname_redundant_check(request):
         return JsonResponse({'is_redundant' : is_redundant})
     else:
         return JsonResponse({'is_redundnat' : is_redundant})
+    

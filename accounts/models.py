@@ -20,7 +20,7 @@ class Profile(models.Model):
     major = models.TextField(max_length=15,blank=True)
     contact = models.TextField(max_length=15,blank=True)
     about_me = models.TextField(max_length=200,blank=True)
-    profile_pic = models.ImageField(upload_to=profile_pic_path,default='/profile_pic_default.png')
+    profile_pic = models.ImageField(upload_to=profile_pic_path,default='default/profile_pic_default.png')
     def __str__(self):  # admin에서 표시될 user 필드 정보 설정
         return self.nickname
 
