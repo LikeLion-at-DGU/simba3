@@ -4,9 +4,10 @@
     .showteambar {
         width: 430px;
         height: 600px;
-        background-color: rgba(102, 192, 129, 0.7);
+        background-color: #1A4E4C;
         display: flex;
         flex-direction: column;
+        color: white;
     }
 </style>
 {% endblock %}
@@ -14,9 +15,8 @@
 {% block teamlist %}
 <section class="showteambar">
     <p>지금 모집중인 팀</p>
-    {% if posts %}
     <section class="team_box">
-
+        {% if posts %}
         {% for post in posts %}
         <div class="team">
             <div id="team_pic">
@@ -28,11 +28,10 @@
             </div>
         </div>
         {% endfor %}
-    </section>
-    {% else %}
+        {% else %}
         <p>현재 팀이 없습니다.</p>
     {% endif %}
-    
+    </section>
     <a href="">
         <h1>더보기 ▶</h1>
     </a>
