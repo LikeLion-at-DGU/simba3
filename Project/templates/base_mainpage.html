@@ -30,9 +30,10 @@
                         <!-- 아래부분은 아이디 개발동안 임시 표시  -->
                         <div class="login">
                             <a href="{% url 'accounts:login' %}">
-                                <p>{{user.profile.name}}</p>
+                                <p>유저 pk : {{user.id}}</p>
                             </a>
                         </div>
+                        <!-- 위 부분은 개발 임시 표시 -->
                         {% else %}
                         <div class="login">
                             <a href="{% url 'accounts:login' %}">
