@@ -30,9 +30,10 @@
                         <!-- 아래부분은 아이디 개발동안 임시 표시  -->
                         <div class="login">
                             <a href="{% url 'accounts:login' %}">
-                                <p>{{user.profile.name}}</p>
+                                <p>유저 pk : {{user.id}}</p>
                             </a>
                         </div>
+                        <!-- 위 부분은 개발 임시 표시 -->
                         {% else %}
                         <div class="login">
                             <a href="{% url 'accounts:login' %}">
@@ -60,8 +61,10 @@
                     </div>
 
                     <div class="icon_3">
-                        <i class="fas fa-user-alt" style="color: #66c081;"></i>
-                        <p>마이</p>
+                        <a href="{% url 'users:mypage' %}">
+                            <i class="fas fa-user-alt" style="color: #66c081;"></i>
+                            <p>마이</p>
+                        </a>
                     </div>
                 </section>
             </section>

@@ -83,23 +83,23 @@ def send_email(request):
             if not User.objects.filter(email = email).exists():
                 response_data = {
                 'message': '존재하지 않는 이메일입니다.',
-                'token': 'None', #임시로 token 값을 Jsonresponse로 보내도록 세팅
                 }
                 return JsonResponse(response_data)
-        token = generate_auth_code(email)
-        message = render_to_string('accounts/email_verify.html', {
-            'token': token,
-        })
+        elif data.get('pagename') == 'signup':
+            token = generate_auth_code(email)
+            message = render_to_string('accounts/email_verify.html', {
+                'token': token,
+            })
 
-        mail_title = "CO끼리 이메일 인증코드 발송"
-        to_email = EmailMessage(mail_title, message, to=[email])
-        # to_email.send() 개발 기간동안은 이메일 전송 비활성화
+            mail_title = "CO끼리 이메일 인증코드 발송"
+            to_email = EmailMessage(mail_title, message, to=[email])
+            to_email.send()
 
-        response_data = {
-            'message': '인증번호 전송 완료',
-            'token': token, #임시로 token 값을 Jsonresponse로 보내도록 세팅
-        }
-        return JsonResponse(response_data)
+            response_data = {
+                'email': email,
+                'message': '인증번호 전송 완료',
+            }
+            return JsonResponse(response_data)
     # POST 요청 이외의 경우는 에러 처리
     response_data = {
         'error': 'Invalid request method'
