@@ -37,16 +37,19 @@
         <form action="{% url 'accounts:pw_finder' %}" method="POST">
             {% csrf_token %}
             <label for="name">동국대학교 이메일</label>
+            <div id="input_btn">
             <input type="email" placeholder="예) likelion@dgu.ac.kr" name="email" id="input_email" required>
 
-            <a onclick="sendEmail()">임시메일전송</a>
+                <div class="check">
+                    <a onclick="sendEmail()">인증 확인</a></div>
+            </div>
 
             <label for="name">이메일 인증</label>
             <input type="text" placeholder="인증번호를 입력해주세요" name="code" id="input_code" required>
 
-            <div id="check">
-                <a onclick="verify_code()" style="color:white;">인증 확인</a>
-            </div>
+            <div class="check">
+                <a onclick="verify_code()";">인증 전송</a></div>
+
 
             <label for="name">새로운 비밀번호 입력</label>
             <input type="password" placeholder="영문/숫자/특수문자 조합 가능 (8자 이상)" name="password" required>
