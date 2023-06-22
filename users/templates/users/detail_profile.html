@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+{% load static %}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/detail_profile.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Co/mpatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>기본정보 상세</title>
+
+</head>
+
+<body>
+
+    <form action="{% url 'users:update_profile_pic' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>기본정보 설정</p>
+        <input type="submit" name="action" value="수정완료">
+        <br>
+        <img src="{{profile.profile_pic.url}}">
+        <br>
+        <input type="file" name="image">
+
+        <input type="submit" name="action" value="기본 이미지로 변경">
+    </form>
+
+    <p>{{profile.nickname}}</p>
+    <div>
+        <p>이름 : {{profile.name}}</p>
+        <p>이메일 : {{profile.user.email}}</p>
+        <a href="{% url 'accounts:pw_finder' %}">비밀번호 수정 버튼</a>
+    </div>
+    <a href="{% url 'accounts:delete_account' %}">회원 탈퇴하기</a>
+
+    </form>
+</body>
+
+</html>

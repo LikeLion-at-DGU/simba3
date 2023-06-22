@@ -35,9 +35,6 @@ def terms_of_use(request):
 def privacy(request):
     return render(request,'accounts/privacy.html')
 
-def mainpage_supporters(request):
-    return render(request, 'main/mainpage_supporters.html')
-
 
 def logout(request):
     auth.logout(request)
@@ -63,6 +60,11 @@ def signup(request):
         
 
     return render(request,'accounts/signup.html')
+
+def delete_account(request):
+    user = request.user
+    user.delete()
+    return render(request,'accounts/login.html')
 
 def pw_finder(request):
     if request.method == 'POST':

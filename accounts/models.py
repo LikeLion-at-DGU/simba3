@@ -1,9 +1,9 @@
 from django.db import models
 from users.models import User
 
-def profile_pic_path(instance):
+def profile_pic_path(instance, filename):
 	# MEDEIA_ROOT/user_<pk>/ 경로로 <filename> 이름으로 업로드
-    return f'profile_pics/user_{instance.pk}'
+    return f'profile_pics/user_{instance.pk}/{filename}'
 
 class Profile(models.Model):
     gender_choices = (
