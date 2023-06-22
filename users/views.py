@@ -11,13 +11,10 @@ def mypage(request):
         edit_profile.contact = request.POST['contact']
         edit_profile.about_me = request.POST['about_me']
         edit_profile.save()
-        return render(request, 'users/mypage.html')
+        return render(request, 'users/mypage.html', {'profile':edit_profile })
 
-    else:
-        if request.user is None:
-            return redirect('accounts:login')
-        else:
-            profile = Profile.objects.get(user=request.user)
+    elif request.method == 'GET':
+        profile = Profile.objects.get(user=request.user)
         return render(request, 'users/mypage.html', {'profile' : profile})
 
 def detail_profile(request):
@@ -26,6 +23,13 @@ def detail_profile(request):
     else:
         profile = Profile.objects.get(user=request.user)
         return render(request, 'users/detail_profile.html', {'profile' : profile})
+
+def edit_profile(request):
+    if request.user is None:
+        return redirect('accounts:login')
+    else:
+        profile = Profile.objects.get(user=request.user)
+        return render(request,'users/edit_profile.html',  {'profile' : profile})
 
 def update_profile_pic(request):
     update_profile = Profile.objects.get(user=request.user)

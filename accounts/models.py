@@ -7,16 +7,16 @@ def profile_pic_path(instance, filename):
 
 class Profile(models.Model):
     gender_choices = (
-        ('male', '남성'),
-        ('female', '여성'),
-        ('etc', '기타'),
+        ('남성', '남성'),
+        ('여성', '여성'),
+        ('기타', '기타'),
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     #기존에 제공하는 User 모델을 Profile 모델과 1ㄷ1 연결한다.
     name = models.TextField(max_length=10)
     nickname = models.TextField(max_length=10)
-    age = models.PositiveIntegerField(null=True)
-    gender = models.CharField(max_length=8,choices=gender_choices,null=True)
+    age = models.PositiveIntegerField(null=True,blank=True)
+    gender = models.CharField(max_length=8,choices=gender_choices,null=True,default='etc')
     major = models.TextField(max_length=15,blank=True)
     contact = models.TextField(max_length=15,blank=True)
     about_me = models.TextField(max_length=200,blank=True)
