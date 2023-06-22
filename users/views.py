@@ -13,6 +13,8 @@ def mypage(request):
         return render(request, 'users/mypage.html')
 
     else:
-        if request.user is not None:
+        if request.user is None:
             return redirect('accounts:login')
-        return render(request, 'users/mypage.html')
+        else:
+            profile = Profile.objects.get(user=request.user)
+        return render(request, 'users/mypage.html', {'profile' : profile})

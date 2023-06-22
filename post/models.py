@@ -1,6 +1,5 @@
 from django.db import models
 from users.models import User
-
 class FieldKey(models.Model):
     fieldKey = models.CharField(max_length=30)
 
@@ -30,3 +29,8 @@ class Post(models.Model):
 
     def __str__(self):  # title이 대표값
         return self.title
+
+class Apply(models.Model):
+    writer = models.ForeignKey(User, on_delete=models.CASCADE,null=False,blank=False)
+    target_Post = models.ForeignKey(Post, on_delete=models.CASCADE,null=False,blank=False)
+    short_text = models.TextField(max_length=500)
