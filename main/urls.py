@@ -8,4 +8,6 @@ urlpatterns = [
     path('', mainpage_competition, name="mainpage_competition"),
     path('mainpage_entrepreneur/', mainpage_entrepreneur, name="mainpage_entrepreneur"),
     path('mainpage_supporters/', mainpage_supporters, name="mainpage_supporters"),
+    path('search/', search, name="search"),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
