@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>검색페이지</title>
+</head>
+<body>
+    <h1>팀목록</h1>
+    {% if posts %}
+    {% for post in posts %}
+    <div class="team">
+        <div id="team_pic">
+            <img src="{{ post.image.url }}" alt="사진">
+        </div>
+        <div id="team_exp">
+            <p>{{ post.title }}</p>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    {% endif %}
+</body>
+</html>
+

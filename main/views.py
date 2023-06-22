@@ -26,28 +26,40 @@ def mainpage_entrepreneur(request):
 
 def search(request):
     if request.method == 'POST':
-        search_word = request.POST.get('word')  # 검색어
+        typed_word = request.POST.get('word')  # 검색어
         selected_field = request.POST.get('field') # 모집 분야
         selected_track = request.POST.get('track') # 모집 트랙
+        print(typed_word, selected_field, selected_track)
 
-        q = Q()
-        # 모집분야에서 전체를 선택하면 검색 조건에 넣지 않는다
-        if selected_field == 'all':
-            q.add(Q(title__icontains=search_word), q.AND)   # 검색어를 포함하는 title
-            q.add(Q(trackKey = selected_track), q.AND)      # 선택된 모집 트랙으로 검색
-        # 모집트랙에서 전체를 선택하면 검색 조건에 넣지 않는다
-        elif selected_track == 'all':
-            q.add(Q(title__icontains=search_word), q.AND)   # 검색어를 포함하는 title
-            q.add(Q(fieldKey = selected_field), q.AND)      # 선택된 모집 분야로 검색
-        # 모집분야, 트랙 둘다 전체를 선택하면 검색어로만 검색
-        elif selected_track == 'all' and selected_field == 'all':
-            q.add(Q(title__icontains=search_word), q.AND)
+        # word로 가져온 post 
+        if typed_word == "":
+            word_posts = Post.objects.all()
         else:
-            q.add(Q(title__icontains=search_word), q.AND)   # 검색어를 포함하는 title
-            q.add(Q(fieldKey = selected_field), q.AND)      # 선택된 모집 분야로 검색
-            q.add(Q(trackKey = selected_track), q.AND)      # 선택된 모집 트랙으로 검색
-        post_list = Post.objects.filter(q) 
+            word_posts = Post.objects.filter(title__contains = typed_word)
 
-        return render(request, 'main/searchpage.html', {'post_list':post_list})
+        # field로 가져온 post
+        if selected_field != "all":
+            searched_field = FieldKey.objects.get(fieldKey = selected_field)
+        #     searched_field = FieldKey.objects.all()
+        # else:
+        #     searched_field = FieldKey.objects.get(fieldKey = selected_field)
+
+        # track으로 가져온 post
+        if selected_track != "all":
+            searched_track = TrackKey.objects.get(trackKey = selected_track)
+        #     searched_track = TrackKey.objects.all()
+        # else:
+        #     searched_track = TrackKey.objects.get(trackKey = selected_track)
+
+        if selected_field == "all" and selected_track != "all":
+            posts = word_posts.filter(trackKey = searched_track)
+        elif selected_track == "all" and selected_field !="all":
+            posts = word_posts.filter(fieldKey = searched_field)
+        elif selected_field !="all" and selected_track != "all":
+            posts = word_posts.filter(Q(fieldKey = searched_field) & Q(trackKey = searched_track))
+        elif selected_field == "all" and selected_track == "all":
+            posts = word_posts
+
+        return render(request, 'main/search.html', {'posts': posts})
 
 
