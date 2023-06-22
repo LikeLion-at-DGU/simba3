@@ -4,6 +4,7 @@ body {
     text-decoration: none;
     color: black;
     max-width: 430px;
+    min-width: 430px;
     height: 100vh;
     border: solid 1px black;
 }
@@ -11,6 +12,8 @@ body {
 *{
     box-sizing: border-box;
     font-family: 'Noto Sans KR', sans-serif;
+        /* border: solid 1px black; */
+
 }
 
 header {
@@ -39,6 +42,7 @@ section {
     margin-top:60px;
 }
 
+
 input {
     display: flex;
     background: #ECE3D9;
@@ -63,7 +67,11 @@ label:nth-child(1) {
     padding-top: 0px;
 }
 
-#check {
+#input_btn {
+    position: relative;
+}
+
+.check {
     display: flex;
     background-color: #FF8859;
     width: 70px;
@@ -73,9 +81,24 @@ label:nth-child(1) {
     align-items: center;
     font-size: 14px;
     position: absolute;
-    top: 472px;
-    left: 314px;
+    top: 638px;
+    left: 310px;
+    color: white;
 }
+
+.check:nth-child(2) {
+    display: flex;
+    background-color: #FF8859;
+    width: 70px;
+    height: 31px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    position: absolute;
+    top: 7px;
+    left: 270px;
+    color: white;}
 
 button {
     display: block;
