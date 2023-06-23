@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post
 from django.utils import timezone
 
+def postpage(request):
+    return render(request, 'post/post.html')
+
 # Create
 def write(request):
     new_post = Post()
