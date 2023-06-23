@@ -33,15 +33,6 @@
         <p>자기소개 : <input type="text" value="{{profile.about_me}}" name="about_me"><br></p>
         <input type="submit">
     </form>
-    <p>{{profile.nickname}}</p>
-    <div>
-        <p>이름 : {{profile.name}}</p>
-        <p>이메일 : {{profile.user.email}}</p>
-        <a href="{% url 'accounts:pw_finder' %}">비밀번호 수정 버튼</a>
-    </div>
-    <a href="{% url 'accounts:delete_account' %}">회원 탈퇴하기</a>
-
-    </form>
 </body>
 
 </html>
