@@ -27,6 +27,13 @@ def detail_profile(request):
         profile = Profile.objects.get(user=request.user)
         return render(request, 'users/detail_profile.html', {'profile' : profile})
 
+def edit_portfolio(request):
+    if request.user is None:
+        return redirect('accounts:login')
+    else:
+        profile = Profile.objects.get(user=request.user)
+        return render(request,'users/edit_portfolio.html',  {'profile' : profile})
+
 def edit_profile(request):
     if request.user is None:
         return redirect('accounts:login')
