@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from accounts.models import Profile
+from post.models import Apply,Post
 import os
 # Create your views here.
 def mypage(request):
@@ -56,7 +57,24 @@ def update_profile_pic(request):
                 os.remove(update_profile.profile_pic.path)
             update_profile.profile_pic = request.FILES['image']
             update_profile.save()
-        # update_profile.profile_pic = request.FILES.get('image')
         return redirect('users:detail_profile')
 
-# update_post.image = request.FILES.get('image', update_post.image)
+def apply_manager(request, page):
+    user = request.user
+    profile = Profile.objects.get(user=user)
+    if page == 'my_apply':
+        
+        applies = Apply.objects.filter(writer=user)
+        return render(request,'users/apply_manager.html',{'profile': profile, 'applies' : applies, 'page' : page})
+    elif page == 'rcv_apply':
+        posts_by_user = Post.objects.filter(writer=user)
+        applies = Apply.objects.filter(target_Post__in=posts_by_user)
+        return render(request,'users/apply_manager.html',{'profile': profile, 'applies' : applies, 'page':page})
+
+def detail_apply(request,page,id):
+    apply = Apply.objects.get(id=id)
+    profile = Profile.objects.get(user=apply.writer)
+    if page == 'my_apply':
+        return render(request, 'users/detail_my_apply.html',{'profile':profile, 'apply':apply})
+    elif page == 'rcv_apply':
+        return render(request, 'users/detail_rcv_apply.html',{'profile':profile, 'apply':apply})

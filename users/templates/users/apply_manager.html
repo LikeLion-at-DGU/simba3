@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang=" ko">
+{% load static %}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/apply_manager.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Co/mpatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>지원관리 상세</title>
+
+</head>
+
+<body>
+
+    <p>15-1 지원관리 상세</p>
+    <a href="{% url 'users:apply_manager' 'rcv_apply' %}">받은 지원</a></div>
+    <a href="{% url 'users:apply_manager' 'my_apply' %}">나의 지원</a>
+    <br>
+    <!-- 아래 부분은  -->
+    {% if applies %}
+    {% for apply in applies %}
+    <section>
+        <a href="{% url 'users:detail_apply' page apply.id %}">
+            <div class="team">
+                <img src="{{ apply.target_Post.image.url }}" alt="사진">
+                <div id="team_exp">
+                    <p>{{ apply.target_Post.team_name }}</p>
+                    <p>{{ apply.target_Post.title }}</p>
+                </div>
+            </div>
+        </a>
+    </section>
+    {% endfor %}
+    {% else %}
+    <p>현재 지원이 없습니다.</p>
+    {% endif %}
+
+
+</body>
+
+</html>

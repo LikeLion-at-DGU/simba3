@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="./crew_search.css">
+    <link rel="stylesheet" href="{% static 'css/crew_search.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
@@ -22,25 +23,29 @@
 
     <div id="top">
         <p><i class="fas fa-pen"></i></p>
-        <p><i class="fas fa-home"></i></p>
+        <a href="{% url 'main:mainpage_competition' %}"><p><i class="fas fa-home" style="color: #66c081;"></i></p></a>
         <p><i class="fas fa-user"></i></p>
     </div>
 
     <div class="center">
         <div id="banner">
-            img
+            <img src="{{ post.image.url }}" alt="사진">
         </div>
 
         <div id="title">
-            sentence
+            {{ post.team_name }}
         </div>
 
         <div id="title2">
-            sentence
+            {{ post.title }}
         </div>
 
         <div id="tag">
-            <a>대외활동</a><a>마케터</a>
+            <a>{{ post.fieldKey.first.fieldKey }}</a>
+
+            {% for track in post.trackKey.all %}
+            <a>{{ track.trackKey }}</a>
+            {% endfor %}
         </div>
 
         <div id="apply">
@@ -60,24 +65,24 @@
 
         <p>모집기간</p>
         <div id="block">
-            내용
+            {{post.recruit_date}}
         </div>
 
         <p>주최 기관 링크 <a style="color: gray;">(선택)</a></p>
         <div id="block">
-            내용
+            {{post.link}}
         </div>
 
         <p>모집 중인 팀원</p>
         <div id="block">
-            내용 <br> 내용
+            {{post.member}}
         </div>
 
         <p style="font-size: 24px;">ABOUT US</p>
 
         <p style="margin-top: 0px;">팀 상세소개</p>
         <div id="block">
-            모집할건디 <br><b>아무나</b><br>누구냐<br>나랑할사람~<br>
+            {{ post.about_us}}
         </div>
 
     </div>

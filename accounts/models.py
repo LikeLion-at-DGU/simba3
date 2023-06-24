@@ -16,7 +16,7 @@ class Profile(models.Model):
     name = models.TextField(max_length=10)
     nickname = models.TextField(max_length=10)
     age = models.PositiveIntegerField(null=True,blank=True)
-    gender = models.CharField(max_length=8,choices=gender_choices,null=True,default='etc')
+    gender = models.CharField(max_length=8,choices=gender_choices,null=True,default='기타')
     major = models.TextField(max_length=15,blank=True)
     contact = models.TextField(max_length=15,blank=True)
     about_me = models.TextField(max_length=200,blank=True)
