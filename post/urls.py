@@ -3,6 +3,7 @@ from .views import *
 
 app_name = 'post'
 urlpatterns = [
+    path('postpage/', postpage, name="postpage"),
     path('write/', write, name="write"),
     path('new/', new, name="new"),
     path('<int:id>', detail, name="detail"),

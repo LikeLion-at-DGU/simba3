@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang=" ko">
 {% load static %}
 
 <head>
@@ -14,27 +14,24 @@
 
 <body>
 
-    <form action="{% url 'users:update_profile_pic' %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <p>기본정보 설정</p>
-        <input type="submit" name="action" value="수정완료">
-        <br>
-        <img src="{{profile.profile_pic.url}}">
-        <br>
-        <input type="file" name="image">
+    <p>기본정보 상세</p>
+    <a href="{% url 'users:edit_profile' %}">정보수정</a>
+    <br>
+    <img src="{{profile.profile_pic.url}}">
 
-        <input type="submit" name="action" value="기본 이미지로 변경">
-    </form>
 
     <p>{{profile.nickname}}</p>
     <div>
         <p>이름 : {{profile.name}}</p>
         <p>이메일 : {{profile.user.email}}</p>
-        <a href="{% url 'accounts:pw_finder' %}">비밀번호 수정 버튼</a>
+        <a>비밀번호 : 비밀번호 수정은 정보수정에서 가능합니다.</a>
     </div>
-    <a href="{% url 'accounts:delete_account' %}">회원 탈퇴하기</a>
-
-    </form>
+    <a href="{% url 'accounts:delete_account' %}">회원 탈퇴하기 <- 누르면 바로 계정 지워져요! 개발시 주의</a>
+            <div>
+                <p>문의하기</p>
+                <a href="#">카카오톡 1:1 채팅방 링크</a>
+                <p>likelion_coggiri@gmail.com</p>
+            </div>
 </body>
 
 </html>
