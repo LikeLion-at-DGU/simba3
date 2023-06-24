@@ -27,7 +27,7 @@
     <!-- 로그인 글씨 -->
 
     <div id="top">
-        <img src="{% static 'images/logo.png' %}" alt="로고" width="100px">
+        <img src="{% static 'images/logo.png' %}" alt="로고" width="56px" height="44.21px">
         <p><span style="font-size: 40px;"><b>회원가입</b><br></span>
             <span style="font-size: 20px;">Sign up</span>
         </p>
@@ -42,17 +42,19 @@
             <label for="name">이름</label>
             <input type="text" placeholder="이름을 입력해주세요" name="name" required>
 
-            <div id="check">
-                <a onclick="verify_code()">인증 확인</a>
+            <!-- 인증번호 맞는지 확인 -->
+            <div id="check3">
+                <a onclick="verify_code()">확인</a>
             </div>
 
             <label for="name">동국대학교 이메일</label>
             <input type="email" placeholder="예) likelion@dgu.ac.kr" name="email" id="input_email" required>
-            <!-- 아래는  임시로 들어간 버튼 -->
-            <div>
+            
+            <!-- 이메일 보내는 버튼 -->
+            <div id="test">
                 <a onclick="sendEmail()">이메일 전송</a>
             </div>
-            <!-- 위는 임시로 들어간 버튼 -->
+            <!-- 인증번호가 제대로 왔는지 확인하는 버튼 -->
             <label for="name">이메일 인증</label>
             <input type="text" placeholder="인증번호를 입력해주세요" name="code" id="input_code" required>
 

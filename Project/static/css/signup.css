@@ -1,132 +1,156 @@
 body {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    color: black;
-    max-width: 430px;
-    height: 100vh;
-    border: solid 1px black;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: #003a38;
+  max-width: 430px;
+  height: auto;
 }
 
 * {
-    box-sizing: border-box;
-    font-family: 'Noto Sans KR', sans-serif;
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
 }
 
 section[join] {
-    display: flex;
-    justify-content: center;
-    padding: 40px 0 60px 0;
+  display: flex;
+  justify-content: center;
+  padding: 40px 0 60px 0;
 }
 
 #top {
-    display: flex;
-    margin: 10px;
+  display: flex;
+  margin: 10px;
 }
 
 #input {
-    display: flex;
-    justify-content: center;
-    margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
 }
 
 input {
-    display: flex;
-    background: #ECE3D9;
-    border-radius: 5px;
-    border: none;
-    padding: 12px 15px;
-    width: 100%;
+  display: flex;
+  background: #ece3d9;
+  border-radius: 5px;
+  border: none;
+  padding: 12px 15px;
+  width: 100%;
 }
 
-input[type=checkbox] {
-    width: 18px;
-    display: flex;
-    margin-right: 10px;
+input[type="checkbox"] {
+  width: 18px;
+  display: flex;
+  margin-right: 10px;
 }
 
 form {
-    width: 350px;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
 }
 
 label {
-    padding: 30px 0 10px 0;
-    font-size: 20px;
+  padding: 30px 0 10px 0;
+  font-size: 20px;
 }
 
 label:nth-child(1) {
-    padding-top: 0px;
+  padding-top: 0px;
 }
 
 button {
-    display: block;
-    width: 25vh;
-    height: 64px;
-    background-color: #FF8859;
-    line-height: 46px;
-    border-radius: 30px;
-    color: white;
-    box-shadow: 2px 2px 5px gray;
-    font-size: 20px;
+  display: block;
+  width: 300px;
+  height: 64px;
+  background-color: #ff8859;
+  line-height: 46px;
+  border-radius: 30px;
+  color: white;
+  box-shadow: 2px 2px 5px gray;
+  font-size: 20px;
 }
 
 #check {
-    display: flex;
-    position: absolute;
-    right: 15px;
-    top: 157px;
-    background-color: #FF8859;
-    width: 70px;
-    height: 31px;
-    border-radius: 10px;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
+  display: flex;
+  position: absolute;
+  right: 80px;
+  top: 321px;
+  background-color: #ff8859;
+  width: 100px;
+  height: 31px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  color: white;
+  box-shadow: 0.5px 0.5px 3px gray;
 }
 
 #check_2 {
-    display: flex;
-    position: relative;
-    left: 265px;
-    top: -37px;
-    background-color: #66C081;
-    width: 70px;
-    height: 31px;
-    border-radius: 10px;
-    font-size: 14px;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  position: relative;
+  left: 265px;
+  top: 76px;
+  background-color: #66c081;
+  width: 70px;
+  height: 31px;
+  border-radius: 10px;
+  font-size: 14px;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  box-shadow: 0.5px 0.5px 3px gray;
+}
+
+#check3 {
+  display: flex;
+  position: relative;
+  top: 220px;
+  left: 286px;
+  color: white;
+  background-color: gray;
+  width: 48px;
+  height: 31px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0.5px 0.5px 3px gray;
 }
 
 .agree {
-    display: flex;
-    justify-content: flex-start;
-    font-size: 16px;
-    padding-top: 15px;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 16px;
+  padding-top: 15px;
 }
 
 a:link {
-    /*링크 방문 전*/
-    color: white;
-    text-decoration-line: none;
+  /*링크 방문 전*/
+  color: white;
+  text-decoration-line: none;
 }
 
 a:visited {
-    /*링크를 방문한 이후*/
-    color: white;
-    text-decoration-line: none;
+  /*링크를 방문한 이후*/
+  color: white;
+  text-decoration-line: none;
 }
 
 .detail {
-    display: flex;
-    float: right;
+  display: flex;
+  float: right;
+}
+
+img {
+  display: flex;
+  position: relative;
+  margin: 20px;
 }

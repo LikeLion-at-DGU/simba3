@@ -1,110 +1,110 @@
 body {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    color: black;
-    max-width: 430px;
-    height: 100vh;
-    border: solid 1px black;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: black;
+  max-width: 430px;
+  height: 100vh;
+  border: solid 1px black;
 }
 
 * {
-    box-sizing: border-box;
-    font-family: 'Noto Sans KR', sans-serif;
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px;
-    
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
 }
 
 section {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .top {
-    display: flex;
-    margin: 10px;
+  display: flex;
+  margin: 10px;
 }
 
-.logo{
-    width: 100px;
-    height: 85px;
-    background-image: url(../images/logo.png);
-    background-size: 100% 100%;
-    margin: 15px;
+.logo {
+  width: 56px;
+  height: 44.21px;
+  display: flex;
+  margin: 20px;
+  background-image: url(../images/logo.png);
+  background-size: 100% 100%;
 }
 #input {
-    display: flex;
-    justify-content: center;
-    margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
 }
 
 input {
-    background: #ECE3D9;
-    border-radius: 5px;
-    border: none;
-    padding: 12px 15px;
-    width: 100%;
+  background: #ece3d9;
+  border-radius: 5px;
+  border: none;
+  padding: 12px 15px;
+  width: 100%;
 }
 
 form {
-    width: 350px;
-    display: flex;
-    flex-direction: column;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
 }
 
 label {
-    padding-bottom: 8px;
-    font-size: 20px;
+  padding-bottom: 8px;
+  font-size: 20px;
 }
 
 #find_pw {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 30px;
-    margin: 14px 0 100px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  margin: 14px 0 100px 0;
 }
 
 #join {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 64px;
-    background-color: #ff8859;
-    border-radius: 30px;
-    width: 25vh;
-    color: white;
-    margin-top: 15px;
-    box-shadow: 2px 2px 5px gray;
-    font-size: 20px;
-    text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 64px;
+  width: 250px;
+  background-color: #ff8859;
+  border-radius: 30px;
+  color: white;
+  margin-top: 15px;
+  box-shadow: 2px 2px 5px gray;
+  font-size: 20px;
+  text-decoration: none;
 }
 
 button {
-    display: block;
-    width: 25vh;
-    height: 64px;
-    background-color: #66C081;
-    line-height: 46px;
-    border-radius: 30px;
-    color: white;
-    box-shadow: 2px 2px 5px gray;
-    font-size: 20px;
+  display: block;
+  width: 250px;
+  height: 64px;
+  background-color: #66c081;
+  line-height: 46px;
+  border-radius: 30px;
+  color: white;
+  box-shadow: 2px 2px 5px gray;
+  font-size: 20px;
 }
 
 a:link {
-    /*링크 방문 전*/
-    color: white;
-    text-decoration-line: none;
+  /*링크 방문 전*/
+  color: white;
+  text-decoration-line: none;
 }
 
 a:visited {
-    /*링크를 방문한 이후*/
-    color: white;
-    text-decoration-line: none;
+  /*링크를 방문한 이후*/
+  color: white;
+  text-decoration-line: none;
 }
