@@ -1,37 +1,75 @@
 <!DOCTYPE html>
 <html lang=" ko">
-{% load static %}
+  {% load static %}
 
-<head>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/detail_profile.css' %}">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Co/mpatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/detail_profile.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Co/mpatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>기본정보 상세</title>
+  </head>
 
-</head>
-
-<body>
-
-    <p>기본정보 상세</p>
-    <a href="{% url 'users:edit_profile' %}">정보수정</a>
-    <br>
-    <img src="{{profile.profile_pic.url}}">
-
-
-    <p>{{profile.nickname}}</p>
-    <div>
-        <p>이름 : {{profile.name}}</p>
-        <p>이메일 : {{profile.user.email}}</p>
-        <a>비밀번호 : 비밀번호 수정은 정보수정에서 가능합니다.</a>
+  <body>
+    <div class="_1">
+      <div><i class="fas fa-cog"></i> 기본정보 설정</div>
+      <div id="btn">
+        <a href="{% url 'users:edit_profile' %}">정보 수정하기</a>
+      </div>
     </div>
-    <a href="{% url 'accounts:delete_account' %}">회원 탈퇴하기 <- 누르면 바로 계정 지워져요! 개발시 주의</a>
-            <div>
-                <p>문의하기</p>
-                <a href="#">카카오톡 1:1 채팅방 링크</a>
-                <p>likelion_coggiri@gmail.com</p>
-            </div>
-</body>
 
+    <img src="{{profile.profile_pic.url}}" />
+
+    <div class="_4">
+      <div class="fix">닉네임</div>
+      <div class="user">{{profile.nickname}}</div>
+    </div>
+
+    <div class="_5">
+      <div class="title">기본정보</div>
+
+      <div class="carrotbox">
+        <div class="whitebox">
+          <div class="fix">이름</div>
+          <div class="user">{{profile.name}}</div>
+        </div>
+        <div class="whitebox">
+          <div class="fix">이메일</div>
+          <div class="user">{{profile.user.email}}</div>
+        </div>
+        <div class="notice">비밀번호 수정은 정보수정에서 가능합니다.</div>
+      </div>
+    </div>
+
+    <div class="_6">
+      <div class="title">문의하기</div>
+      <div class="graybox">
+        <a href="#"
+          >카카오톡 1:1 채팅방 링크 &nbsp <i class="fas fa-link"></i
+        ></a>
+      </div>
+      <div class="graybox">이메일 likelion_coggiri@gmail.com</div>
+    </div>
+
+    <div class="_7">
+      <a href="{% url 'accounts:delete_account' %}">이거누르면바로탈퇴임</a>
+    </div>
+  </body>
 </html>
