@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Post
+from .models import Post,Apply
 from django.utils import timezone
 
 def postpage(request):
@@ -30,9 +30,16 @@ def new(request):
     return render(request, 'post/new.html')
 
 def detail(request, id):
-    post = get_object_or_404(Post, pk=id)
-    return render(request, 'post/crew_search.html', {'post': post})
-
+    if request.method == 'GET':
+        post = get_object_or_404(Post, pk=id)
+        return render(request, 'post/crew_search.html', {'post': post})
+    if request.method == 'POST':
+        new_apply = Apply()
+        new_apply.short_text = request.POST['short_text']
+        new_apply.writer = request.user
+        new_apply.target_Post = get_object_or_404(Post, pk=id)
+        new_apply.save()
+        return  render(request, 'post/crew_search.html')
 # Update 할 수 있는 페이지로 연결
 def edit(request, id):
     edit_post = Post.objects.get(id=id)
@@ -64,3 +71,5 @@ def delete(request, id):
     delete_post.delete()
     return redirect('post:mainpage')
     # 삭제하면 어떤 페이지로 mainpage로 돌아간다(view의 mainpage 호출) -> 어떤 페이지로 돌아갈 것인지 추후 회의
+
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang=" ko">
+{% load static %}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/detail_my_apply.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Co/mpatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>지원관리 상세</title>
+
+</head>
+
+<body>
+
+    <p>17-1 지원관리(지원자)</p>
+
+    <h1>APPLY</h1>
+
+    <div>
+        {% if apply.status == 'under_review' %}
+        지원서 검토중
+        {% elif apply.status == 'accept' %}
+        수락됨
+        관리자의 답변 : {{apply.reply}}
+        {% else %}
+        거절됨
+        {% endif %}
+    </div>
+    <section>
+        <div>
+            <p>나의 지원서</p>
+        </div>
+        <div>
+            <p>지원 한마디</p>
+            : {{apply.short_text}}
+            <div>
+                <p>닉네임</p>
+                <div>:{{profile.nickname}}</div>
+            </div>
+
+            <div>
+                <div>
+                    <p>나이</p>
+                    <div>: {{profile.age}}</div>
+                </div>
+
+                <div>
+                    <p>성별</p>
+                    <div>: {{profile.gender}}</div>
+                </div>
+            </div>
+
+            <div>
+                <p>학력</p>
+                <div>:{{profile.major}}</div>
+
+                <p>연락 SNS 주소</p>
+                <div>:{{profile.contact}}</div>
+
+                <p>자기소개</p>
+                <div>:{{profile.about_me}}</div>
+            </div>
+        </div>
+    </section>
+    <a href="{% url 'users:apply_manager' 'my_apply' %}">팀관리로 돌아가기</a>
+
+</body>
+
+</html>
