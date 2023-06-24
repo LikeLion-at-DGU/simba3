@@ -31,7 +31,7 @@ def new(request):
 
 def detail(request, id):
     post = get_object_or_404(Post, pk=id)
-    return render(request, 'post/detail.html', {'post': post})
+    return render(request, 'post/crew_search.html', {'post': post})
 
 # Update 할 수 있는 페이지로 연결
 def edit(request, id):
