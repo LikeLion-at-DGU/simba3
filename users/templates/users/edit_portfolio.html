@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+{% load static %}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/edit_portfolio.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Co/mpatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>내 정보 수정</title>
+
+</head>
+
+<body>
+    상단 nav
+    <h1>MY PROTFOLIO</h1>
+
+    <form action="{% url 'users:mypage' %}" method="POST">
+        {% csrf_token %}
+        <p> 닉네임 : {{profile.nickname}} </p>
+        <p>나이 : <input type="number" value="{{profile.age}}" name="age"></p>
+        <p>성별 :
+            <select name="gender">
+                {% for choice in profile.gender_choices %}
+                <option value="{{ choice.0 }}" {% if profile.gender is choice.0 %}selected{% endif %}>{{ choice.1 }}
+                </option>
+                {% endfor %}
+            </select>
+        </p>
+        <p>학과 : <input type="text" value="{{profile.major}}" name="major"><br></p>
+        <p>연락 SNS 주소 : <input type="text" value="{{profile.contact}}" name="contact"><br></p>
+        <p>자기소개 : <input type="text" value="{{profile.about_me}}" name="about_me"><br></p>
+        <input type="submit">
+    </form>
+    <p>{{profile.nickname}}</p>
+    <div>
+        <p>이름 : {{profile.name}}</p>
+        <p>이메일 : {{profile.user.email}}</p>
+        <a href="{% url 'accounts:pw_finder' %}">비밀번호 수정 버튼</a>
+    </div>
+    <a href="{% url 'accounts:delete_account' %}">회원 탈퇴하기</a>
+
+    </form>
+</body>
+
+</html>

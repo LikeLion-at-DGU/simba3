@@ -5,7 +5,10 @@ import os
 def mypage(request):
     if request.method == 'POST':
         edit_profile = Profile.objects.get(user=request.user)
-        edit_profile.age = request.POST['age']
+        if request.POST['age'] :
+            edit_profile.age = request.POST['age']
+        else:
+            edit_profile.age = None
         edit_profile.gender = request.POST['gender']
         edit_profile.major = request.POST['major']
         edit_profile.contact = request.POST['contact']
@@ -23,6 +26,13 @@ def detail_profile(request):
     else:
         profile = Profile.objects.get(user=request.user)
         return render(request, 'users/detail_profile.html', {'profile' : profile})
+
+def edit_portfolio(request):
+    if request.user is None:
+        return redirect('accounts:login')
+    else:
+        profile = Profile.objects.get(user=request.user)
+        return render(request,'users/edit_portfolio.html',  {'profile' : profile})
 
 def edit_profile(request):
     if request.user is None:
