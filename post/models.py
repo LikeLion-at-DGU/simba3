@@ -20,12 +20,13 @@ class Post(models.Model):
     fieldKey = models.ManyToManyField(FieldKey, related_name='post', blank=False)
     trackKey = models.ManyToManyField(TrackKey, related_name='post', blank=False)
     recruit_date = models.TextField()
-    link = models.TextField()
+    link = models.TextField(blank=True)
     member = models.TextField()
     about_us = models.TextField()
 
     writer = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
     pub_date = models.DateTimeField()
+    isSave = models.BooleanField(default=False) # 저장할건지 안할건지 결정하는 field, 기본값 : 임시저장
 
     def __str__(self):  # title이 대표값
         return self.title

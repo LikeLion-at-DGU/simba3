@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>글쓰기</title>
+</head>
+<body>
+    <h1>WRITING</h1>
+
+    <!-- 글쓰기버튼 -->
+    <a href="{% url 'post:new' %}">글쓰기</a> 
+
+    <a href=""></a>
+    {% if posts %}
+        {% for post in posts %}
+        <div>
+            <img src="{{ post.image.url }}" alt="사진">
+            <p>{{ post.team_name }}</p>
+            <p>{{ post.title }}</p>
+
+            <!-- 글수정하기 버튼 -->
+            <a href="{% url 'post:edit' post.id %}">글 수정하기</a>
+
+        </div>
+        {% endfor %}
+    {% else %}
+    <p>작성한 글이 없습니다.</p>
+    {% endif %}
+</body>
+</html>
+
