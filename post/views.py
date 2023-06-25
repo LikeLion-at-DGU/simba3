@@ -2,33 +2,47 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post,Apply
 from django.utils import timezone
 
-def postpage(request):
+# 새로운 글 작성 페이지로 연결
+def new(request):
     return render(request, 'post/post.html')
 
 # Create
 def write(request):
     new_post = Post()
     new_post.image = request.FILES.get('image')
-    new_post.team_name = request.POST['team_name']
-    new_post.title = request.POST['title']
+    new_post.team_name = request.POST['put_team']
+    new_post.title = request.POST['put_subject']
     new_post.fieldKey = request.POST['fieldKey']
     new_post.trackKey = request.POST['trackKey']
-    new_post.recruit_date = request.POST['recruit_date']
-    new_post.link = request.POST['link']
-    new_post.member = request.POST['member']
-    new_post.about_us = request.POST['about_us']
+    new_post.recruit_date = request.POST['put_date']
+    new_post.link = request.POST['put_link']
+    new_post.member = request.POST['put_member']
+    new_post.about_us = request.POST['put_about_us']
 
     new_post.writer = request.user  # ForeignKey로 수정
     new_post.pub_date = timezone.now()
-    new_post.save()
 
-    return redirect('post:detail', new_post.id)
-    # 작성하면 게시글 detail을 보도록 이동 -> 어떤 화면이 보일지는 추후 회의
+    if 'store_btn' in request.POST:
+        new_post.isSave = True
+        new_post.save()
+        # 작성완료 누르면 crew_search 페이지로 이동
+        return redirect('post:detail', new_post.id)
+    if 'submit_btn' in request.POSt:
+        new_post.isSave = True
+        new_post.save()
+        return redirect('post:temporary_save_post')
 
-# 새로운 글 작성 페이지로 연결
-def new(request):
-    return render(request, 'post/new.html')
+# 임시저장 글 목록페이지로 이동, 12-2. 글쓰기_임시저장
+def temporary_save_post(request):
+    posts = Post.objects.filter(writer=request.user, isSave=False)
+    return render(request, 'post/temporary_save_post.html', {'posts':posts})
 
+# 저장된글 목록페이지로 이동
+def wrote_post(request):
+    posts = Post.objects.filter(writer=request.user, isSave=True)
+    return render(request, 'post/wrote_post.html', {'posts':posts})
+
+# 글 상세페이지로 연결, 11-1 크루서치
 def detail(request, id):
     if request.method == 'GET':
         post = get_object_or_404(Post, pk=id)
@@ -40,24 +54,26 @@ def detail(request, id):
         new_apply.target_Post = get_object_or_404(Post, pk=id)
         new_apply.save()
         return  render(request, 'post/crew_search.html')
-# Update 할 수 있는 페이지로 연결
+    
+# post 페이지로 이동
 def edit(request, id):
     edit_post = Post.objects.get(id=id)
-    return render('reqeust', 'post/edit.html', {'post': edit_post})
+    return render(request, 'post/post.html', {'post': edit_post})
 
 # Update
+# 수정 페이지
 def update(request, id):
     update_post = Post.objects.get(id=id)
     # 수정할 때 이미지 수정 안하면 원래 이미지가 들어갈 수 있도록
     update_post.image = request.FILES.get('image', update_post.image)
-    update_post.team_name = request.POST['team_name']
-    update_post.title = request.POST['title']
+    update_post.team_name = request.POST['put_team']
+    update_post.title = request.POST['put_subject']
     update_post.fieldKey = request.POST['fieldKey']
     update_post.trackKey = request.POST['trackKey']
-    update_post.recruit_date = request.POST['recruit_date']
-    update_post.link = request.POST['link']
-    update_post.member = request.POST['member']
-    update_post.about_us = request.POST['about_us']
+    update_post.recruit_date = request.POST['put_date']
+    update_post.link = request.POST['put_link']
+    update_post.member = request.POST['put_member']
+    update_post.about_us = request.POST['put_about_us']
 
     update_post.writer = request.user  # ForeignKey로 수정
     update_post.pub_date = timezone.now()

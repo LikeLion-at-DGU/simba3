@@ -78,3 +78,9 @@ def detail_apply(request,page,id):
         return render(request, 'users/detail_my_apply.html',{'profile':profile, 'apply':apply})
     elif page == 'rcv_apply':
         return render(request, 'users/detail_rcv_apply.html',{'profile':profile, 'apply':apply})
+
+def send_apply(request,id):
+    apply = Apply.objects.get(id=id)
+    apply.reply = request.POST['reply']
+    apply.save()
+    pass

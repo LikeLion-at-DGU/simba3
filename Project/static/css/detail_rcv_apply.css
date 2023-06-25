@@ -1,0 +1,184 @@
+body {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: black;
+  max-width: 430px;
+  border: solid 1px black;
+  color: #003a38;
+  background: #ece3d9;
+  
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
+  /* border: solid 1px black; */
+}
+
+/* apply 큰 틀 */
+._1 {
+  font-size: 32px;
+  font-weight: 500;
+  display: flex;
+  height: 110px;
+  justify-content: space-between;
+  padding: 30px;
+  align-items: center;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+/* 내정보수정 텍스트 */
+._1 a {
+  color: gray;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* 내정보수정 */
+._1 div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: gray;
+}
+
+._1 a:link,
+._1 a:visited {
+  color: gray;
+}
+
+/* 지원수락&지원거절 큰틀 */
+._2 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* 지원수락버튼 */
+.btn {  
+  background: #FF8859;
+  width: 160px;
+  height: 70px;
+  border-radius: 10px;
+  color: white;
+  font-size: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 2px 0px #00000040;
+  margin-top: 30px;
+}
+
+.btn:nth-child(2) {
+  background: #8F8F8F;
+}
+
+
+.white {
+  background-color: white;
+}
+
+/* 지원자 포트폴리오 텍스트 */
+._3 {
+  width: 430px;
+  height: 71px;
+  font-size: 28px;
+  font-weight: 700;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-content: center;
+  justify-content: left;
+  padding-left: 23px;
+  color: white;
+  background: #FF8859;
+  flex-wrap: wrap;
+}
+
+/* 유저정보 반복 큰틀 */
+._4{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 15px;
+}
+
+
+/* 고정된 텍스트 */
+.fix {
+  background-color: white;
+  font-size: 20px;
+  font-weight: 700;
+  padding-left: 20px;
+  margin: 13px 0 10px 0;
+
+} 
+
+/* 지원한마디 */
+.ment {
+  background: #FF885980;
+  width: 400px;
+  height: 98px;
+  padding: 10px 0 10px 13px;
+  display: flex;
+  border-radius: 5px;
+}
+
+/* 유저정보 흰색 박스 */
+.whitebox {
+  background-color: white;
+  border: 3px solid #FF8859;
+  font-size: 20px;
+  font-weight: 400;
+  width: 400px;
+  height: 54px;
+  padding: 10px 0 10px 13px;
+  border-radius: 5px;
+}
+
+/* 자기소개 */
+.intro {
+  background-color: #fff9f2;
+  border: 3px solid #FF8859;
+  font-size: 20px;
+  font-weight: 400;
+  width: 400px;
+  height: 100px;
+  border-radius: 5px;
+  padding: 10px 0 10px 13px;
+  margin-bottom: 30px;
+
+}
+
+/* 관리로 돌아가기 */
+.back {
+  color: #8f8f8f;
+  font-size: 20px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  height: 60px;
+  align-items: end;
+  margin: 40px;
+  padding-bottom: 20px;
+}
+
+a:visited ,
+a:link {
+  color: white;
+  text-decoration: none;
+}
+
+#color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+#color a:visited,
+#color a:link {
+  color: gray;
+  text-decoration: underline;
+}

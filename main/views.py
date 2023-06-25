@@ -24,7 +24,7 @@ def mainpage_entrepreneur(request):
     posts = entrepreneur.post.all()[:4]
     return render(request, 'main/mainpage_entrepreneur.html', {'posts':posts})
 
-def search(request):
+def search(request, f):
     if request.method == 'POST':
         typed_word = request.POST.get('word')  # 검색어
         selected_field = request.POST.get('field') # 모집 분야
@@ -40,16 +40,9 @@ def search(request):
         # field로 가져온 post
         if selected_field != "all":
             searched_field = FieldKey.objects.get(fieldKey = selected_field)
-        #     searched_field = FieldKey.objects.all()
-        # else:
-        #     searched_field = FieldKey.objects.get(fieldKey = selected_field)
-
         # track으로 가져온 post
         if selected_track != "all":
             searched_track = TrackKey.objects.get(trackKey = selected_track)
-        #     searched_track = TrackKey.objects.all()
-        # else:
-        #     searched_track = TrackKey.objects.get(trackKey = selected_track)
 
         if selected_field == "all" and selected_track != "all":
             posts = word_posts.filter(trackKey = searched_track)
@@ -61,5 +54,24 @@ def search(request):
             posts = word_posts
 
         return render(request, 'main/search.html', {'posts': posts})
+    
+    if request.method == 'GET':
+        if f=='project':
+            competition = FieldKey.objects.get(fieldKey = "competition")
+            project = FieldKey.objects.get(fieldKey = "project")
+            posts_com = competition.post.all()
+            posts_pro = project.post.all()
+            posts = posts_com.union(posts_pro)
+            return render(request, 'main/search.html', {'posts':posts})
+        elif f=='supporters':
+            supporters = FieldKey.objects.get(fieldKey = "supporters")
+            posts = supporters.post.all()
+            return render(request, 'main/search.html', {'posts':posts})
+        elif f=='entre':
+            entrepreneur = FieldKey.objects.get(fieldKey = "entrepreneur")
+            posts = supporters.post.all()
+            return render(request, 'main/search.html', {'posts':posts})
+
+
 
 

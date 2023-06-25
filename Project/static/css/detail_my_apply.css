@@ -1,0 +1,170 @@
+body {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: black;
+  max-width: 430px;
+  height: 100vh;
+  border: solid 1px black;
+  color: #003a38;
+  background: #ece3d9;
+  
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
+  /* border: solid 1px black; */
+}
+
+/* apply 큰 틀 */
+._1 {
+  font-size: 32px;
+  font-weight: 500;
+  display: flex;
+  height: 110px;
+  justify-content: space-between;
+  padding: 30px;
+  align-items: center;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+/* 내정보수정 텍스트 */
+._1 a {
+  color: gray;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* 내정보수정 */
+._1 div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: gray;
+}
+
+/* 지원서 검토중 큰틀 */
+._2 {
+  display: flex;
+  flex-direction: column;
+  height: 140px;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+  color: gray;
+}
+
+/* 지원서 검토중 상태창 */
+._2 div {
+  display: flex;
+  width: 360px;
+  height: 64px;
+  border-radius: 10px;
+  background-color: #8f8f8f;
+  align-content: center;
+  justify-content: center;
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  flex-wrap: wrap;
+  margin: 5px;
+}
+
+/* 지원수락 박스 */
+.ok {
+}
+
+.white {
+  background-color: white;
+}
+
+/* 나의지원서 텍스트 */
+._3 {
+  width: 430px;
+  height: 71px;
+  font-size: 28px;
+  font-weight: 700;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-content: center;
+  justify-content: left;
+  padding-left: 23px;
+  color: white;
+  background-color: #66c081;
+  flex-wrap: wrap;
+}
+
+/* 유저정보 반복 큰틀 */
+._4{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 15px;
+}
+
+
+/* 고정된 텍스트 */
+.fix {
+  background-color: white;
+  font-size: 20px;
+  font-weight: 700;
+  padding-left: 20px;
+  margin: 13px 0 10px 0;
+
+} 
+
+/* 지원한마디 */
+.ment {
+  background-color: #66c081b3;
+  width: 400px;
+  height: 98px;
+  padding: 10px 0 10px 13px;
+  display: flex;
+  border-radius: 5px;
+}
+
+/* 유저정보 흰색 박스 */
+.whitebox {
+  background-color: white;
+  border: 3px solid #66c081;
+  font-size: 20px;
+  font-weight: 400;
+  width: 400px;
+  height: 54px;
+  padding: 10px 0 10px 13px;
+  border-radius: 5px;
+}
+
+/* 자기소개 */
+.intro {
+  background-color: #fff9f2;
+  border: 3px solid #66c081;
+  font-size: 20px;
+  font-weight: 400;
+  width: 400px;
+  height: 100px;
+  border-radius: 5px;
+  padding: 10px 0 10px 13px;
+  margin-bottom: 30px;
+
+}
+
+/* 관리로 돌아가기 */
+.back {
+  color: #8f8f8f;
+  font-size: 20px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  height: 60px;
+  align-items: end;
+  margin: 40px;
+  padding-bottom: 20px;
+}
+
+a:visited ,
+a:link {
+  color: #8f8f8f;
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>글쓰기(임시저장글)</title>
+</head>
+<body>
+    <h1>팀목록</h1>
+    {% if temp_posts %}
+    {% for post in temp_posts %}
+    <div class="team">
+        <img src="{{ post.image.url }}" alt="사진">
+        <p>{{ post.team_name }}</p>
+        <p>{{ post.title }}</p>
+
+        <!-- 글수정하기 버튼 -->
+        <a href="{% url 'post:edit' post.id %}">글 작성하기</a>
+
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>임시 저장된 글이 없습니다</p>
+    {% endif %}
+</body>
+</html>
+
