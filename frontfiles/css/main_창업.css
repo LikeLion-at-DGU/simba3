@@ -28,7 +28,6 @@
     display:flex;
     justify-content: space-between;
     align-items: center;
-    
 }
 
 .logo_left{
@@ -310,7 +309,7 @@
     justify-content: space-between;
 }
 
-.team1,.team2,.team3{
+.team{
     width:100%;
     height:30%;
     background-color:white;
@@ -320,32 +319,31 @@
     align-items: center;
 }
 
-#team1_pic,#team2_pic,#team3_pic{
+.team_pic{
     width:30%;
     height:80%;
     background-color: yellow;
     margin-left: 15px;
 }
 
-#team1_exp,#team2_exp,#team3_exp{
+.team_exp{
     width:70%;
     height:80%;
 }
 
-#team1_exp p,#team2_exp p,#team3_exp p{
+.team_exp p{
     margin:0%;
     margin-left: 15px;
 }
 
-#team1_exp p:nth-child(1),#team2_exp p:nth-child(1),#team3_exp p:nth-child(1) {
+.team_exp > p:first-child{
     color:rgba(102, 192, 129);
     font-weight: 600;
     font-size: 23px;
 }
 
-#team1_exp p:nth-child(3),#team1_exp p:nth-child(4),
-#team2_exp p:nth-child(3),#team2_exp p:nth-child(4),
-#team3_exp p:nth-child(3),#team3_exp p:nth-child(4)
+.team_exp > p:nth-child(2),
+.team_exp > p:nth-child(3)
 {
     font-size: 19px;
     color: #003A38;

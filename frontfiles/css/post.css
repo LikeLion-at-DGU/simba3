@@ -114,6 +114,7 @@
     justify-content: space-between;
 }
 
+<<<<<<< HEAD
 
 input[type="text"][name="put_team"]{
     width: 380px;
@@ -138,6 +139,23 @@ input[type="text"][name="put_subject"]{
 
 
 
+=======
+.put_team{
+    width:100%;
+    height:40%;
+    background-color: #FFF9F2;
+    border-radius: 10px; 
+    border: 3px solid #003A38;
+    display: flex;
+    align-items: center;
+}
+
+.put_team p{
+    margin-left:10px;
+    font-size: 17px;
+}
+
+>>>>>>> e4d64e6f619ba06ed277b6d0fd97102de69d10af
 .put_sub{
     width:100%;
     height:50%;
@@ -321,6 +339,7 @@ input[type="text"][name="put_subject"]{
     font-size: 24px;
 }
 
+<<<<<<< HEAD
 input[type="text"][name="put_subject"]{
     width: 380px;
     height: 50px;
@@ -350,3 +369,5 @@ input[type="date"][name="put_date"]{
     padding-left: 10px;
     color:#747474;
 }
+=======
+>>>>>>> e4d64e6f619ba06ed277b6d0fd97102de69d10af
