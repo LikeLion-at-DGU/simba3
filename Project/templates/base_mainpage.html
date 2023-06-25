@@ -88,7 +88,7 @@
                     </section>
                 </section>
 
-            <form action="{% url 'main:search' %}" method="POST">
+            <form action="{% url 'main:search' ' ' %}" method="POST">
                 {% csrf_token %}
                 <input type="text" name="word" id="">
                 <select name="field" id="">

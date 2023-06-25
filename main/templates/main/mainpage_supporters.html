@@ -14,25 +14,27 @@
 
 <section class="showteambar">
     <p>지금 모집중인 팀</p>
-    <section class="team_box">
-        {% if posts %}
+    {% if posts %}
         {% for post in posts %}
-        <div class="team">
-            <div id="team_pic">
-                <img src="{{ post.image.url }}" alt="사진">
+        <a href="{% url 'post:detail' post.id %}">
+        <section class="team_box">
+            <div class="team">
+                <div id="team_pic">
+                    <img src="{{ post.image.url }}" alt="사진">
+                </div>
+                <div id="team_exp">
+                    <p>{{ post.team_name }}</p>
+                    <p>{{ post.title }}</p>
+                </div>
             </div>
-            <div id="team_exp">
-                <p>{{ post.team_name }}</p>
-                <p>{{ post.title }}</p>
-            </div>
-        </div>
+        </section>
+        </a>
         {% endfor %}
-        {% else %}
-        <p>현재 팀이 없습니다.</p>
+    {% else %}
+    <p>현재 팀이 없습니다.</p>
     {% endif %}
-    </section>
     
-    <a href="">
+    <a href="{% url 'main:search' 'supporters' %}">
         <h1>더보기 ▶</h1>
     </a>
 </section>
