@@ -1,67 +1,65 @@
 <!DOCTYPE html>
 <html lang=" ko">
-{% load static %}
+  {% load static %}
 
-<head>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/detail_rcv_apply.css' %}">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Co/mpatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/detail_rcv_apply.css' %}"
+    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Co/mpatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>지원관리(관리자)</title>
+  </head>
 
-</head>
-
-<body>
-
+  <body>
     <p>16-1 지원관리(팀관리자)</p>
 
     <h1>APPLY</h1>
     <section>
+      <div>
+        <p>지원자 포트폴리오</p>
+      </div>
+      <div>
+        {% if apply.status == 'under_review' %}
+        <a href="#">지원수락</a>
+        <a href="#">지원 거절</a>
+        {% else %} 이미 검토가 끝난 지원서입니다 {% endif %}
+      </div>
+      <div>
+        <p>지원 한마디</p>
+        {{apply.short_text}}
         <div>
-            <p>지원자 포트폴리오</p>
+          <p>닉네임</p>
+          <div>{{profile.nickname}}</div>
         </div>
+
         <div>
-            {% if apply.status == 'review'%}
-            <a href="#">지원수락</a>
-            <a href="#">지원 거절</a>
-            {% else %}
-            이미 검토가 끝난 지원서입니다
-            {% endif %}
+          <div>
+            <p>나이</p>
+            <div>{{profile.age}}</div>
+          </div>
+
+          <div>
+            <p>성별</p>
+            <div>{{profile.gender}}</div>
+          </div>
         </div>
+
         <div>
-            <p>지원 한마디</p>
-            {{apply.short_text}}
-            <div>
-                <p>닉네임</p>
-                <div>{{profile.nickname}}</div>
-            </div>
+          <p>학력</p>
+          <div>{{profile.major}}</div>
 
-            <div>
-                <div>
-                    <p>나이</p>
-                    <div>{{profile.age}}</div>
-                </div>
+          <p>연락 SNS 주소</p>
+          <div>{{profile.contact}}</div>
 
-                <div>
-                    <p>성별</p>
-                    <div>{{profile.gender}}</div>
-                </div>
-            </div>
-
-            <div>
-                <p>학력</p>
-                <div>{{profile.major}}</div>
-
-                <p>연락 SNS 주소</p>
-                <div>{{profile.contact}}</div>
-
-                <p>자기소개</p>
-                <div>{{profile.about_me}}</div>
-            </div>
+          <p>자기소개</p>
+          <div>{{profile.about_me}}</div>
         </div>
+      </div>
     </section>
-
-</body>
-
+  </body>
 </html>

@@ -44,7 +44,7 @@ body {
 }
 
 /* 이미지 */
-._2 {
+img {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,7 +75,7 @@ body {
 
 .user {
   color: #003a38;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 /* 기본정보 큰틀 */
@@ -114,6 +114,18 @@ body {
   justify-content: space-evenly;
   border-radius: 5px;
   background-color: rgba(255, 136, 89, 0.5);
+}
+
+.notice {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  width: 320px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  margin-left: 15px;
 }
 
 /* 문의하기 ~  */
@@ -156,4 +168,9 @@ a:link,
 a:visited {
   text-decoration: none;
   color: #747474;
+}
+
+._1 a:link,
+._1 a:visited {
+  color: #ff8859;
 }

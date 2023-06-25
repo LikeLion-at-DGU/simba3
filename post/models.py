@@ -41,4 +41,4 @@ class Apply(models.Model):
     target_Post = models.ForeignKey(Post, on_delete=models.CASCADE,null=False,blank=False)
     status = models.CharField(max_length=15,choices=status_choices,default='under_review')
     short_text = models.TextField(max_length=500)
-    reply = models.TextField(max_length=100,null=True)
+    reply = models.TextField(max_length=100,null=True,blank=True)

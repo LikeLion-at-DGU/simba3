@@ -10,7 +10,11 @@
       integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./13-3.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/detail_portfolio.css' %}"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -21,21 +25,38 @@
     <title>기본정보</title>
   </head>
   <body>
-    <div class="_1">
-      <div><i class="fas fa-cog"></i> 기본정보 설정</div>
-      <div id="btn">수정완료</div>
-    </div>
+    <form
+      action="{% url 'users:update_profile_pic' %}"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      {% csrf_token %}
 
-    <div class="_2">img</div>
+      <div class="_1">
+        <div><i class="fas fa-cog"></i> 기본정보 설정</div>
+        <div id="btn">
+          <input type="submit" name="action" value="수정완료" />
+        </div>
+      </div>
 
-    <div class="_3">
-      <div class="button"><i class="fas fa-camera"></i> &nbsp;사진 올리기</div>
-      <div class="button">기본 이미지로 변경</div>
-    </div>
+      <div class="_2">
+        <img src="{{profile.profile_pic.url}}" alt="프로필이미지" />
+      </div>
+
+      <div class="_3">
+        <div class="button">
+          <i class="fas fa-camera"></i> &nbsp;
+          <input type="file" name="image" />
+        </div>
+        <div class="button">
+          <input type="submit" name="action" value="기본 이미지로 변경" />
+        </div>
+      </div>
+    </form>
 
     <div class="_4">
       <div class="fix">닉네임</div>
-      <div class="user">라이언</div>
+      <div class="user"><p>이름 : {{profile.name}}</p></div>
     </div>
 
     <div class="_5">
@@ -48,11 +69,10 @@
         </div>
         <div class="whitebox">
           <div class="fix">이메일</div>
-          <div class="user">likelion@dgu.ac.kr</div>
+          <div class="user">이메일 : {{profile.user.email}}</div>
         </div>
         <div class="whitebox">
-          <div class="fix">비밀번호</div>
-          <div class="user">lion123456!!</div>
+          <a href="{% url 'accounts:pw_finder' %}">비밀번호 변경 바로가기</a>
         </div>
       </div>
     </div>
