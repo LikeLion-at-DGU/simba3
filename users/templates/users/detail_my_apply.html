@@ -11,56 +11,85 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Co/mpatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
 
-    <title>지원관리 상세</title>
+    <title>17-1 지원관리 상세</title>
   </head>
 
   <body>
-    <p>17-1 지원관리(지원자)</p>
-
-    <h1>APPLY</h1>
-
-    <div>
-      {% if apply.status == 'under_review' %} 지원서 검토중 {% elif apply.status
-      == 'accept' %} 수락됨 관리자의 답변 : {{apply.reply}} {% else %} 거절됨 {%
-      endif %}
-    </div>
-    <section>
+    <div class="_1">
+      APPLY
       <div>
-        <p>나의 지원서</p>
+        <i class="fas fa-cog" style="font-size: 32px"></i>
+        <a href="{% url 'users:detail_profile' %}">내 정보 수정</a>
       </div>
+    </div>
+
+    <div class="_2">
+      지원해주셔서 감사합니다 :)
       <div>
-        <p>지원 한마디</p>
-        : {{apply.short_text}}
-        <div>
-          <p>닉네임</p>
-          <div>:{{profile.nickname}}</div>
-        </div>
+        {% if apply.status == 'under_review' %} 검토 상태 나올 곳
+        {%elif apply.status == 'accept' %} 수락됨 관리자의 답변 : 답변내용
+        {{apply.reply}} {% else %} 거절됨 여기에 태그 {%endif %}
+      </div>
+    </div>
 
-        <div>
-          <div>
-            <p>나이</p>
-            <div>: {{profile.age}}</div>
-          </div>
+    <section class="white">
+      <div class="_3">
+        나의 지원서
+      </div>
 
-          <div>
-            <p>성별</p>
-            <div>: {{profile.gender}}</div>
-          </div>
-        </div>
 
-        <div>
-          <p>학력</p>
-          <div>:{{profile.major}}</div>
+      <div class="_4">
+        <div class="fix">지원 한마디</div>
+        <div class="ment">{{apply.short_text}}</div>
+      </div>
 
-          <p>연락 SNS 주소</p>
-          <div>:{{profile.contact}}</div>
+      <div class="_4">
+        <div class="fix">닉네임</div>
+        <div class="whitebox">{{profile.nickname}}</div>
+      </div>
 
-          <p>자기소개</p>
-          <div>:{{profile.about_me}}</div>
-        </div>
+      <div class="_4">
+        <div class="fix">나이</div>
+        <div class="whitebox">{{profile.age}}</div>
+      </div>
+
+      <div class="_4">
+        <div class="fix">성별</div>
+        <div class="whitebox">{{profile.gender}}</div>
+      </div>
+
+      <div class="_4">
+        <div class="fix">학력</div>
+        <div class="whitebox">{{profile.major}}</div>
+      </div>
+
+      <div class="_4">
+        <div class="fix">연락 SNS 주소</div>
+        <div class="whitebox">{{profile.contact}}</div>
+      </div>
+
+      <div class="_4">
+        <div class="fix">자기소개</div>
+        <div class="intro">{{profile.about_me}}</div>
+      </div>
+
       </div>
     </section>
-    <a href="{% url 'users:apply_manager' 'my_apply' %}">팀관리로 돌아가기</a>
+    <div class="back">
+      <a href="{% url 'users:apply_manager' 'my_apply' %}">마이 팀 관리로 돌아가기</a>
+    </div>
   </body>
 </html>
