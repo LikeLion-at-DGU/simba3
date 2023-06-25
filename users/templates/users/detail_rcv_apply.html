@@ -24,7 +24,7 @@
         <p>지원자 포트폴리오</p>
       </div>
       <div>
-        {% if apply.status == 'review'%}
+        {% if apply.status == 'under_review' %}
         <a href="#">지원수락</a>
         <a href="#">지원 거절</a>
         {% else %} 이미 검토가 끝난 지원서입니다 {% endif %}
