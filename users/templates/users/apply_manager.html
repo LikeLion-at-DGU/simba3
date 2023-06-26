@@ -1,43 +1,95 @@
 <!DOCTYPE html>
-<html lang=" ko">
+<html lang="ko">
 {% load static %}
 
 <head>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/apply_manager.css' %}">
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Co/mpatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/apply_manager.css' %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>지원관리 상세</title>
-
+    {% if page == 'rcv_apply' %}
+    <style>
+        .writing_category {
+            width: 100%;
+            height: 600px;
+            background-color: #FF9D77;
+            ;
+            ;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+    {% else %}
+    <style>
+        .writing_category {
+            width: 100%;
+            height: 600px;
+            background-color: #66C081;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+    {% endif %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+    <title>post</title>
 </head>
 
 <body>
+    <section class="container">
+        <section class="header">
+            <section class="iconbar">
 
-    <p>15-1 지원관리 상세</p>
-    <a href="{% url 'users:apply_manager' 'rcv_apply' %}">받은 지원</a></div>
-    <a href="{% url 'users:apply_manager' 'my_apply' %}">나의 지원</a>
-    <br>
-    <!-- 아래 부분은 겹침 -->
-    {% if applies %}
-    {% for apply in applies %}
-    <section>
-        <a href="{% url 'users:detail_apply' page apply.id %}">
-            <div class="team">
-                <img src="{{ apply.target_Post.image.url }}" alt="사진">
-                <div id="team_exp">
-                    <p>{{ apply.target_Post.team_name }}</p>
-                    <p>{{ apply.target_Post.title }}</p>
+            </section>
+
+            <section class="write">
+                <h1>지원 관리</h1>
+                <div class="write_right">
+                    <a href="{% url 'users:detail_profile' %}">
+                        <i class="fas fa-cog" style="color: #747474; font-size: 20px;"></i>
+                        <p>내 정보 수정</p>
+                    </a>
                 </div>
-            </div>
-        </a>
-    </section>
-    {% endfor %}
-    {% else %}
-    <p>현재 지원이 없습니다.</p>
-    {% endif %}
+            </section>
 
+            <section class="categorybar">
+                <div id="track1">
+                    <a href="{% url 'users:apply_manager' 'rcv_apply' %}">
+                        <p>받은 지원</p>
+                    </a>
+                </div>
+                <div id="track2">
+                    <a href="{% url 'users:apply_manager' 'my_apply' %}">
+                        <p>나의 지원</p>
+                    </a>
+                </div>
+            </section>
+
+            <section class="writing_category">
+                {% if applies %}
+                {% for apply in applies %}
+                <div class="white_box">
+
+                    <div class="team">
+                        <div class="team_pic">
+                            <img src="{{ apply.target_Post.image.url }}" alt="사진">
+                        </div>
+                        <div class="right">
+                            <h1>{{ apply.target_Post.team_name }}</h1>
+                            <p>{{ apply.target_Post.title }}</p>
+                            <div class="check_btn">
+                                <a href="{% url 'users:detail_apply' page apply.id %}">
+                                    <p>
+                                        {{apply.writer.profile.nickname}}님 지원서 확인하기 </p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                {% endfor %}
+                {% else %}
+                <p>현재 지원이 없습니다.</p>
+                {% endif %}
+            </section>
 
 </body>
-
-</html>

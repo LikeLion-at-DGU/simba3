@@ -27,13 +27,6 @@
                     </div>
                     <div class="logo_right">
                         {% if user.is_authenticated %}
-                        <!-- 아래부분은 아이디 개발동안 임시 표시  -->
-                        <div class="login">
-                            <a href="{% url 'accounts:login' %}">
-                                <p>유저 pk : {{user.id}}</p>
-                            </a>
-                        </div>
-                        <!-- 위 부분은 개발 임시 표시 -->
                         {% else %}
                         <div class="login">
                             <a href="{% url 'accounts:login' %}">
@@ -69,24 +62,24 @@
                 </section>
             </section>
 
-                <section class="searchbar">
-                    <section class="searchbar_box">
-                        <div class="search_input">
-                            <p>Search</p>
-                            <i class="fas fa-search"></i>
+            <section class="searchbar">
+                <section class="searchbar_box">
+                    <div class="search_input">
+                        <p>Search</p>
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="searchbar_two">
+                        <div id="search_section">
+                            <p>모집 분야</p>
+                            <i class="fas fa-hand-pointer" style="color: #ff8859;"></i>
                         </div>
-                        <div class="searchbar_two">
-                            <div id="search_section">
-                                <p>모집 분야</p>
-                                <i class="fas fa-hand-pointer" style="color: #ff8859;"></i>
-                            </div>
-                            <div id="search_track">
-                                <p>모집 트랙</p>
-                                <i class="fas fa-hand-pointer" style="color: #66C081;"></i>
-                            </div>
+                        <div id="search_track">
+                            <p>모집 트랙</p>
+                            <i class="fas fa-hand-pointer" style="color: #66C081;"></i>
                         </div>
-                    </section>
+                    </div>
                 </section>
+            </section>
 
             <form action="{% url 'main:search' ' ' %}" method="POST">
                 {% csrf_token %}
@@ -103,7 +96,7 @@
                     <option value="develop">개발</option>
                     <option value="design">디자인</option>
                     <option value="etc">기타</option>
-                 </select>
+                </select>
                 <input type="submit">
             </form>
 
