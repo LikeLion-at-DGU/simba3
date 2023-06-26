@@ -9,31 +9,27 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
     integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
   <link rel="stylesheet" type="text/css" href="{% static 'css/mypage.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/nav_orange.css' %}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet" />
+  <style>
 
+.nav_box a:nth-child(1) {
+    color: #003a38;
+}
+  </style>
   <title>마이페이지</title>
 </head>
 
 <body>
-  <div class="container">
-    <a href="#" class="custom-link"><i class="fas fa-pen"></i></a>
-  </div>
 
-  <div class="center">
-    <div id="top">
-      <a href="#"><i class="fas fa-pen"></i></a>
-      <a href="#"><i class="fas fa-home"></i></a>
-      <a href="#"><i class="fas fa-user" style="color: #003a00"></i></a>
-    </div>
-  </div>
+  {% include 'shared/_navbar.html' %}
 
   <div id="button">
     나의 페이지
     <div>
-      <i class="fas fa-cog" style="font-size: 32px"></i>
-      <a href="{% url 'users:detail_profile' %}">내 정보 수정</a>
+      <a href="{% url 'users:detail_profile' %}"><i class="fas fa-cog" style="font-size: 32px"></i>내 정보 수정</a>
     </div>
   </div>
 
@@ -89,3 +85,4 @@
 </body>
 
 </html>
+

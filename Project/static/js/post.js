@@ -22,10 +22,10 @@ changeBackgroundColor(track_btn_6);
 changeBackgroundColor(track_btn_7);
 changeBackgroundColor(track_btn_8);
 
-changeBackgroundColor(field_btn_1);
-changeBackgroundColor(field_btn_2);
-changeBackgroundColor(field_btn_3);
-changeBackgroundColor(field_btn_4);
+changeSingleBackgroundColor(field_btn_1);
+changeSingleBackgroundColor(field_btn_2);
+changeSingleBackgroundColor(field_btn_3);
+changeSingleBackgroundColor(field_btn_4);
 
 function changeBackgroundColor(button) {
     var clickCount = 0;
@@ -39,6 +39,22 @@ function changeBackgroundColor(button) {
         button.style.color = "#747474";
     }
     clickCount++;
+    });
+}
+
+function changeSingleBackgroundColor(button) {
+    var clickCount = 0;
+
+    button.addEventListener("click", function() {
+        if (clickCount === 0) {
+            button.style.backgroundColor = "#66C081";
+            button.style.color = "white";
+            clickCount++;
+        } else {
+            button.style.backgroundColor = "#D9D9D9";
+            button.style.color = "#747474";
+            clickCount = 0;
+        }
     });
 }
 
