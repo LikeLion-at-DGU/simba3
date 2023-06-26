@@ -64,10 +64,10 @@ def apply_manager(request, page):
     user = request.user
     profile = Profile.objects.get(user=user)
     if page == 'my_apply':
-        applies = Apply.objects.filter(writer=user).order_by('-respond_date')
+        applies = Apply.objects.filter(writer=user).order_by('-pub_date')
         return render(request,'users/apply_manager.html',{'profile': profile, 'applies' : applies, 'page' : page})
     elif page == 'rcv_apply':
-        posts_by_user = Post.objects.filter(writer=user).order_by('-respond_date')
+        posts_by_user = Post.objects.filter(writer=user).order_by('-pub_date')
         applies = Apply.objects.filter(target_Post__in=posts_by_user)
         return render(request,'users/apply_manager.html',{'profile': profile, 'applies' : applies, 'page':page})
 

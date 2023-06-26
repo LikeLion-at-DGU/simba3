@@ -1,8 +1,8 @@
 <div class="nav_top">
     <div class="nav_box" style="border: solid 3px;">
-        <a href="#"><i class="fas fa-pen" class="nav_i" id="nav_pen"></i></a>
-        <a href="#"><i class="fas fa-home" class="nav_i" id="nav_home"></i></a>
-        <a href="#"><i class="fas fa-user" class="nav_i" id="nav_user"></i></a>
+        <a href="{% url 'post:wrote_post' %}"><i class="fas fa-pen" class="nav_i" id="nav_pen"></i></a>
+        <a href="{% url 'main:mainpage_competition' %}"><i class="fas fa-home" class="nav_i" id="nav_home"></i></a>
+        <a href="{% url 'users:mypage' %}"><i class="fas fa-user" class="nav_i" id="nav_user"></i></a>
     </div>
 </div>
 
