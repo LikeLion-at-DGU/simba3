@@ -88,6 +88,12 @@ def send_email(request):
                 }
                 return JsonResponse(response_data)
 
+        if not User.objects.filter(email = email).exists():
+            response_data = {
+            'message': '이미 가입된 이메일입니다.',
+            }
+            return JsonResponse(response_data)
+
         token = generate_auth_code(email)
         message = render_to_string('accounts/email_verify.html', {
             'token': token,
