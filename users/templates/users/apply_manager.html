@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/apply_manager.css' %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% if page == 'rcv_apply' %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nav_orange.css' %}" />
     <style>
         .writing_category {
             width: 100%;
@@ -20,6 +21,7 @@
         }
     </style>
     {% else %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nav_green.css' %}" />
     <style>
         .writing_category {
             width: 100%;
@@ -35,6 +37,7 @@
 </head>
 
 <body>
+    {% include 'shared/_navbar.html' %}
     <section class="container">
         <section class="header">
             <section class="iconbar">

@@ -9,6 +9,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 1px solid gray;
+
 }
 
 * {
@@ -25,7 +27,7 @@ body {
   height: 46px;
   margin: 40px;
   font-size: 32px;
-  font-weight: 500;
+  font-weight: 700;
   justify-content: space-around;
   align-items: center;
 }
@@ -88,13 +90,13 @@ img {
 /* 기본정보 텍스트 */
 .title {
   font-size: 28px;
-  font-weight: 500;
+  font-weight: 700;
   margin-left: 30px;
-  margin: 0 0 12px 30px;
+  margin: 0 0 12px 38px;
 }
 
 /* 기본정보 각 항목 */
-._5 .whitebox {
+.whitebox {
   background-color: white;
   width: 320px;
   height: 64px;
@@ -102,6 +104,7 @@ img {
   align-items: center;
   border-radius: 5px;
   margin-left: 15px;
+  border: 1px solid #FF8859
 }
 
 /* 주황박스 */
@@ -112,7 +115,7 @@ img {
   width: 350px;
   height: 300px;
   justify-content: space-evenly;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: rgba(255, 136, 89, 0.5);
 }
 
@@ -126,6 +129,7 @@ img {
   align-items: center;
   border-radius: 5px;
   margin-left: 15px;
+  border: 1px solid #FF8859
 }
 
 /* 문의하기 ~  */
@@ -167,10 +171,5 @@ img {
 a:link,
 a:visited {
   text-decoration: none;
-  color: #747474;
-}
-
-._1 a:link,
-._1 a:visited {
-  color: #ff8859;
+  color: inherit;
 }

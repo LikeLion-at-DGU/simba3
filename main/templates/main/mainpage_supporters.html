@@ -2,14 +2,15 @@
 {% block style %}
 <style>
     .showteambar {
-        width: 430px;
-        height: 600px;
+        width: 390px;
         background-color: rgba(255, 136, 89, 0.7);
         display: flex;
         flex-direction: column;
+        padding: 20px 20px;
     }
 </style>
 {% endblock %}
+
 {% block teamlist %}
 
 <section class="showteambar">
@@ -17,7 +18,6 @@
     {% if posts %}
         {% for post in posts %}
         <a href="{% url 'post:detail' post.id %}">
-        <section class="team_box">
             <div class="team">
                 <div id="team_pic">
                     <img src="{{ post.image.url }}" alt="사진">
@@ -27,15 +27,15 @@
                     <p>{{ post.title }}</p>
                 </div>
             </div>
-        </section>
         </a>
         {% endfor %}
-    {% else %}
-    <p>현재 팀이 없습니다.</p>
-    {% endif %}
+        {% else %}
+        <p>현재 모집하고 있는 팀이 없습니다.</p>
+        {% endif %}
     
     <a href="{% url 'main:search' 'supporters' %}">
         <h1>더보기 ▶</h1>
     </a>
+    </section>
 </section>
 {% endblock%}

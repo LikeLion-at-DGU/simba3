@@ -36,7 +36,13 @@ body {
   justify-content: space-around;
   align-items: center;
   font-size: 32px;
-  font-weight: 500;
+  font-weight: 700;
+  width: 430px;
+}
+
+#button div i{
+  display: flex;
+  justify-content: center;
 }
 
 #button a {
@@ -94,7 +100,7 @@ body {
   color: white;
   justify-content: center;
   align-items: center;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 700;
   display: flex;
 }
@@ -161,7 +167,7 @@ body {
 }
 
 #box p {
-  margin: 10px 0 10px 20px;
+  margin: 10px 0 10px 0px;
   font-size: 20px;
   font-weight: 700;
 }
@@ -183,13 +189,13 @@ body {
 }
 
 #box2 p {
-  margin: 10px 0 10px 20px;
+  margin: 10px 0 10px 0px;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 #block:nth-of-type(3) {
-  height: 300px;
+  height: 250px;
   overflow: scroll;
 }
 
@@ -216,7 +222,7 @@ body {
 a:link,
 a:visited {
   text-decoration: none;
-  color: #ff8859;
+  color: inherit;
 }
 
 .container {
@@ -231,4 +237,20 @@ a:visited {
   padding: 3px 6px 4px 7px;
   border-radius: 100%;
   border: solid 3px #ff8859;
+}
+
+.pen {
+  float: right;
+  border-radius: 100%;
+  border: 3px dashed #ff8859;
+  color: #ff8859;
+  font-size: 15px;
+  padding: 6.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  position: relative;
+  top: 140px;
+  right: 150px;
 }

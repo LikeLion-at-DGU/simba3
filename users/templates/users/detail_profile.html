@@ -13,10 +13,18 @@
   <meta http-equiv="X-UA-Co/mpatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <link rel="stylesheet" type="text/css" href="{% static 'css/nav_orange.css' %}" />
   <title>기본정보 상세</title>
+  <style>
+    .nav_box a:nth-child(3) {
+      color: #003a38;
+    }
+  </style>
 </head>
 
 <body>
+
+  {% include 'shared/_navbar.html' %}
   <div class="_1">
     <div><i class="fas fa-cog"></i> 기본정보 설정</div>
     <div id="btn">
@@ -43,16 +51,20 @@
         <div class="fix">이메일</div>
         <div class="user">{{profile.user.email}}</div>
       </div>
-      <div class="notice">비밀번호 수정은 정보수정에서 가능합니다.</div>
+      <div class="notice" style="color: gray;">
+        <a href="{% url 'accounts:pw_finder' %}"
+        style="text-decoration: underline"
+        >비밀번호 변경 바로가기</a
+      ></div>
     </div>
   </div>
 
   <div class="_6">
     <div class="title">문의하기</div>
     <div class="graybox">
-      <a href="#">카카오톡 1:1 채팅방 링크 &nbsp <i class="fas fa-link"></i></a>
+      <a href="https://open.kakao.com/o/sYPcn6rf">카카오톡 1:1 채팅방 링크 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-link"></i></a>
     </div>
-    <div class="graybox">이메일 likelion_coggiri@gmail.com</div>
+    <div class="graybox"> <a style="color:#aaaaaa;">이메일</a> &nbsp;likelion_coggiri@gmail.com</div>
   </div>
 
   <div class="_7">

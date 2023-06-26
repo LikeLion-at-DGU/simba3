@@ -1,90 +1,84 @@
 <!DOCTYPE html>
 <html lang="ko">
-  {% load static %}
+{% load static %}
 
-  <head>
-    <meta charset="UTF-8" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'css/detail_portfolio.css' %}"
-    />
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Co/mpatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
-      crossorigin="anonymous"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/detail_portfolio.css' %}" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Co/mpatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/nav_orange.css' %}" />
+  <style>
+    .nav_box a:nth-child(3) {
+      color: #003a38;
+    }
+  </style>
+  <title>기본정보 수정</title>
+</head>
 
-    <title>기본정보 수정</title>
-  </head>
+<!-- 13-3. 기본정보_수정 페이지 -->
 
-  <!-- 13-3. 기본정보_수정 페이지 -->
+<body>
+  {% include 'shared/_navbar.html' %}
+  <form action="{% url 'users:update_profile_pic' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
 
-  <body>
-    <form
-      action="{% url 'users:update_profile_pic' %}"
-      method="POST"
-      enctype="multipart/form-data"
-    >
-      {% csrf_token %}
-
-      <div class="_1">
-        <div><i class="fas fa-cog"></i> 기본정보 설정</div>
-        <input type="submit" name="action" value="수정완료" />
-      </div>
-
-      <div class="_2">
-        <img src="{{profile.profile_pic.url}}" alt="프로필이미지" />
-      </div>
-
-      <div class="_3">
-        <label for="file">
-          <div class="button1">
-            <i class="fas fa-camera"></i> &nbsp; 사진 올리기
-            <input type="file" name="image" id="plz" /></div
-        ></label>
-
-        <div class="button">
-          <input type="submit" name="action" value="기본 이미지로 변경" />
-        </div>
-      </div>
-    </form>
-
-    <div class="_4">
-      <div class="fix">닉네임</div>
-      <div class="user"><p>{{profile.nickname}}</p></div>
+    <div class="_1">
+      <div><i class="fas fa-cog"></i> 기본정보 설정</div>
+      <input type="submit" name="action" value="수정완료" />
     </div>
 
-    <div class="_5">
-      <div class="title">기본정보</div>
+    <div class="_2">
+      <img src="{{profile.profile_pic.url}}" alt="프로필이미지" />
+    </div>
 
-      <div class="carrotbox">
-        <div class="whitebox">
-          <div class="fix">이름</div>
-          <div class="user"><p>{{profile.name}}</p></div>
+    <div class="_3">
+      <label for="file">
+        <div class="button1">
+          <i class="fas fa-camera"></i> &nbsp; 사진 올리기
+          <input type="file" name="image" id="plz" />
+
         </div>
-        <div class="whitebox">
-          <div class="fix">이메일</div>
-          <div class="user">{{profile.user.email}}</div>
-        </div>
-        <div class="whitebox">
-          <a
-            href="{% url 'accounts:pw_finder' %}"
-            style="text-decoration: underline"
-            >비밀번호 변경 바로가기</a
-          >
-        </div>
+      </label>
+
+      <div class="button">
+        <input type="submit" name="action" value="기본 이미지로 변경" />
       </div>
     </div>
-  </body>
+  </form>
+
+  <div class="_4">
+    <div class="fix">닉네임</div>
+    <div class="user">
+      <p>{{profile.nickname}}</p>
+    </div>
+  </div>
+
+  <div class="_5">
+    <div class="title">기본정보</div>
+
+    <div class="carrotbox">
+      <div class="whitebox">
+        <div class="fix">이름</div>
+        <div class="user">
+          <p>{{profile.name}}</p>
+        </div>
+      </div>
+      <div class="whitebox">
+        <div class="fix">이메일</div>
+        <div class="user">{{profile.user.email}}</div>
+      </div>
+      <div class="whitebox">
+        <a href="{% url 'accounts:pw_finder' %}" style="text-decoration: underline">비밀번호 변경 바로가기</a>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>
