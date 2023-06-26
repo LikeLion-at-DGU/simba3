@@ -32,22 +32,21 @@
 
             <!-- 기존에 있던 글을 편집할때 rendering되는 부분 -->
             {% if post %}
-            <form action="{% url 'post:update' post.id %}" method="post">
-                {% csrf_token %}
-                <section class="pohto">
-                    <div class="upload_photo">
-                        <img src="{{ post.image.url }}" alt="사진">
+            <form action="{% url 'post:update' post.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <section class="pohto">
+                <div class="upload_photo">
+                    <img src="{{ post.image.url }}" alt="사진">
+                </div>
+            </section>
+            
+            <section class="upload">
+                <section class="upload_box">
+                    <div id="upload_button">
+                        <input type="file" id="fileInput" name="image" accept=".jpg, .jpeg, .png" multiple value="첨부할 사진 올리기">
                     </div>
-                </section>
-
-                <section class="upload">
-                    <section class="upload_box">
-                        <div id="upload_button">
-                            <input type="file" id="fileInput" name="image" accept=".jpg, .jpeg, .png" multiple
-                                value="첨부할 사진 올리기">
-                        </div>
-                        <div id="remove_button">
-                            <button type="button" onclick="resetFileInput()">사진 제거하기</button>
+                    <div id="remove_button">
+                        <button type="button" onclick="resetFileInput()">사진 제거하기</button>
                         </div>
                         </div>
                     </section>
@@ -66,6 +65,7 @@
                     <div class="field">
                         <div id="green_field">
                             <p>모집 분야</p>
+
                         </div>
                         <div id="white_field">
                             <div id="select">
@@ -136,10 +136,10 @@
                     </div>
                 </div>
             </form>
-
+            <!-- ------------------------------------------------------------------ -->
             <!-- 새로운 글을 편집할때 rendering되는 부분 -->
             {% else %}
-            <form action="{% url 'post:write' %}" method="post">
+            <form action="{% url 'post:write' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <section class="pohto">
                     <div class="upload_photo">
@@ -174,14 +174,14 @@
                         <div id="green_field">
                             <p>모집 분야</p>
                         </div>
+
                         <div id="white_field">
                             <div id="select">
-                                <button id="field_btn_1" type="button">프로젝트</button>
-                                <button id="field_btn_2" type="button">공모전</button>
-                                <button id="field_btn_3" type="button">대외활동</button>
-                                <button id="field_btn_4" type="button">창업</button>
+                                <button id="field_btn_1" class="field_btn" name="프로젝트" type="button" >프로젝트</button>
+                                <button id="field_btn_2" class="field_btn" name="공모전" type="button">공모전</button>
+                                <button id="field_btn_3" class="field_btn" name="대외활동" type="button">대외활동</button>
+                                <button id="field_btn_4" class="field_btn" name="창업" type="button">창업</button>
                             </div>
-
                         </div>
                     </div>
 
@@ -191,17 +191,18 @@
                         </div>
                         <div id="white_field">
                             <div id="select">
-                                <button id="track_btn_1" type="button" onclick="changeBackgroundColor()">기획</button>
-                                <button id="track_btn_2" type="button">마케터</button>
-                                <button id="track_btn_3" type="button">영상</button>
-                                <button id="track_btn_4" type="button">디자인</button>
+                                <button id="track_btn_1" type="button" name="기획">기획</button>
+                                <button id="track_btn_2" type="button" name="마케터">마케터</button>
+                                <button id="track_btn_3" type="button" name="영상">영상</button>
+                                <button id="track_btn_4" type="button" name="디자인">디자인</button>
                             </div>
                             <div id="select">
-                                <button id="track_btn_5" type="button">개발</button>
-                                <button id="track_btn_6" type="button">기자단</button>
-                                <button id="track_btn_7" type="button">봉사</button>
-                                <button id="track_btn_8" type="button">기타</button>
+                                <button id="track_btn_5" type="button" name="개발">개발</button>
+                                <button id="track_btn_6" type="button" name="기자단">기자단</button>
+                                <button id="track_btn_7" type="button" name="봉사">봉사</button>
+                                <button id="track_btn_8" type="button" name="기타">기타</button>
                             </div>
+                            
                         </div>
                     </div>
 
@@ -236,10 +237,13 @@
                     <input type="text" name="put_about_us" placeholder="팀명을 작성해주세요">
                 </div>
 
+                <input type="hidden" id="fieldInput" name="fieldKey" value="">
+                <input type="hidden" id="trackInput" name="trackKey" value="">
+                
                 <div class="submit">
                     <div class="submit_box">
-                        <button type="submit" name="store_btn">임시저장</button>
-                        <button type="submit" name="submit_btn">작성완료</button>
+                        <button type="submit" onclick="setMyVariable()" name="store_btn">임시저장</button>   
+                        <button type="submit" onclick="setMyVariable()" name="submit_btn">작성완료</button>
                     </div>
                 </div>
             </form>
