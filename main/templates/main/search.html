@@ -1,25 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
-    <title>검색페이지</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/search.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+    <title>post</title>
 </head>
+
 <body>
-    <h1>팀목록</h1>
-    {% if posts %}
-    {% for post in posts %}
-    <div class="team">
-        <div id="team_pic">
-            <img src="{{ post.image.url }}" alt="사진">
-        </div>
-        <div id="team_exp">
-            <p>{{ post.team_name }}</p>
-            <p>{{ post.title }}</p>
-        </div>
-    </div>
-    {% endfor %}
-    {% else %}
-    {% endif %}
+    <section class="container">
+        <section class="header">
+            <section class="iconbar">
+            </section>
+
+            <section class="searchbar">
+                <form>
+                    <input type="text" name="search" placeholder="검색어를 입력하세요">
+                    <i class="fas fa-search"></i>            
+                </form>
+
+            </section>
+
+            <section class="searchbar_two">
+                <div id="search_section">
+                    <p>모집 분야</p>
+                    <i class="fas fa-hand-pointer" style="color: #ff8859;"></i>
+                </div>
+                <div id="search_track">
+                    <p>모집 트랙</p>
+                    <i class="fas fa-hand-pointer" style="color: #66C081;"></i>
+                </div>
+            </section>
+
+            <section class="search_result">
+               <h1>검색 결과</h1>
+               <i class="fas fa-home" style="color: #003A38; font-size: 25px;"></i>
+            </section>
+
+            <section class="show_result">
+                    {% if posts %}
+                    {% for post in posts %}
+                    <div class="picture">
+                        <div id="result_pic">
+                            <div id="result_cate">
+                                <img src="{{ post.image.url }}" alt="사진">
+                                <p>창업</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="explain">
+                        <div id="result_exp">
+                            <p><a style="color:#66C081">{{ post.team_name }} </a>{{ post.title }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    {% endif %}
+            </section>
+
+            <section class="end_bar">
+                <p>이전 페이지</p>
+                <div class="page_number">
+                    <p>1 / 10</p>
+                </div>
+                <p>다음 페이지</p>
+            </section>
+        </section>
+    </section>
+
+
 </body>
-</html>
 
