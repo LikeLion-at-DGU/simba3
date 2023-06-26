@@ -7,43 +7,88 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Co/mpatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/mypage.css' %}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet" />
 
-    <title>내 정보 수정</title>
+    <title>나의 포트폴리오</title>
 
 </head>
 
 <body>
-    상단 nav
-    <h1>MY PROTFOLIO</h1>
+
+    <div id="button">
+        MY PROTFOLIO
+        <div>
+          <i class="fas fa-cog" style="font-size: 32px"></i>
+          <a href="{% url 'users:detail_profile' %}">내 정보 수정</a>
+        </div>
+      </div>
 
     <form action="{% url 'users:mypage' %}" method="POST">
         {% csrf_token %}
-        <p> 닉네임 : {{profile.nickname}} </p>
-        <p>나이 : <input type="number" value="{{profile.age}}" name="age"></p>
-        <p>성별 :
-        <select name="gender">
-            {% for choice in profile.gender_choices %}
-            <option value="{{ choice.0 }}" {% if profile.gender == choice.0 %}selected{% endif %}>
-                {{ choice.1 }}
-            </option>
-            {% endfor %}
-        </select>
 
-        </p>
-        <p>학과 : <input type="text" value="{{profile.major}}" name="major"><br></p>
-        <p>연락 SNS 주소 : <input type="text" value="{{profile.contact}}" name="contact"><br></p>
-        <p>자기소개 : <input type="text" value="{{profile.about_me}}" name="about_me"><br></p>
-        <input type="submit">
+        <div class="white">
+          <div class="box3">
+            <p>필수 작성 항목</p>
+            <div id="notice" style="color: #747474;">아래의 항목은 꼭 기입해주세요<br>
+            <p>닉네임, 나이, 성별, 학적사항, 연락 SNS 주소</p></div>
+          </div>
+
+          <div class="box">
+            <p>닉네임</p>
+            <div id="block">{{profile.nickname}}</div>
+          </div>
+
+          <div class="box2">
+            <div id="minibox">
+              <p>나이</p>
+              <div id="block2"> <input type="number" value="{{profile.age}}" name="age" placeholder="나이 입력"></div>
+            </div>
+      
+            <div id="minibox">
+              <p>성별</p>
+              <div id="block2"><select name="gender">
+                {% for choice in profile.gender_choices %}
+                <option value="{{ choice.0 }}" {% if profile.gender == choice.0 %}selected{% endif %}>
+                    {{ choice.1 }}
+                </option>
+                {% endfor %}
+            </select>
+          </div>
+            </div>
+          </div>
+
+          <div class="box">
+            <p>학과</p>
+            <div id="block"><input type="text" value="{{profile.major}}" name="major" placeholder="학과 입력"></div>
+          </div>
+
+          <div class="box">
+            <p>연락 SNS 주소</p>
+            <div id="block"><input type="text" value="{{profile.contact}}" name="contact" placeholder="이메일, 카카오톡 아이디, 오픈채팅방 링크 등 SNS주소 입력"></div>
+          </div>
+
+          <div class="box">
+            <p>자기소개</p>
+            <div id="block"><input type="text" value="{{profile.about_me}}" name="about_me" placeholder="자유롭게 본인을 소개해주세요<br>스펙/자격증/각오 등을 기입해주세요"></div>
+          </div>
+      </div>
+        <div class="submit">
+        <input type="submit" value="수정완료"></div>
     </form>
-    <p>{{profile.nickname}}</p>
+    
+    <!-- <p>{{profile.nickname}}</p>
     <div>
         <p>이름 : {{profile.name}}</p>
         <p>이메일 : {{profile.user.email}}</p>
         <a href="{% url 'accounts:pw_finder' %}">비밀번호 수정 버튼</a>
     </div>
-    <a href="{% url 'accounts:delete_account' %}">회원 탈퇴하기</a>
+    <a href="{% url 'accounts:delete_account' %}">회원 탈퇴하기</a> -->
 
-    </form>
 </body>
 
 </html>

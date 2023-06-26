@@ -1,0 +1,128 @@
+body {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: #003a38;
+  max-width: 430px;
+  border: solid 1px black;
+  background-color: #FFAB8A;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+#notice {
+  border: 2px solid #FF8859;
+  width: 355px;
+  height: 93px;
+  border-radius: 13px;
+  padding: 15px;
+}
+
+.white {
+  width: 430px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.box {
+margin-left: 30px;
+}
+
+.box3 {
+  margin-left: 30px;
+}
+
+/* 필수작성항목 */
+.box3 p:nth-child(1) {
+  color: #003A38;
+  font-size: 20px;
+  font-weight: 700;
+  margin-left: 10px;
+}
+
+.box3 p {
+  color: #FF8859;
+  font-size: 16px;
+}
+
+.box:nth-child(1) {
+  margin-top: 40px;
+}
+
+#button {
+  display: flex;
+  height: 110px;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.box p {
+  margin: 10px 0 10px 20px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+#minibox {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+#minibox:nth-child(1){
+  margin-left: 30px;
+}
+
+.box2 {
+  width: 370px;
+  display: flex;
+  flex-direction: row;
+}
+
+.box2 p {
+  margin: 10px 0 10px 20px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.box:nth-last-child(1) { 
+  margin-bottom: 30px;
+}
+
+input {
+  border: none;
+  background-color: #ece3d9;
+}
+
+.submit input{
+  width: 320px;
+  height: 64px;
+  background: #003A38E5;
+  box-shadow: 0px 4px 2px 0px #00000040;
+  color: white;
+  font-size: 24px;
+  font-weight: 500;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin: 20px; 0 20px 0;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+  color: #ff8859;
+}
