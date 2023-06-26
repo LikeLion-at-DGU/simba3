@@ -51,7 +51,7 @@
       
             <div id="minibox">
               <p>성별</p>
-              <div id="block2"><select name="gender">
+              <div id="block2"><select name="gender" class="pl">
                 {% for choice in profile.gender_choices %}
                 <option value="{{ choice.0 }}" {% if profile.gender == choice.0 %}selected{% endif %}>
                     {{ choice.1 }}
@@ -69,13 +69,17 @@
 
           <div class="box">
             <p>연락 SNS 주소</p>
-            <div id="block"><input type="text" value="{{profile.contact}}" name="contact" placeholder="이메일, 카카오톡 아이디, 오픈채팅방 링크 등 SNS주소 입력"></div>
+            <div id="block">
+              <textarea name="contact" placeholder="이메일, 카카오톡 아이디, 오픈채팅방 링크 등 SNS주소 입력">{{profile.contact}}</textarea>
+            </div>
           </div>
 
           <div class="box">
             <p>자기소개</p>
-            <div id="block"><input type="text" value="{{profile.about_me}}" name="about_me" placeholder="자유롭게 본인을 소개해주세요<br>스펙/자격증/각오 등을 기입해주세요"></div>
-          </div>
+            <div id="block">
+              <textarea name="about_me" placeholder="자유롭게 본인을 소개해주세요 &#10;스펙/자격증/각오 등을 기입해주세요">{{profile.about_me}}</textarea>
+            </div>
+
       </div>
         <div class="submit">
         <input type="submit" value="수정완료"></div>

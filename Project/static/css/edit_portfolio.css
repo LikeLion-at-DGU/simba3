@@ -14,11 +14,12 @@ body {
 }
 
 #notice {
-  border: 2px solid #FF8859;
-  width: 355px;
+  border: 2px dashed #FF8859;
+  width: 370px;
   height: 93px;
   border-radius: 13px;
   padding: 15px;
+  margin-bottom: 20px;
 }
 
 .white {
@@ -60,7 +61,6 @@ margin-left: 30px;
   font-size: 32px;
   font-weight: 500;
 }
-
 
 form {
   display: flex;
@@ -104,6 +104,12 @@ form {
 input {
   border: none;
   background-color: #ece3d9;
+  font-size: 20px;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
 }
 
 .submit input{
@@ -121,8 +127,37 @@ input {
   margin: 20px; 0 20px 0;
 }
 
+textarea {
+  height: 150px;
+  width: 330px;
+  background: #ECE3D9;
+  border: none;
+  font-size: 20px;
+}
+
+
+.pl{
+    width: 130px;
+    border: none;
+    background: #ECE3D9;
+    font-size: 20px;
+    color: #747474;
+  }
+
+.pl:focus{
+    border: 1px solid #9B51E0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: 3px solid #F8E4FF;
+    border-radius: 10px;
+}
+
 a:link,
 a:visited {
   text-decoration: none;
   color: #ff8859;
+}
+
+input[type="number"] {
+  width: 150px; /* Adjust the width to your desired size */
 }
