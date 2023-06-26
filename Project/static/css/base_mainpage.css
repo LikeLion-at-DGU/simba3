@@ -5,6 +5,7 @@ p {
 
 .container {
     max-width: 430px;
+    border:1px solid gray;
 }
 
 .header {
@@ -14,6 +15,11 @@ p {
     flex-direction: column;
 }
 
+a:link,
+a:visited {
+    color: inherit;
+    text-decoration: none;
+}
 /*------코끼리 배너-------*/
 .logo {
     height: 120px;
@@ -29,7 +35,7 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    padding-right: 13px;
 }
 
 .logo_left {
@@ -143,87 +149,70 @@ p {
 
 
 /* search bar */
-
 .searchbar {
-    width: 430px;
-    height: 130px;
+    width: 390px;
+    height: 100px;
+    padding: 20px 20px;
     background: #ECE3D9B2;
     border-radius: 5px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.searchbar_box {
-    width: 90%;
-    height: 80%;
-    display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-.search_input {
-    width: 100%;
-    height: 45%;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 10px;
-    display: flex;
     align-items: center;
 }
 
-.search_input p {
-    margin-left: 15px;
-    margin-right: 0%;
-    font-weight: 500;
-    font-size: 20px;
+input[name="word"]{
+    width: 350px;
+    height:20px;
+    border: none;
+    padding:10px 20px;
+    font-size: 17px;
+    color:black;
+    border-radius: 5px;
 }
 
-.search_input i {
+#submit_btn{
+    background: none;
+    border:none;
     position: relative;
-    left: 270px;
-    font-size: 23px;
+    top:-32px;
+    left:340px;
+    font-size:20px;
 }
 
-.searchbar_two {
-    width: 100%;
-    height: 45%;
+.search_row2{
     display: flex;
     justify-content: space-between;
+    width: 100%;
 }
 
-#search_section {
-    width: 45%;
-    height: 70%;
-    background: rgba(255, 255, 255, 0.7);
-    border: 4px solid #FF8859;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-}
-
-#search_track {
-    width: 45%;
-    height: 70%;
-    background: rgba(255, 255, 255, 0.7);
-    border: 4px solid #66C081;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-}
-
-#search_section p,
-#search_track p {
+#search_field{
+    width:180px;
+    height:30px;
+    border: 3px solid #FF8859;
+    background-color: white;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
     color: #003A38;
-    font-size: 18px;
 }
 
-#search_section i,
-#search_track i {
+#search_track{
+    width:180px;
+    height:30px;
+    border: 3px solid #66C081;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+    color: #003A38;
+    margin-left: 30px;
+}
+
+.fa-hand-pointer[style="color: #66C081;"]{
     position: relative;
-    left: 25px;
-    font-size: 18px;
+    left: 185px;
+    top: -27px;
+    font-size: 16px;
 }
 
 /*-----카테고리-----*/
@@ -279,7 +268,6 @@ p {
     width: 30%;
     height: 100%;
     background-color: #1A4E4C;
-    ;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     display: flex;
@@ -293,69 +281,86 @@ p {
     color: white;
 }
 
+
+#track1>a {
+    text-decoration: none;
+    color: #003A38;
+}
+
+#track2>a {
+    text-decoration: none;
+    color: #003A38;
+}
+
+#track3>a {
+    text-decoration: none;
+    color: white;
+}
+
 /*지금 모집 중인 팀*/
 
 .showteambar>p {
     font-size: 24px;
-    font-weight: 500;
-    margin-left: 20px;
+    margin: 0%;
 }
 
 .team_box {
-    width: 90%;
-    height: 80%;
-    margin-left: 20px;
+    width: 387px;
+    height: 73px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
 .team {
-    width: 100%;
-    height: 30%;
+    width: 350px;
+    height: 120px;
     background-color: white;
     border-radius: 10px;
     display: flex;
     justify-self: center;
     align-items: center;
+    margin-top: 20px;
+    padding:20px 20px;
 }
 
 #team_pic {
-    width: 30%;
-    height: 80%;
-    background-color: yellow;
-    margin-left: 15px;
+    width: 120px;
+    height: 130px;
 }
 
+#team_pic img{
+    width: 100%;
+    height: 100%;
+}
+
+/*팀 설명*/
 #team_exp {
-    width: 70%;
-    height: 80%;
+    width:200px;
+    height: 130px;
+    margin-left: 10px;
 }
 
-#team_exp p {
-    margin: 0%;
-    margin-left: 15px;
-}
-
-#team p:nth-child(1) {
+#team_exp p:nth-child(1) {
     color: rgba(102, 192, 129);
     font-weight: 600;
-    font-size: 23px;
+    font-size: 20px;
+    margin-top: 0px;
+    margin-bottom: 10px;
 }
 
-#team1_exp p:nth-child(3),
-#team1_exp p:nth-child(4),
-#team2_exp p:nth-child(3),
-#team2_exp p:nth-child(4),
-#team3_exp p:nth-child(3),
-#team3_exp p:nth-child(4) {
-    font-size: 19px;
+#team_exp p:nth-child(2) {
     color: #003A38;
+    font-size: 15px;
+    margin-top: 0px;
+    margin-bottom: 5px;
 }
+
+
 
 .showteambar h1 {
     font-size: 20px;
-    margin-left: 320px;
+    margin-left: 300px;
     color: black;
 }
 
@@ -375,17 +380,4 @@ p {
     color: #003A38;
 }
 
-#track1>a {
-    text-decoration: none;
-    color: #003A38;
-}
 
-#track2>a {
-    text-decoration: none;
-    color: #003A38;
-}
-
-#track3>a {
-    text-decoration: none;
-    color: white;
-}
