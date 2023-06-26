@@ -1,40 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/wrote_post.css' %}"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/wrote_post.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nav_green.css' %}" />
     <title>post</title>
+    <style>
+        .nav_box a:nth-child(1) {
+            color: #003a38;
+        }
+    </style>
 </head>
 
 <body>
+    {% include 'shared/_navbar.html' %}
     <section class="container">
         <section class="header">
             <section class="iconbar">
-            
+
             </section>
 
             <section class="write">
                 <h1>WRITING</h1>
-                <div class="post_btn"><a href="{% url 'post:new' %}"><p><i class="fas fa-pen-alt" style="color: #ffffff;"></i> 새 글 작성</p></a></div>
+                <div class="post_btn"><a href="{% url 'post:new' %}">
+                        <p><i class="fas fa-pen-alt" style="color: #ffffff;"></i> 새 글 작성</p>
+                    </a></div>
             </section>
 
             <section class="categorybar">
                 <div id="track1">
-                    
-                        <p>작성한 글</p>
 
-                    </div>
+                    <p>작성한 글</p>
+
+                </div>
                 <div id="track2">
                     <a href="{% url 'post:temporary_save_post'%}">
-                    <p>임시저장 글</p>
+                        <p>임시저장 글</p>
                     </a>
                 </div>
             </section>
-            
+
             <section class="writing_category">
                 <div class="white_box">
                     {% if posts %}
@@ -48,7 +58,7 @@
                             <p>{{post.team_name}} <br> {{post.title}} </p>
                             <div class="repost_btn">
                                 <a href="{% url 'post:edit' post.id %}">
-                                <p><i class="fas fa-pen-alt" style="color: #ffffff;"></i> 글 마저 작성하기</p>
+                                    <p><i class="fas fa-pen-alt" style="color: #ffffff;"></i> 글 마저 작성하기</p>
                                 </a>
                             </div>
                         </div>
@@ -59,10 +69,9 @@
                     {% endif %}
                 </div>
             </section>
-            
 
-            </section>
+
         </section>
+    </section>
 
 </body>
-

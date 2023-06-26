@@ -1,84 +1,77 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="{% static 'css/crew_search.css' %}" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
-      rel="stylesheet"
-    />
 
-    <title>크루서치</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+  <link rel="stylesheet" href="{% static 'css/crew_search.css' %}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/nav_green.css' %}" />
+  <title>크루서치</title>
+</head>
 
-  <body>
+<body>
+  {% include 'shared/_navbar.html' %}
+  <div id="top">
+    <p><i class="fas fa-pen"></i></p>
+    <a href="{% url 'main:mainpage_competition' %}">
+      <p><i class="fas fa-home" style="color: #66c081"></i></p>
+    </a>
+    <p><i class="fas fa-user"></i></p>
+  </div>
 
-    <div id="top">
-      <p><i class="fas fa-pen"></i></p>
-      <a href="{% url 'main:mainpage_competition' %}"
-        ><p><i class="fas fa-home" style="color: #66c081"></i></p
-      ></a>
-      <p><i class="fas fa-user"></i></p>
+  <div class="center">
+    <div id="banner">
+      <img src="{{ post.image.url }}" alt="사진" />
     </div>
 
-    <div class="center">
-      <div id="banner">
-        <img src="{{ post.image.url }}" alt="사진" />
-      </div>
+    <div class="title">{{ post.team_name }}</div>
 
-      <div class="title">{{ post.team_name }}</div>
+    <div class="title">{{ post.title }}</div>
 
-      <div class="title">{{ post.title }}</div>
+    <div id="tag">
+      <a>{{ post.fieldKey.first.fieldKey }}</a>
 
-      <div id="tag">
-        <a>{{ post.fieldKey.first.fieldKey }}</a>
-
-        {% for track in post.trackKey.all %}
-        <a>{{ track.trackKey }}</a>
-        {% endfor %}
-      </div>
-
-      <div id="apply">
-        <a href="{% url 'post:detail' post.id %}">팀 지원하기</a>
-      </div>
-
-      <div id="notice">
-        <b
-          ><a style="color: #ff8859">잠깐!</a> 팀 지원 시 유의사항을
-          숙지해주세요<br
-        /></b>
-        <br />
-        <a style="color: #ff8859">①</a> CO.끼리는 무분별한 지원을 방지하기 위해
-        팀 지원 후 취소가 불가능합니다. 지원 취소 희망 시, 공고 작성자와 개별
-        연락 부탁드립니다. <br /><br />
-        <a style="color: #ff8859">②</a> 팀 지원 시, 나의 정보가 공고 작성자께
-        전달됩니다. 개인정보에 민감할 경우 팀 지원을 재고해주시길 바랍니다.
-      </div>
-
-      <p>모집기간</p>
-      <div class="block">{{post.recruit_date}}</div>
-
-      <p>주최 기관 링크 <a style="color: gray">(선택)</a></p>
-      <div class="block">{{post.link}}</div>
-
-      <p>모집 중인 팀원</p>
-      <div class="block">{{post.member}}</div>
-
-      <p style="font-size: 24px">ABOUT US</p>
-
-      <p style="margin-top: 0px">팀 상세소개</p>
-      <div class="block">{{ post.about_us}}</div>
+      {% for track in post.trackKey.all %}
+      <a>{{ track.trackKey }}</a>
+      {% endfor %}
     </div>
-  </body>
+
+    <div id="apply">
+      <a href="{% url 'post:detail' post.id %}">팀 지원하기</a>
+    </div>
+
+    <div id="notice">
+      <b><a style="color: #ff8859">잠깐!</a> 팀 지원 시 유의사항을
+        숙지해주세요<br /></b>
+      <br />
+      <a style="color: #ff8859">①</a> CO.끼리는 무분별한 지원을 방지하기 위해
+      팀 지원 후 취소가 불가능합니다. 지원 취소 희망 시, 공고 작성자와 개별
+      연락 부탁드립니다. <br /><br />
+      <a style="color: #ff8859">②</a> 팀 지원 시, 나의 정보가 공고 작성자께
+      전달됩니다. 개인정보에 민감할 경우 팀 지원을 재고해주시길 바랍니다.
+    </div>
+
+    <p>모집기간</p>
+    <div class="block">{{post.recruit_date}}</div>
+
+    <p>주최 기관 링크 <a style="color: gray">(선택)</a></p>
+    <div class="block">{{post.link}}</div>
+
+    <p>모집 중인 팀원</p>
+    <div class="block">{{post.member}}</div>
+
+    <p style="font-size: 24px">ABOUT US</p>
+
+    <p style="margin-top: 0px">팀 상세소개</p>
+    <div class="block">{{ post.about_us}}</div>
+  </div>
+</body>
+
 </html>

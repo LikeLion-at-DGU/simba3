@@ -13,10 +13,18 @@
   <meta http-equiv="X-UA-Co/mpatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <link rel="stylesheet" type="text/css" href="{% static 'css/nav_orange.css' %}" />
   <title>기본정보 상세</title>
+  <style>
+    .nav_box a:nth-child(3) {
+      color: #003a38;
+    }
+  </style>
 </head>
 
 <body>
+
+  {% include 'shared/_navbar.html' %}
   <div class="_1">
     <div><i class="fas fa-cog"></i> 기본정보 설정</div>
     <div id="btn">
