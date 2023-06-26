@@ -42,3 +42,5 @@ class Apply(models.Model):
     status = models.CharField(max_length=15,choices=status_choices,default='under_review')
     short_text = models.TextField(max_length=500)
     reply = models.TextField(max_length=100,null=True,blank=True)
+    pub_date = models.DateTimeField(auto_now_add=True)
+    respond_date = models.DateTimeField(auto_now=True)

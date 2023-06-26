@@ -10,4 +10,5 @@ urlpatterns = [
     path('edit_profile/',edit_profile, name="edit_profile"),
     path('apply_manager/<str:page>',apply_manager, name="apply_manager"),
     path('detail_apply/<str:page>/<int:id>',detail_apply, name="detail_apply"),
+    path('respond_apply/<str:page>/<int:id>',respond_apply, name="respond_apply"),
 ]

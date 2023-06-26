@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from django.utils import timezone
 from accounts.models import Profile
 from post.models import Apply,Post
 import os
@@ -63,11 +64,10 @@ def apply_manager(request, page):
     user = request.user
     profile = Profile.objects.get(user=user)
     if page == 'my_apply':
-        
-        applies = Apply.objects.filter(writer=user)
+        applies = Apply.objects.filter(writer=user).order_by('-respond_date')
         return render(request,'users/apply_manager.html',{'profile': profile, 'applies' : applies, 'page' : page})
     elif page == 'rcv_apply':
-        posts_by_user = Post.objects.filter(writer=user)
+        posts_by_user = Post.objects.filter(writer=user).order_by('-respond_date')
         applies = Apply.objects.filter(target_Post__in=posts_by_user)
         return render(request,'users/apply_manager.html',{'profile': profile, 'applies' : applies, 'page':page})
 
@@ -79,8 +79,9 @@ def detail_apply(request,page,id):
     elif page == 'rcv_apply':
         return render(request, 'users/detail_rcv_apply.html',{'profile':profile, 'apply':apply})
 
-def send_apply(request,id):
+def respond_apply(request,status,id):
     apply = Apply.objects.get(id=id)
     apply.reply = request.POST['reply']
+    apply.status = status
     apply.save()
     pass
