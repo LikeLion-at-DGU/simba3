@@ -69,7 +69,7 @@ def search(request, f):
             return render(request, 'main/search.html', {'posts':posts})
         elif f=='entre':
             entrepreneur = FieldKey.objects.get(fieldKey = "entrepreneur")
-            posts = supporters.post.all()
+            posts = entrepreneur.post.all()
             return render(request, 'main/search.html', {'posts':posts})
 
 

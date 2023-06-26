@@ -1,31 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
-    <title>글쓰기</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/wrote_post.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+    <title>post</title>
 </head>
+
 <body>
-    <h1>WRITING</h1>
+    <section class="container">
+        <section class="header">
+            <section class="iconbar">
+            
+            </section>
 
-    <!-- 글쓰기버튼 -->
-    <a href="{% url 'post:new' %}">글쓰기</a> 
+            <section class="write">
+                <h1>WRITING</h1>
+                <div class="post_btn"><a href="{% url 'post:new' %}"><p><i class="fas fa-pen-alt" style="color: #ffffff;"></i> 새 글 작성</p></a></div>
+            </section>
 
-    <a href=""></a>
-    {% if posts %}
-        {% for post in posts %}
-        <div>
-            <img src="{{ post.image.url }}" alt="사진">
-            <p>{{ post.team_name }}</p>
-            <p>{{ post.title }}</p>
+            <section class="categorybar">
+                <div id="track1">
+                    
+                        <p>작성한 글</p>
 
-            <!-- 글수정하기 버튼 -->
-            <a href="{% url 'post:edit' post.id %}">글 수정하기</a>
+                    </div>
+                <div id="track2">
+                    <a href="{% url 'post:temporary_save_post'%}">
+                    <p>임시저장 글</p>
+                    </a>
+                </div>
+            </section>
+            
+            <section class="writing_category">
+                <div class="white_box">
+                    {% if posts %}
+                    {% for post in posts %}
+                    <div class="team">
+                        <div class="team_pic">
+                            <img src="{{ post.image.url }}" alt="사진">
+                        </div>
 
-        </div>
-        {% endfor %}
-    {% else %}
-    <p>작성한 글이 없습니다.</p>
-    {% endif %}
+                        <div class="right">
+                            <p>{{post.team_name}} <br> {{post.title}} </p>
+                            <div class="repost_btn">
+                                <a href="{% url 'post:edit' post.id %}">
+                                <p><i class="fas fa-pen-alt" style="color: #ffffff;"></i> 글 마저 작성하기</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <p>작성한 글이 없습니다.</p>
+                    {% endif %}
+                </div>
+            </section>
+            
+
+            </section>
+        </section>
+
 </body>
-</html>
 
