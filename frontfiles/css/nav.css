@@ -13,14 +13,15 @@
   align-items: center;
   font-size: 23px;
   border-radius: 5px;
-  color: #ff8859;
-}
-
-.nav_i {
-  color: #ff8859;
 }
 
 a:link,
 a:visited {
   color: inherit;
 }
+
+.nav_box :nth-child(1) {
+  color: coral;
+}
+
+/* color: #003a38 */
