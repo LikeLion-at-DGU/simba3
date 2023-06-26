@@ -64,7 +64,7 @@ img {
   display: flex;
   border-radius: 5px;
   justify-content: space-around;
-  margin: 30px 0 30px 45px;
+  padding: 30px 0 0px 90px;
 }
 
 /* 사진올리기&기본이미지로 변경 버튼들 */
@@ -79,6 +79,7 @@ img {
   border: none;
   color: #003a38;
   font-size: 15px;
+  border-radius: 5px;
 }
 
 .button1 {
@@ -89,6 +90,7 @@ img {
   align-items: center;
   justify-content: center;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
 }
 
 #plz {
@@ -133,9 +135,9 @@ form input::file-selector-button {
 /* 기본정보 텍스트 */
 .title {
   font-size: 28px;
-  font-weight: 500;
-  margin-left: 30px;
-  margin: 0 0 12px 30px;
+  font-weight: 700;
+  margin-left: 33px;
+  margin: 0 0 12px 50px;
 }
 
 /* 기본정보 각 항목 */
@@ -169,5 +171,5 @@ form input::file-selector-button {
 a:link,
 a:visited {
   text-decoration: none;
-  color: #747474;
+  color: inherit;
 }
