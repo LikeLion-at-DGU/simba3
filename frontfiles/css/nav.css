@@ -13,6 +13,11 @@
   align-items: center;
   font-size: 23px;
   border-radius: 5px;
+  color: #ff8859;
+}
+
+.nav_i {
+  color: #ff8859;
 }
 
 a:link,
