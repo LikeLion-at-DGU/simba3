@@ -11,7 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Noto+Sans+KR:wght@100;400&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/base_mainpage.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base_mainpage.css' %}?after">
     {% block style %}{% endblock %}
     <title>mainpage</title>
 </head>
@@ -63,47 +63,42 @@
             </section>
 
             <section class="searchbar">
-                <section class="searchbar_box">
-                    <div class="search_input">
-                        <p>Search</p>
-                        <i class="fas fa-search"></i>
+                <form action="{% url 'main:search' ' ' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="search_row1">
+                        <input type="text" name="word" id="" placeholder="Search">
+                        <button type="submit" name="submit" id="submit_btn">
+                            <i class="fas fa-search"></i>
+                        </button>
                     </div>
-                    <div class="searchbar_two">
-                        <div id="search_section">
-                            <p>모집 분야</p>
-                            <i class="fas fa-hand-pointer" style="color: #ff8859;"></i>
-                        </div>
-                        <div id="search_track">
-                            <p>모집 트랙</p>
-                            <i class="fas fa-hand-pointer" style="color: #66C081;"></i>
-                        </div>
-                    </div>
-                </section>
-            </section>
 
-            <form action="{% url 'main:search' ' ' %}" method="POST">
-                {% csrf_token %}
-                <input type="text" name="word" id="">
-                <select name="field" id="">
-                    <option value="전체">전체</option>
-                    <option value="공모전">공모전</option>
-                    <option value="프로젝트">프로젝트</option>
-                    <option value="대외활동">대외활동</option>
-                    <option value="창업">창업</option>
-                </select>
-                <select name="track" id="">
-                    <option value="전체">전체</option>
-                    <option value="기획">기획</option>
-                    <option value="마케터">마케터</option>
-                    <option value="영상">영상</option>
-                    <option value="디자인">디자인</option>       
-                    <option value="개발">개발</option>                    
-                    <option value="기자단">기자단</option>
-                    <option value="봉사">봉사</option>
-                    <option value="기타">기타</option>
-                </select>
-                <input type="submit">
-            </form>
+                    <div class="search_row2">
+                        <div>
+                        <select name="field" id="search_field">
+                            <option value="전체">모집 분야</option>
+                            <option value="공모전">공모전</option>
+                            <option value="프로젝트">프로젝트</option>
+                            <option value="대외활동">대외활동</option>
+                            <option value="창업">창업</option>
+                        </select>
+                        </div>
+                        <div>
+                            <select name="track" id="search_track">
+                                <option value="전체">모집 트랙</option>
+                                <option value="기획">기획</option>
+                                <option value="마케터">마케터</option>
+                                <option value="영상">영상</option>
+                                <option value="디자인">디자인</option>       
+                                <option value="개발">개발</option>                    
+                                <option value="기자단">기자단</option>
+                                <option value="봉사">봉사</option>
+                                <option value="기타">기타</option>
+                            </select>                        
+                        </div>
+                    </div>
+                    
+                </form>
+            </section>
 
             <section class="categorybar">
                 <section class="category_box">
