@@ -12,6 +12,9 @@ var field_btn_2 = document.getElementById("field_btn_2");
 var field_btn_3 = document.getElementById("field_btn_3");
 var field_btn_4 = document.getElementById("field_btn_4");
 
+var fieldName = "";
+var trackName = [];
+
 
 changeBackgroundColor(track_btn_1);
 changeBackgroundColor(track_btn_2);
@@ -34,28 +37,38 @@ function changeBackgroundColor(button) {
     if (clickCount % 2 === 0) {
         button.style.backgroundColor = "#66C081";
         button.style.color = "white";
+        trackName.push(button.getAttribute("name"));
+        console.log("trackName:", trackName);
     } else {
         button.style.backgroundColor = "#D9D9D9";
         button.style.color = "#747474";
+        var index = trackName.indexOf(button.getAttribute("name"));
+        trackName.splice(index, 1); // 버튼의 name 값이 trackName 배열에 있으면 제거합니다.
+        console.log("trackName:", trackName);
     }
     clickCount++;
     });
 }
 
 function changeSingleBackgroundColor(button) {
-    var clickCount = 0;
+    var buttons = document.getElementsByClassName("field_btn");
+                        
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", function() {
+            // 모든 버튼의 색깔을 초기화
+            for (var j = 0; j < buttons.length; j++) {
+                buttons[j].style.backgroundColor = "#D9D9D9";
+                buttons[j].style.color = "#747474";
+            }
 
-    button.addEventListener("click", function() {
-        if (clickCount === 0) {
-            button.style.backgroundColor = "#66C081";
-            button.style.color = "white";
-            clickCount++;
-        } else {
-            button.style.backgroundColor = "#D9D9D9";
-            button.style.color = "#747474";
-            clickCount = 0;
-        }
-    });
+            // 현재 클릭한 버튼의 색깔을 바꿈
+            this.style.backgroundColor = "#66C081";
+            this.style.color = "white";
+
+            fieldName = this.getAttribute("name");
+            console.log("Clicked button name:", fieldName);
+        });
+    }
 }
 
 function resetFileInput() {
@@ -86,3 +99,15 @@ const inputImage = document.getElementById("fileInput")
 inputImage.addEventListener("change", e => {
     readImage(e.target)
 })
+
+function setMyVariable() {
+    var field = fieldName;
+    var fieldInput = document.getElementById("fieldInput");
+    fieldInput.value = field;
+    console.log("fieldInput.value:", fieldInput)
+
+    var track = trackName;
+    var trackInput = document.getElementById("trackInput");
+    trackInput.value = track;
+    console.log("trackInput.value:", trackInput)
+}

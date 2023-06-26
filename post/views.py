@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Post,Apply
+from .models import Post,Apply,FieldKey,TrackKey
 from django.utils import timezone
+import json
 
 # 새로운 글 작성 페이지로 연결
 def new(request):
@@ -12,8 +13,6 @@ def write(request):
     new_post.image = request.FILES.get('image')
     new_post.team_name = request.POST['put_team']
     new_post.title = request.POST['put_subject']
-    new_post.fieldKey = request.POST['fieldKey']
-    new_post.trackKey = request.POST['trackKey']
     new_post.recruit_date = request.POST['put_date']
     new_post.link = request.POST['put_link']
     new_post.member = request.POST['put_member']
@@ -23,14 +22,36 @@ def write(request):
     new_post.pub_date = timezone.now()
 
     if 'store_btn' in request.POST:
-        new_post.isSave = True
+        new_post.isSave = False
         new_post.save()
+
+        field_key = request.POST.get('fieldKey')
+        f = FieldKey.objects.get(fieldKey=field_key)
+        new_post.fieldKey.add(f.id)
+
+        track_key = request.POST.get('trackKey')
+        trackKey_list = track_key.split(',')
+        for value in trackKey_list:
+            t = TrackKey.objects.get(trackKey=value)
+            new_post.trackKey.add(t.id)
         # 작성완료 누르면 crew_search 페이지로 이동
-        return redirect('post:detail', new_post.id)
-    if 'submit_btn' in request.POSt:
+        return redirect('post:temporary_save_post')
+    
+    if 'submit_btn' in request.POST:
         new_post.isSave = True
         new_post.save()
-        return redirect('post:temporary_save_post')
+
+        field_key = request.POST.get('fieldKey')
+        f = FieldKey.objects.get(fieldKey=field_key)
+        new_post.fieldKey.add(f.id)
+
+        track_key = request.POST.get('trackKey')
+        trackKey_list = track_key.split(',')
+        for value in trackKey_list:
+            t = TrackKey.objects.get(trackKey=value)
+            new_post.trackKey.add(t.id)
+
+        return redirect('post:wrote_post')
 
 # 임시저장 글 목록페이지로 이동, 12-2. 글쓰기_임시저장
 def temporary_save_post(request):
