@@ -11,56 +11,25 @@ body {
 * {
   box-sizing: border-box;
   font-family: "Noto Sans KR", sans-serif;
-  border: solid 1px black;
-
 }
 
-.center {
+.nav_top {
   display: flex;
   justify-content: center;
   margin-top: 30px;
 }
 
-#top {
+.nav_box {
   width: 370px;
   height: 50px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   font-size: 23px;
-  border: solid 3px #ff8859;
   border-radius: 5px;
-  color: #ff8859;
 }
 
 a:link,
 a:visited {
-  text-decoration: none;
-  color: #ff8859;
+  color: inherit;
 }
-
-/* 선택된 아이콘 색상 
-color: #003A38; */
-
-
-
-/* 아래 파트는 초록색일 때! */
-
-/* #top {
-  width: 370px;
-  height: 50px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-size: 23px;
-  border: solid 3px #66C081;
-  border-radius: 5px;
-  color: #66C081;
-}
-
-a:link,
-a:visited {
-  text-decoration: none;
-  color: #66C081;
-
-} */
