@@ -1,7 +1,7 @@
 .nav_top {
     display: flex;
-    justify-content: center;
     margin-top: 30px;
+    justify-content: center;
 }
 
 .nav_box {

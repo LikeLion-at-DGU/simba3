@@ -1,5 +1,6 @@
 .container{
     max-width: 430px;
+    border:1px solid gray;
 }
 
 .header{
@@ -13,19 +14,14 @@
     color: #747474;
     font-size: 13px;
 }
-/* 아이콘 */
-.iconbar{
-    width: 430px;
-    height: 80px;
-}
 
 /*글자*/
 .write{
     display: flex;
     align-items: center;
-    width: 430px;
+    width: 390px;
     height: 80px;
-
+    padding: 0px 20px;
 }
 
 .write h1{
@@ -41,12 +37,12 @@
     align-items: center;
     justify-content: center;
     width: 430px;
-    height: 300px;
+    height: 280px;
 }
 
 .upload_photo{
-    height: 85%;
-    width:60%;
+    height: 255px;
+    width:255px;
     background-color: #ECE3D9;
     box-shadow: 0px 3px 3px 3px rgba(0, 0, 0, 0.2);
 }
@@ -54,10 +50,12 @@
 /* 올리기 버튼 */ 
 
 .upload{
-    height: 70px;
-    width:430px;
+    height:70px;
+    width:380px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 0px 25px; 
 }
 
 .upload_box{
@@ -68,34 +66,46 @@
     flex-direction: row;
 }
 
+.upload_photo img{
+    height:100%;
+    width:100%;
+}
 
-#upload_button{
-    width:45%;
-    height:50%;
-    background-color: #ECE3D9;
+/*버튼 부분*/
+.btn_upload {
+    width: 175px;
+    height: 35px;
+    background: #ECE3D9;
+    border-radius: 5px;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 5px;
+    &:hover {
+      background: rgb(77,77,77);
+      color: #fff;
+    }
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+
 }
 
-#remove_button{
-    width:45%;
-    height:50%;
+#fileInput{
+    display: none;
+}
+
+#remove_btn{
+    width: 175px;
+    height: 35px;
+    border-radius: 5px;
+    background-color: #D9D9D9;
+    border:none;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: gainsboro;
-    border-radius: 5px;
+    font-size: 17px;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-}
 
-#upload_button>i{
-    margin-right: 10px;
-    font-size: 23px;
 }
-
 /*팀명을 작성해주세요*/
 
 .putinfo{
@@ -115,7 +125,7 @@
 
 
 input[type="text"][name="put_team"]{
-    width: 380px;
+    width: 375px;
     height: 50px;
     background-color: #FFF9F2;
     border-radius: 10px; 
@@ -126,44 +136,28 @@ input[type="text"][name="put_team"]{
 
 input[type="text"][name="put_subject"]{
     width: 380px;
-    height: 50px;
+    height: 65px;
     background-color: #ECE3D9;
     border-radius: 10px; 
     font-size: 17px;
     padding-left: 10px;
     color:#747474;
+    border:none;
+    margin-top: 10px;
 }
 
-
-
-
-.put_sub{
-    width:100%;
-    height:50%;
-    background-color: #ECE3D9;;
-    border-radius: 10px; 
-    color: #747474;
-    display: flex;
-    align-items: center;
-}
-
-.put_sub p{
-    margin-left: 10px;
-    white-space: pre-line;
-}
 
 .keyword {
-    height:325px;
+    height:280px;
     display: flex; 
     flex-direction: column;
     align-items: center;
     justify-items: center;
-    justify-content: space-around;
     margin-top:10px;
 }
 
 .field{
-    height:30%;
+    height:120px;
     width:94%;
     background-color: blue;
     border: 2px solid #66C081;
@@ -174,7 +168,7 @@ input[type="text"][name="put_subject"]{
 }
 
 .track{
-    height:40%;
+    height:140px;
     width:94%;
     background-color: blue;
     border: 2px solid #66C081;
@@ -235,19 +229,23 @@ input[type="text"][name="put_subject"]{
     font-weight: 550;
 }
 
+.track{
+    margin:20px
+}
+
 .notice{
     display:flex;
     justify-content: center;
-    height: 250px;
+    height: 240px;
 }
 
 #notice_box{
     width: 370px;
-    height: 200px;
+    height: 190px;
     border: 3px dashed #FF8859;
     border-radius: 10px;
-
-    padding: 16px;
+    margin-top: 10px;
+    padding: 10px;
     color: #003A38;
 }
 
@@ -258,37 +256,62 @@ input[type="text"][name="put_subject"]{
     padding: 10px;
 }
 
+/*모집기간*/
+.input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding:0px 20px;
+}
+
 .input p {
     width: 400px;
     font-weight: 700;
     justify-content: left;
     font-size: 23px;
-    margin-bottom: 7px;
+    margin:0px;
     color:#003A38;
+    margin-top: 20px;
 }
 
-.input {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+input[type="text"][name="put_date"],
+input[type="text"][name="put_link"],
+input[type="text"][name="put_member"]
+{
+    width: 380px;
+    height: 50px;
+    background-color: #ECE3D9;
+    border-radius: 10px; 
+    font-size: 17px;
+    padding-left: 10px;
+    color:#747474;
+    border: none;
+    margin-top: 10px;
 }
 
+input[type="text"][name="put_about_us"]
+{
+    width: 380px;
+    height: 80px;
+    background-color: #ECE3D9;
+    border-radius: 10px; 
+    font-size: 17px;
+    padding-left: 10px;
+    color:#747474;
+    border: none;
+    margin-top: 10px;
+}
+
+/**제출 버튼쪽*/
 .submit{
     height:75px;
     display:flex;
     align-items: center;
-    justify-content: center;
-    margin-top: 30px;
-}
-
-.submit_box{
-    height:80%;
-    width:94%;
-    display:flex;
     justify-content: space-between;
+    padding:10px 30px;
 }
 
-.store_btn{
+.submit button[name="submit_btn"]{
     border:0;
     outline: none;
     font-size: 20px;
@@ -296,23 +319,7 @@ input[type="text"][name="put_subject"]{
     cursor: pointer;
     border-radius: 18px;
     width: 175px;
-    height:100%;
-    font-weight: 550;
-    background:#D9D9D9;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    font-size: 24px;
-}
-
-.submit_btn{
-    border:0;
-    outline: none;
-    font-size: 20px;
-    margin:0%;
-    cursor: pointer;
-    border-radius: 18px;
-    width: 175px;
-    height:100%;
+    height:50px;
     font-weight: 550;
     background: #66C081;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
@@ -320,32 +327,20 @@ input[type="text"][name="put_subject"]{
     font-size: 24px;
 }
 
-input[type="text"][name="put_subject"]{
-    width: 380px;
-    height: 50px;
-    background-color: #ECE3D9;
-    border-radius: 10px; 
-    font-size: 17px;
-    padding-left: 10px;
-    color:#747474;
+.submit button[name="store_btn"]{
+    border:0;
+    outline: none;
+    font-size: 20px;
+    margin:0%;
+    cursor: pointer;
+    border-radius: 18px;
+    width: 175px;
+    height:50px;
+    font-weight: 550;
+    background:;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    font-size: 24px;
 }
 
-input[type="text"][name="put_subject"]{
-    width: 380px;
-    height: 50px;
-    background-color: #ECE3D9;
-    border-radius: 10px; 
-    font-size: 17px;
-    padding-left: 10px;
-    color:#747474;
-}
 
-input[type="date"][name="put_date"]{
-    width: 380px;
-    height: 50px;
-    background-color: #ECE3D9;
-    border-radius: 10px; 
-    font-size: 17px;
-    padding-left: 10px;
-    color:#747474;
-}
