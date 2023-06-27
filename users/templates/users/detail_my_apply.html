@@ -21,8 +21,7 @@
   <div class="_1">
     APPLY
     <div>
-      <i class="fas fa-cog" style="font-size: 32px"></i>
-      <a href="{% url 'users:detail_profile' %}">내 정보 수정</a>
+      <a href="{% url 'users:detail_profile' %}"><i class="fas fa-cog" style="font-size: 32px"></i>내 정보 수정</a>
     </div>
   </div>
 
@@ -30,8 +29,8 @@
     지원해주셔서 감사합니다 :)
     <div>
       {% if apply.status == 'under_review' %} 검토 상태 나올 곳
-      {%elif apply.status == 'accept' %} 수락됨 관리자의 답변 : 답변내용
-      {{apply.reply}} {% else %} 거절됨 여기에 태그 {%endif %}
+      <div>dfdf{%elif apply.status == 'accept' %}</div>
+      {{apply.reply}} {% else %} 다음 기회에 함께해요 {%endif %}
     </div>
   </div>
 

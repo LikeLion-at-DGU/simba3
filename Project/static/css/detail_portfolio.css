@@ -21,20 +21,20 @@ body {
 ._1 {
   display: flex;
   width: 430px;
-  padding-left: 10px;
   height: 46px;
   margin: 40px;
   font-size: 32px;
-  font-weight: 500;
+  font-weight: 700;
   justify-content: space-around;
   align-items: center;
+  padding: 6px;
 }
 
 ._1 input {
   display: flex;
   width: 88px;
-  height: 29px;
-  font-size: 12px;
+  height: 35px;
+  font-size: 14px;
   color: white;
   border: 1px solid#ff8859;
   background-color: #ff8859;
@@ -136,12 +136,11 @@ form input::file-selector-button {
 .title {
   font-size: 28px;
   font-weight: 700;
-  margin-left: 33px;
-  margin: 0 0 12px 50px;
+  margin: 0 0 12px 39px;
 }
 
 /* 기본정보 각 항목 */
-._5 .whitebox {
+.whitebox {
   background-color: white;
   width: 320px;
   height: 64px;
@@ -149,9 +148,10 @@ form input::file-selector-button {
   align-items: center;
   border-radius: 5px;
   margin-left: 15px;
+  border: 1px solid #FF8859
 }
 
-._5 .whitebox:nth-last-child(1) {
+.whitebox:nth-last-child(1) {
   display: flex;
   justify-content: center;
   font-size: 20px;
@@ -165,7 +165,7 @@ form input::file-selector-button {
   width: 350px;
   height: 300px;
   justify-content: space-evenly;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: rgba(255, 136, 89, 0.5);
 }
 a:link,

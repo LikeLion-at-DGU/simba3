@@ -19,11 +19,6 @@
 <body>
     <!-- 고정 시계바 -->
 
-    <header>
-        <a>9:41</a>
-        <a>정보입력</a>
-    </header>
-
     <!-- 로그인 글씨 -->
 
     <div id="top">
@@ -52,7 +47,7 @@
             
             <!-- 이메일 보내는 버튼 -->
             <div id="test">
-                <a onclick="sendEmail()">이메일 전송</a>
+                <a onclick="sendEmail()">인증번호 전송</a>
             </div>
             <!-- 인증번호가 제대로 왔는지 확인하는 버튼 -->
             <label for="name">이메일 인증</label>
@@ -66,10 +61,12 @@
             <input type="text" placeholder="닉네임은 추후 수정 불가능합니다" name="nickname" id="input_nickname" equired>
 
             <label for="name">비밀번호</label>
-            <input type="password" placeholder="영문/숫자/특수문자 조합 가능 (8자 이상)" name="password" required>
+            <input type="password" placeholder="영문/숫자/특수문자 조합 가능 (8자 이상)" name="password" id="password" required>
+            <span id="password-error" style="color: red;"></span>
 
             <label for="name">비밀번호 확인</label>
-            <input type="password" placeholder="비밀번호를 다시 한 번 입력해주세요" name="confirm" required>
+            <input type="password" placeholder="비밀번호를 다시 한 번 입력해주세요" name="confirm" id="confirm_password" required>
+            <span id="confirm-password-error" style="color: red;"></span>
 
 
             <!-- 동의항목 -->
@@ -130,34 +127,39 @@
                 });
         }
 
+        // 여기부터 지피티 ^^.. //
         function verify_code() {
-            var emailInput = document.getElementById("input_email");
-            var codeInput = document.getElementById("input_code");
-            var email = emailInput.value, code = codeInput.value;
-            fetch("{% url 'accounts:verify_email' %}", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': '{{ csrf_token }}'
-                },
-                body: JSON.stringify({ email: email, code: code })
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.is_same === true) {
-                        //인증이 완료되었을 때 페이지 내부 변에 인증이 완료된 'email'과 인증 완료됨을 알 수 있는 "boolean"갑을 저장
-                        console.log("일치");
-                    } else if (data.is_same === false) {
-                        //인증 안될떄
-                        console.log("불일치");
-                    } else {
-                        console.log("예외 처리");
-                    }
-                })
-                .catch(error => {
-                    alert("error");
-                });
+    var emailInput = document.getElementById("input_email");
+    var codeInput = document.getElementById("input_code");
+    var email = emailInput.value, code = codeInput.value;
+    fetch("{% url 'accounts:verify_email' %}", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token }}'
+        },
+        body: JSON.stringify({ email: email, code: code })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.is_same === true) {
+            console.log("Verification code is correct");
+            // Proceed with member registration or other actions
+            submit_signup_form();
+        } else {
+            console.log("Verification code is incorrect");
+            // Display an error message to the user indicating that the verification code is incorrect
+            alert("Incorrect verification code. Please try again.");
         }
+    })
+    .catch(error => {
+        console.log("Error occurred during verification");
+        // Display an error message to the user indicating that an error occurred during verification
+        alert("Error occurred during verification. Please try again later.");
+    });
+}
+
+// 여기까지~~~~~
 
         function nickname_redundant_check() {
             var nicknameInput = document.getElementById("input_nickname");
@@ -187,11 +189,37 @@
                     alert("error");
                 });
         }
+
+        document.getElementById('password').addEventListener('input', validatePassword);
+        document.getElementById('confirm_password').addEventListener('input', validateConfirmPassword);
+
+        function validatePassword() {
+            var passwordInput = document.getElementById('password');
+            var password = passwordInput.value;
+            var passwordError = document.getElementById('password-error');
+
+            if (password.length < 8) {
+                passwordError.textContent = '비밀번호는 8자 이상이어야 합니다.';
+            } else {
+                passwordError.textContent = '';
+            }
+        }
+
+        function validateConfirmPassword() {
+            var passwordInput = document.getElementById('password');
+            var confirmPasswordInput = document.getElementById('confirm_password');
+            var password = passwordInput.value;
+            var confirmPassword = confirmPasswordInput.value;
+            var confirmPasswordError = document.getElementById('confirm-password-error');
+
+            if (password !== confirmPassword) {
+                confirmPasswordError.textContent = '비밀번호가 일치하지 않습니다.';
+            } else {
+                confirmPasswordError.textContent = '';
+            }
+        }
     </script>
 
 </body>
-
-
-
 
 </html>

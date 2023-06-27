@@ -12,12 +12,6 @@ body {
   font-family: "Noto Sans KR", sans-serif;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  margin: 10px;
-}
-
 section[join] {
   display: flex;
   justify-content: center;
@@ -32,7 +26,6 @@ section[join] {
 #input {
   display: flex;
   justify-content: center;
-  margin-top: 60px;
 }
 
 input {
@@ -62,8 +55,8 @@ label {
   font-size: 20px;
 }
 
-label:nth-child(1) {
-  padding-top: 0px;
+label:nth-of-type(2) {
+  padding-top: 0;
 }
 
 button {
@@ -97,7 +90,7 @@ button {
 #check_2 {
   display: flex;
   position: relative;
-  left: 265px;
+  left: 273px;
   top: 76px;
   background-color: #66c081;
   width: 70px;
@@ -110,19 +103,30 @@ button {
   box-shadow: 0.5px 0.5px 3px gray;
 }
 
+/* 확인버튼 박스 */
 #check3 {
   display: flex;
   position: relative;
-  top: 220px;
-  left: 286px;
-  color: white;
-  background-color: gray;
+  background: #989898;
   width: 48px;
   height: 31px;
   border-radius: 10px;
   justify-content: center;
   align-items: center;
   box-shadow: 0.5px 0.5px 3px gray;
+  position: relative;
+  left: 297px;
+  top: 188px;
+}
+
+/* 확인 버튼 텍스트 */
+#check3 a {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 70px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: white;
 }
 
 .agree {
@@ -132,15 +136,10 @@ button {
   padding-top: 15px;
 }
 
-a:link {
-  /*링크 방문 전*/
-  color: white;
-  text-decoration-line: none;
-}
-
+a:link,
 a:visited {
-  /*링크를 방문한 이후*/
-  color: white;
+  /*링크 방문 전*/
+  color: inherit
   text-decoration-line: none;
 }
 
@@ -153,4 +152,25 @@ img {
   display: flex;
   position: relative;
   margin: 20px;
+}
+
+#test {
+  height: 0;
+}
+
+#test a {
+  background-color: #ff8859;
+  box-shadow: 0px 1px 4px 0px #00000040;
+  font-size: 14px;
+  font-weight: 400;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 33px;
+  position: relative;
+  top: 74px;
+  left: 190px;
+  border-radius: 10px;
+  color: white;
+  display: flex;
 }
