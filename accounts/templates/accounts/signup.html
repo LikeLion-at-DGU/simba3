@@ -44,7 +44,7 @@
 
             <label for="name">동국대학교 이메일</label>
             <input type="email" placeholder="예) likelion@dgu.ac.kr" name="email" id="input_email" required>
-            
+
             <!-- 이메일 보내는 버튼 -->
             <div id="test">
                 <a onclick="sendEmail()">인증번호 전송</a>
@@ -129,37 +129,37 @@
 
         // 여기부터 지피티 ^^.. //
         function verify_code() {
-    var emailInput = document.getElementById("input_email");
-    var codeInput = document.getElementById("input_code");
-    var email = emailInput.value, code = codeInput.value;
-    fetch("{% url 'accounts:verify_email' %}", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': '{{ csrf_token }}'
-        },
-        body: JSON.stringify({ email: email, code: code })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.is_same === true) {
-            console.log("Verification code is correct");
-            // Proceed with member registration or other actions
-            submit_signup_form();
-        } else {
-            console.log("Verification code is incorrect");
-            // Display an error message to the user indicating that the verification code is incorrect
-            alert("Incorrect verification code. Please try again.");
+            var emailInput = document.getElementById("input_email");
+            var codeInput = document.getElementById("input_code");
+            var email = emailInput.value, code = codeInput.value;
+            fetch("{% url 'accounts:verify_email' %}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({ email: email, code: code })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.is_same === true) {
+                        console.log("Verification code is correct");
+                        // Proceed with member registration or other actions
+                        submit_signup_form();
+                    } else {
+                        console.log("Verification code is incorrect");
+                        // Display an error message to the user indicating that the verification code is incorrect
+                        alert("Incorrect verification code. Please try again.");
+                    }
+                })
+                .catch(error => {
+                    console.log("Error occurred during verification");
+                    // Display an error message to the user indicating that an error occurred during verification
+                    alert("Error occurred during verification. Please try again later.");
+                });
         }
-    })
-    .catch(error => {
-        console.log("Error occurred during verification");
-        // Display an error message to the user indicating that an error occurred during verification
-        alert("Error occurred during verification. Please try again later.");
-    });
-}
 
-// 여기까지~~~~~
+        // 여기까지~~~~~
 
         function nickname_redundant_check() {
             var nicknameInput = document.getElementById("input_nickname");
@@ -200,7 +200,11 @@
 
             if (password.length < 8) {
                 passwordError.textContent = '비밀번호는 8자 이상이어야 합니다.';
-            } else {
+            }
+            else if (!(password.includes('@') || password.includes('!') || password.includes('?') || password.includes('#') || password.includes('&') || password.includes('*'))) {
+                passwordError.textContent = '비밀번호는 특수문자(@,!,?,#,&.*)를 포함해야합니다.';
+            }
+            else {
                 passwordError.textContent = '';
             }
         }
