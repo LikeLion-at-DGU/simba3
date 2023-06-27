@@ -42,7 +42,6 @@ def logout(request):
 
 def signup(request):
     if request.method == 'POST':
-        code = request.POST['code']
         email = request.POST['email']
 
         if request.POST['password'] == request.POST['confirm']:
@@ -57,7 +56,7 @@ def signup(request):
 
             auth.login(request,user)
             return redirect('/')
-        
+
 
     return render(request,'accounts/signup.html')
 
@@ -88,12 +87,18 @@ def send_email(request):
                 }
                 return JsonResponse(response_data)
 
-        if not User.objects.filter(email = email).exists():
+        if User.objects.filter(email = email).exists():
             response_data = {
             'message': '이미 가입된 이메일입니다.',
             }
             return JsonResponse(response_data)
-
+        dgu_domain_list = ['dongguk.edu','dgu.edu','dgu.ac.kr']
+        domain = email.split('@')[1]
+        if domain not in dgu_domain_list:
+                response_data = {
+                'message': '동국대학교 이메일을 사용해주세요.',
+                }
+                return JsonResponse(response_data)
         token = generate_auth_code(email)
         message = render_to_string('accounts/email_verify.html', {
             'token': token,
