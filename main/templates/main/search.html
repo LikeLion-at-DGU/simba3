@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/search.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/search.css' %}?after"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
     <title>post</title>
 </head>
@@ -13,54 +13,80 @@
 <body>
     <section class="container">
         <section class="header">
-            <section class="iconbar">
-            </section>
+            <div class="nav_top">
+                <div class="nav_box" style="border: solid 3px;">
+                    <a href="{% url 'post:wrote_post' %}"><i class="fas fa-pen" class="nav_i" id="nav_pen"></i></a>
+                    <a href="{% url 'main:mainpage_competition' %}"><i class="fas fa-home" class="nav_i" id="nav_home"></i></a>
+                    <a href="{% url 'users:mypage' %}"><i class="fas fa-user" class="nav_i" id="nav_user"></i></a>
+                </div>
+            </div>
 
             <section class="searchbar">
-                <form>
-                    <input type="text" name="search" placeholder="검색어를 입력하세요">
-                    <i class="fas fa-search"></i>            
+                <form action="{% url 'main:search' ' ' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="search_row1">
+                        <input type="text" name="word" id="" placeholder="Search">
+                        <button type="submit" name="submit" id="submit_btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+
+                    <div class="search_row2">
+                        <div>
+                        <select name="field" id="search_field">
+                            <option value="전체">모집 분야</option>
+                            <option value="공모전">공모전</option>
+                            <option value="프로젝트">프로젝트</option>
+                            <option value="대외활동">대외활동</option>
+                            <option value="창업">창업</option>
+                        </select>
+                        </div>
+                        <div>
+                            <select name="track" id="search_track">
+                                <option value="전체">모집 트랙</option>
+                                <option value="기획">기획</option>
+                                <option value="마케터">마케터</option>
+                                <option value="영상">영상</option>
+                                <option value="디자인">디자인</option>       
+                                <option value="개발">개발</option>                    
+                                <option value="기자단">기자단</option>
+                                <option value="봉사">봉사</option>
+                                <option value="기타">기타</option>
+                            </select>                        
+                        </div>
+                    </div>    
                 </form>
-
             </section>
 
-            <section class="searchbar_two">
-                <div id="search_section">
-                    <p>모집 분야</p>
-                    <i class="fas fa-hand-pointer" style="color: #ff8859;"></i>
-                </div>
-                <div id="search_track">
-                    <p>모집 트랙</p>
-                    <i class="fas fa-hand-pointer" style="color: #66C081;"></i>
-                </div>
-            </section>
-
-            <section class="search_result">
-               <h1>검색 결과</h1>
-               <i class="fas fa-home" style="color: #003A38; font-size: 25px;"></i>
+            <section class="search_text">
+                <h1>검색 결과</h1>
             </section>
 
             <section class="show_result">
-                    {% if posts %}
-                    {% for post in posts %}
-                    <div class="picture">
-                        <div id="result_pic">
-                            <div id="result_cate">
-                                <img src="{{ post.image.url }}" alt="사진">
-                                <p>창업</p>
-                            </div>
-                        </div>
+                {% if posts %}
+                {% for post in posts %}
+                <div class="result_item">
+                  <div class="picture">
+                    <div id="result_pic">
+                      <div id="result_cate">
+                        <p>창업</p>
+                      </div>
+                      <img src="{{ post.image.url }}" alt="사진">
                     </div>
-
-                    <div class="explain">
-                        <div id="result_exp">
-                            <p><a style="color:#66C081">{{ post.team_name }} </a>{{ post.title }}</p>
-                        </div>
+                  </div>
+              
+                  <div class="explain">
+                    <div id="result_exp">
+                      <p><a style="color:#66C081">{{ post.team_name }} </a>{{ post.title }}</p>
                     </div>
-                    {% endfor %}
-                    {% else %}
-                    {% endif %}
-            </section>
+                  </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                {% endif %}
+              </section>
+              
+            
 
             <section class="end_bar">
                 <p>이전 페이지</p>
