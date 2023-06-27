@@ -320,7 +320,12 @@
         changeSingleBackgroundColor(field_btn_4);
         
         function changeBackgroundColor(button) {
-            var clickCount = 0;
+            if (button.style.backgroundColor === 'rgb(102, 192, 129)'){
+                var clickCount = 1;
+                console.log("제발")
+            } else{
+                var clickCount = 0
+            }
             button.addEventListener("click", function() {
             if (clickCount % 2 === 0) {
                 button.style.backgroundColor = "#66C081";
@@ -337,6 +342,7 @@
                 button.style.color = "#747474";
                 var index = trackName.indexOf(button.getAttribute("name"));
                 trackName.splice(index, 1); // 버튼의 name 값이 trackName 배열에 있으면 제거합니다.
+                console.log("Clicked track name in else:", trackName);
             }
             clickCount++;
             });
