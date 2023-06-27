@@ -30,6 +30,15 @@ changeSingleBackgroundColor(field_btn_4);
 var fieldName = "";
 var trackName = [];
 
+// class FieldAndTrack{
+//     static fieldName = "";
+//     static trackName = [];
+//     static setfieldName(input){
+//         fieldName=input
+//         console.log(fieldName, "f")
+//     }
+// }
+
 function changeBackgroundColor(button) {
     var clickCount = 0;
 
@@ -99,6 +108,11 @@ const inputImage = document.getElementById("fileInput")
 inputImage.addEventListener("change", e => {
     readImage(e.target)
 })
+
+function setfieldName(input){
+    fieldName = input
+    console.logt("input, fieldname = " , fieldName)
+}
 
 function setMyVariable() {
     var field = fieldName;

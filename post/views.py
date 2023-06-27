@@ -89,8 +89,6 @@ def update(request, id):
     update_post.image = request.FILES.get('image', update_post.image)
     update_post.team_name = request.POST['put_team']
     update_post.title = request.POST['put_subject']
-    update_post.fieldKey = request.POST['fieldKey']
-    update_post.trackKey = request.POST['trackKey']
     update_post.recruit_date = request.POST['put_date']
     update_post.link = request.POST['put_link']
     update_post.member = request.POST['put_member']
@@ -99,8 +97,38 @@ def update(request, id):
     update_post.writer = request.user  # ForeignKey로 수정
     update_post.pub_date = timezone.now()
 
-    update_post.save()
-    return redirect('post:detail', update_post.id)
+    if 'store_btn' in request.POST:
+        update_post.isSave = False
+        update_post.save()
+
+        field_key = request.POST.get('fieldKey')
+        f = FieldKey.objects.get(fieldKey=field_key)
+        update_post.fieldKey.add(f.id)
+
+        track_key = request.POST.get('trackKey')
+        trackKey_list = track_key.split(',')
+        for value in trackKey_list:
+            t = TrackKey.objects.get(trackKey=value)
+            update_post.trackKey.add(t.id)
+        # 작성완료 누르면 crew_search 페이지로 이동
+        return redirect('post:temporary_save_post')
+    
+    if 'submit_btn' in request.POST:
+        update_post.isSave = True
+        update_post.save()
+
+        field_key = request.POST.get('fieldKey')
+        print(" 이런한 게 있음 ", field_key)
+        f = FieldKey.objects.get(fieldKey=field_key)
+        update_post.fieldKey.add(f.id)
+
+        track_key = request.POST.get('trackKey')
+        trackKey_list = track_key.split(',')
+        for value in trackKey_list:
+            t = TrackKey.objects.get(trackKey=value)
+            update_post.trackKey.add(t.id)
+
+        return redirect('post:wrote_post')
 
 # Delete
 def delete(request, id):
