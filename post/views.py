@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post,Apply,FieldKey,TrackKey
 from django.utils import timezone
-import os
+import os, json
 
 # 새로운 글 작성 페이지로 연결
 def new(request):
@@ -71,12 +71,17 @@ def detail(request, id):
     if request.method == 'GET':
         post = get_object_or_404(Post, pk=id)
         return render(request, 'post/crew_search.html', {'post': post})
+    
     if request.method == 'POST':
+        data = json.loads(request.body)
+        reply = data.get('reply')
         new_apply = Apply()
-        new_apply.short_text = request.POST['short_text']
+        new_apply.short_text = reply
         new_apply.writer = request.user
         new_apply.target_Post = get_object_or_404(Post, pk=id)
         new_apply.save()
+        
+        # redirect로 변경
         return render(request, 'post/crew_search.html')
     
 # post 페이지로 이동
