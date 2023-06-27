@@ -41,17 +41,53 @@
     <div id="apply">
       <form action="{% url 'post:detail' post.id %}" id="frm" method="post">
         {% csrf_token %}
-        <a href="#" onclick="return chk_form()">팀 지원하기</a>
+        <a href="#" onclick="prom();">팀 지원하기</a>
       </form>
     </div>
     {% else %}
+
     {% endif %}
 
     <script>
-    function chk_form(){
-      document.getElementById('frm').submit();
+    function sendDataToDjango(userInput) {
+    fetch("{% url 'post:detail' post.id %}", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': '{{ csrf_token }}'
+      },
+
+      body: JSON.stringify({ reply: userInput })
+    })
+      .then(response => {
+        if (response.ok) {
+          location.reload()
+          // 성공적으로 응답을 받은 경우 처리
+          console.log("Data sent successfully!");
+        } else {
+          // 응답이 실패한 경우 처리
+          location.reload()
+          console.error("Failed to send data to Django.");
+        }
+      })
+      .catch(error => {
+        location.reload()
+        // 네트워크 오류 등 예외 처리
+        console.error("Error while sending data to Django:", error);
+      });
+    }
+
+
+    function prom() {
+      var userInput = '';
+      userInput = window.prompt(
+        "팀에 지원하시겠습니까?\n회원님의 정보 및 포트폴리오가 팀 매니저에게 열람될 수 있습니다.",
+        "지원 한마디 적기(없으면 생략)"
+        );
+      sendDataToDjango(userInput);
     }
     </script>
+
 
     <div id="notice">
       <b><a style="color: #ff8859">잠깐!</a> 팀 지원 시 유의사항을
