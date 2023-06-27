@@ -1,5 +1,6 @@
 .container {
     max-width: 430px;
+    border:1px solid gray;
 }
 
 .header {
@@ -9,40 +10,31 @@
     flex-direction: column;
 }
 
+a:link,
+a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+
 .header>p {
     margin: 0px 0px 0px 15px;
     color: #747474;
     font-size: 13px;
 }
 
-/* 아이콘 */
-.iconbar {
-    width: 430px;
-    height: 80px;
-}
-
-a {
-    text-decoration: none;
-}
-
-a:visited {
-    text-decoration: none;
-}
-
-
-
 /*글자*/
 .write {
     display: flex;
     align-items: center;
-    width: 410px;
+    width: 390px;
     height: 80px;
-    padding: 10px 10px;
+    padding: 20px 20px;
     justify-content: space-between;
 }
 
 .write h1 {
-    color: #66C081;
+    color: #003A38;
     font-size: 30px;
     margin: 0%;
 }
@@ -59,17 +51,18 @@ a:visited {
     justify-content: center;
     align-items: center;
     color: #747474;
+    position: relative;
+    top:10px;
 }
 
-.write_right p {
-    margin-top: 10px;
-
+.write_right a p{
+    margin-top: 5px;
 }
 
-/* 작성한 글 */
+/* 받은지원 */
 .categorybar {
     width: 410px;
-    height: 70px;
+    height: 50px;
     display: flex;
     align-items: end;
     padding-left: 20px;
@@ -108,48 +101,25 @@ a:visited {
 #track2>p {
     margin: 0%;
     color: #003A38;
-    ;
+    
 }
 
-
-/*초록 배경*/
-/* .writing_category{
-    width:100%;
-    height: 600px;
-    background-color: #FF9D77;
-    ;
-;
-    display: flex;
-    justify-content: center;
-} */
-
-.white_box {
-    width: 90%;
-    height: 90%;
-    background-color: white;
-    border-radius: 5px;
-    position: relative;
-    top: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
+/*팀 띄어주기*/
 .team {
+    width:90%;
+    min-height: 150px;
     background-color: white;
     border: 4px solid #ECE3D9;
-    width: 90%;
-    height: 25%;
     margin-top: 20px;
     border-radius: 10px;
     display: flex;
 }
 
 .team_pic>img {
-    width: 100px;
-    height: 100px;
-    background-color: #747474;
-    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    background-color: white;
+    border-radius: 10px;
     position: relative;
     top: 15px;
     left: 10px;
@@ -161,20 +131,7 @@ a:visited {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-left: 25px;
-}
-
-.check_btn {
-    width: 220px;
-    height: 40px;
-    background-color: #FF9D77;
-    color: white;
-    font-size: 14px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-
+    padding:10px 10px 10px 20px;
 }
 
 .check_btn p {
