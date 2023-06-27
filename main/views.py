@@ -7,8 +7,8 @@ from django.db.models import Q
 def mainpage_competition(request):
     competition = FieldKey.objects.get(fieldKey = "공모전")
     project = FieldKey.objects.get(fieldKey = "프로젝트")
-    posts_com = competition.post.all()
-    posts_pro = project.post.all()
+    posts_com = competition.post.filter(isSave=True)
+    posts_pro = project.post.filter(isSave=True)
     
     posts = posts_com.union(posts_pro)[:4]
 
