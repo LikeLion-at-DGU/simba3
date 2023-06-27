@@ -25,6 +25,7 @@ header {
     font-size: 36px;
     justify-content: space-between;
     color: #003A38;
+    margin-bottom: 30px;
 }
 
 #box {
@@ -35,15 +36,18 @@ header {
     margin-left: 40px;
     overflow: scroll;
     color: #003A38;
+    margin-bottom: 50px;
 }
 
 #box p {
     margin: 20px;
     color: #003a38;
+    margin-bottom: 50px;
+
 }
 
 a:link,
 a:visited {
     text-decoration: none;
-    color: #003A38;
+    color: inherit;
 }

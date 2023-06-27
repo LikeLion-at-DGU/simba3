@@ -19,7 +19,7 @@
       color: #003a38;
     }
   </style>
-  <title>기본정보 설정</title>
+  <title>기본정보</title>
 </head>
 
 <!-- 13-3. 기본정보_수정 페이지 -->
@@ -40,13 +40,10 @@
 
     <div class="_3">
       <label for="file">
-        <div class="button1">
-          <i class="fas fa-camera"></i> &nbsp; 사진 올리기
-          <input type="file" name="image" id="plz" />
-
-        </div>
+        <div class="button"><i class="fas fa-camera"></i> &nbsp; 사진 올리기</div>
       </label>
-
+      <input type="file" name="file" id="file" style="display: none;">
+      
       <div class="button">
         <input type="submit" name="action" value="기본 이미지로 변경" />
       </div>

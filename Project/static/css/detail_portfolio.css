@@ -9,6 +9,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 1px solid gray;
 }
 
 * {
@@ -39,7 +40,7 @@ body {
   border: 1px solid#ff8859;
   background-color: #ff8859;
   border-radius: 6px;
-  box-shadow: 0.3px 1px 2px gray;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   justify-content: center;
   align-items: center;
 }
@@ -82,7 +83,7 @@ img {
   border-radius: 5px;
 }
 
-.button1 {
+.button {
   width: 138px;
   height: 30px;
   background-color: #ece3d9;
@@ -172,4 +173,16 @@ a:link,
 a:visited {
   text-decoration: none;
   color: inherit;
+}
+
+.btn-upload {
+  width: 150px;
+  height: 30px;
+  background: #ece3d9;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

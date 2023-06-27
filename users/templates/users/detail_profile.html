@@ -68,7 +68,7 @@
   </div>
 
   <div class="_7">
-    <a href="{% url 'accounts:delete_account' %}">이거누르면바로탈퇴임</a>
+    <a href="{% url 'accounts:delete_account' %}" onclick="return confirm('확인 버튼 클릭 시 탈퇴되며, 복구할 수 없습니다. 진행하시겠습니까?');">이거누르면바로탈퇴임</a>
   </div>
 </body>
 
