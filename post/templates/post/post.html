@@ -32,7 +32,7 @@
 
             <!-- 기존에 있던 글을 편집할때 rendering되는 부분 -->
             {% if post %}
-            <form action="{% url 'post:update' post.id %}" method="post" enctype="multipart/form-data" onsubmit="return">
+            <form action="{% url 'post:update' post.id %}" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
             {% csrf_token %}
             <section class="pohto">
                 <div class="upload_photo">
@@ -172,7 +172,7 @@
             var fieldName = "";
             var trackName = [];
             </script>
-            <form action="{% url 'post:write' %}" method="post" enctype="multipart/form-data">
+            <form action="{% url 'post:write' %}" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
                 {% csrf_token %}
                 <section class="pohto">
                     <div class="upload_photo">
@@ -292,10 +292,16 @@
         var track_btn_7 = document.getElementById("track_btn_7");
         var track_btn_8 = document.getElementById("track_btn_8");
 
+
         var field_btn_1 = document.getElementById("field_btn_1");
         var field_btn_2 = document.getElementById("field_btn_2");
         var field_btn_3 = document.getElementById("field_btn_3");
         var field_btn_4 = document.getElementById("field_btn_4");
+
+        // field_btn_1.style.backgroundColor = "#66C081";
+        // field_btn_1.style.color = "white";
+        // fieldName = "프로젝트";
+        // console.log(fieldName)
 
         changeBackgroundColor(track_btn_1);
         changeBackgroundColor(track_btn_2);
@@ -314,7 +320,6 @@
         function changeBackgroundColor(button) {
             if (button.style.backgroundColor === 'rgb(102, 192, 129)'){
                 var clickCount = 1;
-                console.log("제발")
             } else{
                 var clickCount = 0
             }
@@ -404,10 +409,22 @@
             trackInput.value = track;
         }
 
+        function validateForm() {
+            if (fieldName === "" || trackName === []) {
+            // 필드가 비어있는 경우 폼 제출을 방지
+            alert("모집분야와 모집트랙을 최소 하나씩 선택해주세요.");
+            return false;
+            } else {
+            // 필드가 비어있지 않은 경우 폼 제출
+            return true;
+            }
+        }
+
         document.addEventListener('keydown', function(event) {
             if (event.keyCode === 13) {
                 event.preventDefault();
             };
         }, true);
+
         </script>
 </body>
