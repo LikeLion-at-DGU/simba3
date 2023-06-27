@@ -191,4 +191,5 @@ cython_debug/
 .history
 .ionide
 .DS_Store
+__MACOSX
 # End of https://www.toptal.com/developers/gitignore/api/django,visualstudiocode
