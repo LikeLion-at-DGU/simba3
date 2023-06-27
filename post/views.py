@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post,Apply,FieldKey,TrackKey
 from django.utils import timezone
-import json
+import os
 
 # 새로운 글 작성 페이지로 연결
 def new(request):
@@ -10,7 +10,10 @@ def new(request):
 # Create
 def write(request):
     new_post = Post()
-    new_post.image = request.FILES.get('image')
+    if request.FILES:
+        new_post.image = request.FILES.get('image')
+    else:
+        new_post.image = 'default/post_image_default.jpg'
     new_post.team_name = request.POST['put_team']
     new_post.title = request.POST['put_subject']
     new_post.recruit_date = request.POST['put_date']
@@ -86,7 +89,17 @@ def edit(request, id):
 def update(request, id):
     update_post = Post.objects.get(id=id)
     # 수정할 때 이미지 수정 안하면 원래 이미지가 들어갈 수 있도록
-    update_post.image = request.FILES.get('image', update_post.image)
+    # 사진이 지워진 경우
+    if request.FILES == None:
+        # 기본 이미지가 이니라면 삭제 후 기본이미지 연결
+        if update_post.image != 'default/post_image_default.jpg':
+            os.remove(update_post.image.path)
+            update_post.image = 'default/post_image_default.jpg'
+    else:
+        # 기본이미지가 아니면 지우고 저장
+        if update_post.image != 'default/post_image_default.jpg':
+            os.remove(update_post.image.path)
+        update_post.image = request.FILES.get('image', update_post.image)
     update_post.team_name = request.POST['put_team']
     update_post.title = request.POST['put_subject']
     update_post.fieldKey = request.POST['fieldKey']
