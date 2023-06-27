@@ -60,7 +60,7 @@ body {
 }
 
 /* 지원서 검토중 상태창 */
-._2 div {
+.top_box {
   display: flex;
   width: 360px;
   height: 64px;
@@ -76,9 +76,10 @@ body {
 }
 
 /* 지원수락 박스 */
-.ok p{
+._2 div .ok p{
   color: white;
   display: flex;
+  border: 3px solid blue;
 }
 
 /* 지원수락 멘트 */

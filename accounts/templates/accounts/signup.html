@@ -167,20 +167,22 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.is_same === true) {
+
+                        
                         setIsValidEmail(true)
                         enable_or_disable_signup()
                         console.log("Verification code is correct");
-                        // Proceed with member registration or other actions
+                        // 이 위에가 인증번호 맞을 때
                     } else {
                         setIsValidEmail(false)
                         console.log("Verification code is incorrect");
-                        // Display an error message to the user indicating that the verification code is incorrect
+                        // 이 위가 인증번호 안맞을 때
                         alert("Incorrect verification code. Please try again.");
                     }
                 })
                 .catch(error => {
                     console.log("Error occurred during verification");
-                    // Display an error message to the user indicating that an error occurred during verification
+                    //이건 먼지 모르겟지만~~
                     alert("Error occurred during verification. Please try again later.");
                 });
         }
