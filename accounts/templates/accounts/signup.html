@@ -62,7 +62,7 @@
 
             <label for="name">비밀번호</label>
             <input type="password" placeholder="영문/숫자/특수문자 조합 가능 (8자 이상)" name="password" id="password" required>
-            <span id="password-error" style="color: red;"></span>
+            <span id="password-error" style="color: #ff0000;"></span>
 
             <label for="name">비밀번호 확인</label>
             <input type="password" placeholder="비밀번호를 다시 한 번 입력해주세요" name="confirm" id="confirm_password" required>
@@ -96,13 +96,36 @@
 
             <section join>
                 <div id="join">
-                    <button style="border: none;">회원가입하기</button>
+                    <button style="border: none; background-color: gray;" id="signup" disabled="true">회원가입하기</button>
                 </div>
             </section>
         </form>
     </div>
     </div>
     <script>
+        var is_vaild_email = false;
+        function setIsValidEmail(value) {
+            is_vaild_email = value;
+        }
+        var is_vaild_nickname = false;
+        function setIsValidNickname(value) {
+            is_vaild_nickname = value;
+        }
+        var is_vaild_password = false;
+        var is_confirm_password = false;
+
+        function enable_or_disable_signup() {
+            var button = document.getElementById("signup");
+            if (is_vaild_nickname && is_vaild_email && is_vaild_password && is_confirm_password) {
+                button.style.backgroundColor = '#FF8859';
+                button.disabled = true;
+            }
+            else {
+                button.style.backgroundColor = 'gray';
+                button.disabled = false;
+            }
+        }
+
         function sendEmail() {
             var emailInput = document.getElementById("input_email");
             var email = emailInput.value;
@@ -129,6 +152,7 @@
 
         // 여기부터 지피티 ^^.. //
         function verify_code() {
+            is_vaild_email = false;
             var emailInput = document.getElementById("input_email");
             var codeInput = document.getElementById("input_code");
             var email = emailInput.value, code = codeInput.value;
@@ -143,18 +167,22 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.is_same === true) {
-                        console.log("인증번호를 다시 확인하세요.");
-                        // 회원가입을 진행하세요
-                        submit_signup_form();
+
+                        
+                        setIsValidEmail(true)
+                        enable_or_disable_signup()
+                        console.log("Verification code is correct");
+                        // 이 위에가 인증번호 맞을 때
                     } else {
-                        console.log("인증번호를 다시 확인하세요.");
-                        // 확인코드 잘못됨
-                        alert("인증번호를 다시 확인하세요.");
+                        setIsValidEmail(false)
+                        console.log("Verification code is incorrect");
+                        // 이 위가 인증번호 안맞을 때
+                        alert("Incorrect verification code. Please try again.");
                     }
                 })
                 .catch(error => {
                     console.log("Error occurred during verification");
-                    // Display an error message to the user indicating that an error occurred during verification
+                    //이건 먼지 모르겟지만~~
                     alert("Error occurred during verification. Please try again later.");
                 });
         }
@@ -164,7 +192,6 @@
         function nickname_redundant_check() {
             var nicknameInput = document.getElementById("input_nickname");
             var nickname = nicknameInput.value;
-
             fetch("{% url 'accounts:nickname_redundant_check' %}", {
                 method: 'POST',
                 headers: {
@@ -177,9 +204,12 @@
                 .then(data => {
                     if (data.is_redundant === true) {
                         //중복될 때
+                        setIsValidNickname(false)
                         console.log("중복");
                     } else if (data.is_redundant === false) {
                         //중복되지 않을때
+                        setIsValidNickname(true)
+                        enable_or_disable_signup()
                         console.log("중복X");
                     } else {
                         console.log("예외 처리");
@@ -199,12 +229,16 @@
             var passwordError = document.getElementById('password-error');
 
             if (password.length < 8) {
+                is_vaild_password = false;
                 passwordError.textContent = '비밀번호는 8자 이상이어야 합니다.';
             }
             else if (!(password.includes('@') || password.includes('!') || password.includes('?') || password.includes('#') || password.includes('&') || password.includes('*'))) {
+                is_vaild_password = false;
                 passwordError.textContent = '비밀번호는 특수문자(@,!,?,#,&.*)를 포함해야합니다.';
             }
             else {
+                is_vaild_password = true;
+                enable_or_disable_signup()
                 passwordError.textContent = '';
             }
         }
@@ -219,6 +253,8 @@
             if (password !== confirmPassword) {
                 confirmPasswordError.textContent = '비밀번호가 일치하지 않습니다.';
             } else {
+                is_confirm_password = true;
+                enable_or_disable_signup()
                 confirmPasswordError.textContent = '';
             }
         }

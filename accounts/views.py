@@ -153,5 +153,5 @@ def nickname_redundant_check(request):
     if is_redundant:
         return JsonResponse({'is_redundant' : is_redundant})
     else:
-        return JsonResponse({'is_redundnat' : is_redundant})
+        return JsonResponse({'is_redundant' : is_redundant})
     

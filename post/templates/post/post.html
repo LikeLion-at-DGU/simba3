@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/post.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/post.css' %}?after" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <title>post</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/nav_green.css' %}" />
@@ -22,13 +22,10 @@
 </head>
 
 <body>
-    {% include 'shared/_navbar.html' %}
+    
     <section class="container">
+        {% include 'shared/_navbar.html' %}
         <section class="header">
-            <section class="iconbar">
-
-            </section>
-
             <section class="write">
                 <h1>WRITING</h1>
             </section>
@@ -46,6 +43,9 @@
             <section class="upload">
                 <section class="upload_box">
                     <div id="upload_button">
+                        <label for="fileInput">
+                            <div class="btn_upload">파일 업로드하기</div>
+                        </label>
                         <input type="file" id="fileInput" name="image" accept=".jpg, .jpeg, .png" multiple value="첨부할 사진 올리기">
                     </div>
                     <div id="remove_button">
@@ -180,22 +180,23 @@
                 {% csrf_token %}
                 <section class="pohto">
                     <div class="upload_photo">
-                        <img id="preview" />
+                        <img id="preview"/>
                     </div>
                 </section>
 
                 <section class="upload">
-                    <section class="upload_box">
-                        <div id="upload_button">
-                            <input type="file" id="fileInput" name="image" accept=".jpg, .jpeg, .png" multiple
-                                value="첨부할 사진 올리기">
-                        </div>
-                        <div id="remove_button">
-                            <button type="button" onclick="resetFileInput()">사진 제거하기</button>
-                        </div>
-                        </div>
-                    </section>
+                    <div id="input_btn">
+                        <label for="fileInput">
+                            <div class="btn_upload"><p><i class="fas fa-camera"></i>  파일 업로드하기</p></div>
+                        </label>
+                        <input type="file" id="fileInput" name="image" placeholder="업로드" accept=".jpg, .jpeg, .png" multiple>
+                    </div>          
+                
+                    <button type="button" id="remove_btn" onclick="resetFileInput()">사진 제거하기</button>
+
+                        
                 </section>
+
 
                 <section class="putinfo">
                     <section class="putinfo_box">
@@ -204,7 +205,7 @@
                     </section>
                 </section>
 
-                <p><a style="font-weight: 600; font-size:25px; color: #003A38;">키워드</a> 키워드를 선택해주세요</p>
+                <p><a style="font-weight: 600; font-size:25px; color: #003A38; padding-left: 20px;">키워드</a> 키워드를 선택해주세요</p>
 
                 <section class="keyword">
                     <div class="field">
@@ -263,25 +264,23 @@
                     <input type="text" name="put_date" placeholder="23/06/28-23/07/10" required>
 
                     <p>주최 기관 링크 <a style="color: gray;">(선택)</a></p>
-                    <input type="text" name="put_link" placeholder="주최기관 링크를 첨부하세요" required>
+                    <input type="text" name="put_link" placeholder="주최기관 링크를 첨부하세요">
 
                     <p>모집 중인 팀원</p>
                     <input type="text" name="put_member" placeholder="모집 중인 팀원 / 모집 분야를 작성해주세요" required>
 
                     <p style="font-size: 24px;">ABOUT US</p>
 
-                    <p style="margin-top: 0px;">팀 상세소개</p>
-                    <input type="text" name="put_about_us" placeholder="팀명을 작성해주세요">
+                    <p style="margin-top: 5px; font-size: 20px;">팀 상세소개</p>
+                    <input type="text" name="put_about_us" placeholder="모집하는 팀에 대해 자유로운 소개를 해주세요.">
                 </div>
 
                 <input type="hidden" id="fieldInput" name="fieldKey" value="">
                 <input type="hidden" id="trackInput" name="trackKey" value="">
                 
                 <div class="submit">
-                    <div class="submit_box">
                         <button type="submit" onclick="setMyVariable()" name="store_btn">임시저장</button>   
                         <button type="submit" onclick="setMyVariable()" name="submit_btn">작성완료</button>
-                    </div>
                 </div>
             </form>
 
@@ -320,7 +319,12 @@
         changeSingleBackgroundColor(field_btn_4);
         
         function changeBackgroundColor(button) {
-            var clickCount = 0;
+            if (button.style.backgroundColor === 'rgb(102, 192, 129)'){
+                var clickCount = 1;
+                console.log("제발")
+            } else{
+                var clickCount = 0
+            }
             button.addEventListener("click", function() {
             if (clickCount % 2 === 0) {
                 button.style.backgroundColor = "#66C081";
@@ -337,6 +341,7 @@
                 button.style.color = "#747474";
                 var index = trackName.indexOf(button.getAttribute("name"));
                 trackName.splice(index, 1); // 버튼의 name 값이 trackName 배열에 있으면 제거합니다.
+                console.log("Clicked track name in else:", trackName);
             }
             clickCount++;
             });
