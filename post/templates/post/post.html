@@ -32,11 +32,11 @@
 
             <!-- 기존에 있던 글을 편집할때 rendering되는 부분 -->
             {% if post %}
-            <form action="{% url 'post:update' post.id %}" method="post" enctype="multipart/form-data">
+            <form action="{% url 'post:update' post.id %}" method="post" enctype="multipart/form-data" onsubmit="return">
             {% csrf_token %}
             <section class="pohto">
                 <div class="upload_photo">
-                    <img src="{{ post.image.url }}" alt="사진">
+                    <img id="preview" src="{{ post.image.url }}" alt="사진">
                 </div>
             </section>
             
@@ -48,10 +48,6 @@
                         </label>
                         <input type="file" id="fileInput" name="image" accept=".jpg, .jpeg, .png" multiple value="첨부할 사진 올리기">
                     </div>
-                    <div id="remove_button">
-                        <button type="button" onclick="resetFileInput()">사진 제거하기</button>
-                        </div>
-                        </div>
                     </section>
                 </section>
 
@@ -371,9 +367,13 @@
         function resetFileInput() {
             var fileInput = document.getElementById("fileInput");
             fileInput.value = "";
-        
+            
             var previewImage = document.getElementById("preview");
             previewImage.src = "";
+        }
+
+        function setDefaultPhoto() {
+            document.getElementById("preview").src = "/Users/iambh/Desktop/Workspcae/simba3/media/default/post_image_default.jpg";
         }
         
         function readImage(input) {
@@ -396,11 +396,6 @@
         inputImage.addEventListener("change", e => {
             readImage(e.target)
         })
-        
-        function setfieldName(input){
-            fieldName = input
-            console.logt("input, fieldname = " , fieldName)
-        }
         
         function setMyVariable() {
             var field = fieldName;
