@@ -12,9 +12,6 @@ var field_btn_2 = document.getElementById("field_btn_2");
 var field_btn_3 = document.getElementById("field_btn_3");
 var field_btn_4 = document.getElementById("field_btn_4");
 
-var fieldName = "";
-var trackName = [];
-
 
 changeBackgroundColor(track_btn_1);
 changeBackgroundColor(track_btn_2);
@@ -29,6 +26,9 @@ changeSingleBackgroundColor(field_btn_1);
 changeSingleBackgroundColor(field_btn_2);
 changeSingleBackgroundColor(field_btn_3);
 changeSingleBackgroundColor(field_btn_4);
+
+var fieldName = "";
+var trackName = [];
 
 function changeBackgroundColor(button) {
     var clickCount = 0;
