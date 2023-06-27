@@ -40,7 +40,7 @@ class Apply(models.Model):
     writer = models.ForeignKey(User, on_delete=models.CASCADE,related_name='apply', null=False,blank=False)
     target_Post = models.ForeignKey(Post, on_delete=models.CASCADE,null=False,blank=False)
     status = models.CharField(max_length=15,choices=status_choices,default='under_review')
-    short_text = models.TextField(max_length=500)
+    short_text = models.TextField(max_length=500,null=True,blank=True)
     reply = models.TextField(max_length=100,null=True,blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)
     respond_date = models.DateTimeField(auto_now=True)
