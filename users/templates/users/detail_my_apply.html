@@ -29,8 +29,9 @@
     지원해주셔서 감사합니다 :)
     <div>
       {% if apply.status == 'under_review' %} 검토 상태 나올 곳
-      <div>dfdf{%elif apply.status == 'accept' %}</div>
-      {{apply.reply}} {% else %} 다음 기회에 함께해요 {%endif %}
+      <div class="ok"><p>{%elif apply.status == 'accept' %}</p>지원 수락</div>
+      <div class="ok_ment">{{apply.reply}}</div>
+      {% else %} 다음 기회에 함께해요 {%endif %}
     </div>
   </div>
 

@@ -27,7 +27,7 @@ body {
   padding: 30px;
   align-items: center;
   font-size: 32px;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 /* 내정보수정 텍스트 */
@@ -76,7 +76,15 @@ body {
 }
 
 /* 지원수락 박스 */
-.ok {
+.ok p{
+  color: white;
+  display: flex;
+}
+
+/* 지원수락 멘트 */
+.ok_ment {
+  background-color: white;
+  color: ;
 }
 
 .white {
