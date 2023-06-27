@@ -27,7 +27,7 @@
 
   <div class="_2">
     지원해주셔서 감사합니다 :)
-    <div>
+    <div class="top_box">
       {% if apply.status == 'under_review' %} 검토 상태 나올 곳
       <div class="ok"><p>{%elif apply.status == 'accept' %}</p>지원 수락</div>
       <div class="ok_ment">{{apply.reply}}</div>
