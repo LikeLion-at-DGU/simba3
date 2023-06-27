@@ -22,12 +22,6 @@
 
     <!-- 고정 시계바 -->
 
-    <header>
-        <a>9:42</a>
-        <a>정보입력</a>
-    </header>
-
-
     <div class="lock">
         <p style="font-size: 28px;">비밀번호 찾기<br><br>
     </div>
@@ -40,14 +34,14 @@
             <input type="email" placeholder="예) likelion@dgu.ac.kr" name="email" id="input_email" required>
 
                 <div class="check">
-                    <a onclick="sendEmail()">인증 확인</a></div>
+                    <a onclick="sendEmail()">인증 전송</a></div>
             </div>
 
             <label for="name">이메일 인증</label>
             <input type="text" placeholder="인증번호를 입력해주세요" name="code" id="input_code" required>
 
             <div class="check">
-                <a onclick="verify_code()";">인증 전송</a></div>
+                <a onclick="verify_code()";">인증 확인</a></div>
 
 
             <label for="name">새로운 비밀번호 입력</label>
@@ -103,10 +97,10 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.is_same === true) {
-                        //인증이 완료되었을 때 페이지 내부 변에 인증이 완료된 'email'과 인증 완료됨을 알 수 있는 "boolean"갑을 저장
+                        alert('인증이 완료되었습니다!')
                         console.log("일치");
                     } else if (data.is_same === false) {
-                        //인증 안될떄
+                        alert('다시 시도해주세요.')
                         console.log("불일치");
                     } else {
                         console.log("예외 처리");

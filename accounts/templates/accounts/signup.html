@@ -95,14 +95,19 @@
             </section>
 
             <section join>
-                <div id="join">
-                    <button style="border: none; background-color: gray;" id="signup" disabled="true">회원가입하기</button>
-                </div>
+              <div id="join">
+              <button style="border: none; background-color: gray;" id="signup" disabled="true">회원가입하기</button>
+              </div>
             </section>
         </form>
     </div>
     </div>
     <script>
+
+      function redirectToPage() {
+      window.location.href = '#';
+    }
+
         var is_vaild_email = false;
         function setIsValidEmail(value) {
             is_vaild_email = value;
@@ -146,11 +151,11 @@
                 })
                 .catch(error => {
                     // 에러 처리
-                    alert("error");
+                    alert("알 수 없는 문제가 발생했습니다.");
                 });
         }
 
-        // 여기부터 지피티 ^^.. //
+        // gpt //
         function verify_code() {
             is_vaild_email = false;
             var emailInput = document.getElementById("input_email");
@@ -177,13 +182,11 @@
                         setIsValidEmail(false)
                         console.log("Verification code is incorrect");
                         alert('인증번호를 다시 확인해주세요.')
-                        alert("Incorrect verification code. Please try again.");
                     }
                 })
                 .catch(error => {
                     console.log("Error occurred during verification");
-                    //이건 먼지 모르겟지만~~
-                    alert("Error occurred during verification. Please try again later.");
+                    alert("다시 시도하세요");
                 });
         }
 
