@@ -32,10 +32,10 @@ def search(request, f):
 
         # word로 가져온 post 
         if typed_word == "":
-            word_posts = Post.objects.all()
+            word_posts = Post.objects.filter(isSave = True)
             print(word_posts)
         else:
-            word_posts = Post.objects.filter(title__contains = typed_word)
+            word_posts = Post.objects.filter(title__contains = typed_word, isSave = True)
 
         # field로 가져온 post
         if selected_field != "전체":
