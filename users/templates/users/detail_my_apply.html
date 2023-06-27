@@ -28,10 +28,10 @@
   <div class="_2">
     지원해주셔서 감사합니다 :)
     <div class="top_box">
-      {% if apply.status == 'under_review' %} 검토 상태 나올 곳
-      <div class="ok"><p>{%elif apply.status == 'accept' %}</p>지원 수락</div>
+      {% if apply.status == 'under_review' %} 나의 지원서가 검토되고 있어요!
+      {%elif apply.status == 'accept' %}지원이 수락되었습니다.<br>아래 연락 수단을 활용해주세요.</div>
       <div class="ok_ment">{{apply.reply}}</div>
-      {% else %} 다음 기회에 함께해요 {%endif %}
+      {% else %} 아쉽지만 다음 기회에 함께해요 {%endif %}
     </div>
   </div>
 
@@ -51,14 +51,14 @@
       <div class="whitebox">{{profile.nickname}}</div>
     </div>
 
-    <div class="_4">
-      <div class="fix">나이</div>
-      <div class="whitebox">{{profile.age}}</div>
-    </div>
+    <div class="_5">
+      <div class="minibox">
+      <div class="fix2">나이</div>
+      <div class="whitebox2">{{profile.age}}</div></div>
 
-    <div class="_4">
-      <div class="fix">성별</div>
-      <div class="whitebox">{{profile.gender}}</div>
+      <div class="minibox">
+      <div class="fix2">성별</div>
+      <div class="whitebox2">{{profile.gender}}</div></div>
     </div>
 
     <div class="_4">
@@ -79,7 +79,7 @@
     </div>
   </section>
   <div class="back">
-    <a href="{% url 'users:apply_manager' 'my_apply' %}">마이 팀 관리로 돌아가기</a>
+    <a href="{% url 'users:apply_manager' 'my_apply' %}">지원 관리로 돌아가기</a>
   </div>
 </body>
 

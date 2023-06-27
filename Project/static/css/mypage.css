@@ -4,7 +4,7 @@ body {
   text-decoration: none;
   color: #003a38;
   max-width: 430px;
-  border: solid 1px gray;
+  border: solid 1px blue;
 }
 
 * {
@@ -38,6 +38,7 @@ body {
   font-size: 32px;
   font-weight: 700;
   width: 430px;
+  margin-top: 0;
 }
 
 #button div i{
@@ -240,17 +241,5 @@ a:visited {
 }
 
 .pen {
-  float: right;
-  border-radius: 100%;
-  border: 3px dashed #ff8859;
-  color: #ff8859;
-  font-size: 15px;
-  padding: 6.5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  position: relative;
-  top: 140px;
-  right: 150px;
+  background-color: blue;
 }
