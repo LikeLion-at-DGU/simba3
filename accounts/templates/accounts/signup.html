@@ -172,11 +172,11 @@
                         setIsValidEmail(true)
                         enable_or_disable_signup()
                         console.log("Verification code is correct");
-                        // 이 위에가 인증번호 맞을 때
+                        alert('인증번호가 확인되었습니다.')
                     } else {
                         setIsValidEmail(false)
                         console.log("Verification code is incorrect");
-                        // 이 위가 인증번호 안맞을 때
+                        alert('인증번호를 다시 확인해주세요.')
                         alert("Incorrect verification code. Please try again.");
                     }
                 })
@@ -204,10 +204,12 @@
                 .then(data => {
                     if (data.is_redundant === true) {
                         //중복될 때
+                        alert('사용 불가능한 닉네임입니다.')
                         setIsValidNickname(false)
                         console.log("중복");
                     } else if (data.is_redundant === false) {
                         //중복되지 않을때
+                        alert('사용 가능한 닉네임입니다.')
                         setIsValidNickname(true)
                         enable_or_disable_signup()
                         console.log("중복X");
