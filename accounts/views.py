@@ -24,7 +24,7 @@ def login(request):
             return redirect('main:mainpage_competition')
         
         else:
-            return render(request,'accounts/login.html')
+            return render(request,'accounts/login.html',{'Wrong':True})
         
     elif request.method == 'GET':
         return render(request, 'accounts/login.html')
@@ -86,12 +86,12 @@ def send_email(request):
                 'message': '존재하지 않는 이메일입니다.',
                 }
                 return JsonResponse(response_data)
-
-        if User.objects.filter(email = email).exists():
-            response_data = {
-            'message': '이미 가입된 이메일입니다.',
-            }
-            return JsonResponse(response_data)
+        if data.get('pagename') == 'signup':
+            if User.objects.filter(email = email).exists():
+                response_data = {
+                'message': '이미 가입된 이메일입니다.',
+                }
+                return JsonResponse(response_data)
         dgu_domain_list = ['dongguk.edu','dgu.edu','dgu.ac.kr']
         domain = email.split('@')[1]
         if domain not in dgu_domain_list:

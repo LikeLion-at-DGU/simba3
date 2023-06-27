@@ -37,9 +37,21 @@
       {% endfor %}
     </div>
 
+    {% if post.writer != request.user %}
     <div id="apply">
-      <a href="{% url 'post:detail' post.id %}">팀 지원하기</a>
+      <form action="{% url 'post:detail' post.id %}" id="frm" method="post">
+        {% csrf_token %}
+        <a href="#" onclick="return chk_form()">팀 지원하기</a>
+      </form>
     </div>
+    {% else %}
+    {% endif %}
+
+    <script>
+    function chk_form(){
+      document.getElementById('frm').submit();
+    }
+    </script>
 
     <div id="notice">
       <b><a style="color: #ff8859">잠깐!</a> 팀 지원 시 유의사항을

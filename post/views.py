@@ -77,7 +77,7 @@ def detail(request, id):
         new_apply.writer = request.user
         new_apply.target_Post = get_object_or_404(Post, pk=id)
         new_apply.save()
-        return  render(request, 'post/crew_search.html')
+        return render(request, 'post/crew_search.html')
     
 # post 페이지로 이동
 def edit(request, id):

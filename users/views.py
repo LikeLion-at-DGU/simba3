@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.utils import timezone
 from accounts.models import Profile
 from post.models import Apply,Post
-import os
+import os,json
 # Create your views here.
 def mypage(request):
     if request.method == 'POST':
@@ -79,9 +79,14 @@ def detail_apply(request,page,id):
     elif page == 'rcv_apply':
         return render(request, 'users/detail_rcv_apply.html',{'profile':profile, 'apply':apply})
 
-def respond_apply(request,status,id):
+def respond_apply(request):
+    data = json.loads(request.body)
+    id = data.get('id')
+    reply = data.get('reply')
+    status = data.get('status')
     apply = Apply.objects.get(id=id)
-    apply.reply = request.POST['reply']
+    apply.reply = reply
     apply.status = status
     apply.save()
-    pass
+    profile = Profile.objects.get(user=apply.writer)
+    return redirect('users/detail_rcv_apply.html',{'profile':profile, 'apply':apply})
