@@ -46,12 +46,13 @@
         {% elif not is_exit %}
         <a href="#" onclick="prom();">팀 지원하기</a>
         {% endif %}
-        {% else %}
-    <a href="{% url 'accounts:login' %}" onclick="return confirm('로그인 후 지원하실 수 있습니다.\n로그인 페이지로 이동하시겠습니까?');">팀 지원하기</a>
-    {% endif %}
-
       </form>
     </div>
+    {% else %}
+    <div id="apply">
+        <a href="{% url 'accounts:login' %}" onclick="return confirm('로그인 후 지원하실 수 있습니다.\n로그인 페이지로 이동하시겠습니까?');">팀 지원하기</a>
+    </div>
+    {% endif %}
 
     <script>
     function sendDataToDjango(userInput) {
