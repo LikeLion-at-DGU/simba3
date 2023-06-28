@@ -109,8 +109,8 @@ input[name="word"]{
     justify-content: space-between;
 }
 
-.search_text h1{
-    font-size: 25px;
+.search_text h1 {
+    font-size: 32px;
     margin:0%;
     color: #003A38;
 }

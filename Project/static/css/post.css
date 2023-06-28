@@ -53,9 +53,10 @@
     height:70px;
     width:380px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin-top: 20px;
-    padding: 0px 25px; 
+    padding: 0px 20px;
+    
 }
 
 .upload_box{
@@ -73,7 +74,7 @@
 
 /*버튼 부분*/
 .btn_upload {
-    width: 175px;
+    width: 255px;
     height: 35px;
     background: #ECE3D9;
     border-radius: 5px;
@@ -91,6 +92,7 @@
 
 #fileInput{
     display: none;
+    
 }
 
 #remove_btn{
@@ -292,7 +294,7 @@ input[type="text"][name="put_member"]
 input[type="text"][name="put_about_us"]
 {
     width: 380px;
-    height: 80px;
+    height: 150px;
     background-color: #ECE3D9;
     border-radius: 10px; 
     font-size: 17px;
@@ -308,7 +310,8 @@ input[type="text"][name="put_about_us"]
     display:flex;
     align-items: center;
     justify-content: space-between;
-    padding:10px 30px;
+    padding:10px 20px;
+    margin-top: 30px;
 }
 
 .submit button[name="submit_btn"]{
