@@ -9,5 +9,5 @@ urlpatterns = [
     path('mainpage_entrepreneur/', mainpage_entrepreneur, name="mainpage_entrepreneur"),
     path('mainpage_supporters/', mainpage_supporters, name="mainpage_supporters"),
     path('search/<str:f>', search, name="search"),
-
+    path('start', start, name="start"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

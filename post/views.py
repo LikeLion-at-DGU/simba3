@@ -70,15 +70,16 @@ def wrote_post(request):
 # user랑 apply
 def detail(request, id):
     if request.method == 'GET':
-        if request.user != None:    # 로그인 되어있을 때 
-            post = get_object_or_404(Post, pk=id)
-            is_exist = Apply.objects.filter(writer = request.user, target_Post = post)
-            return render(request, 'post/crew_search.html', {'post': post, 'is_exist': is_exist})
-        else:
+        if request.user:   
             post = get_object_or_404(Post, pk=id)
             is_exist = False
             return render(request, 'post/crew_search.html', {'post': post, 'is_exist': is_exist})
         
+        else:
+             # 로그인 되어있을 때 
+            post = get_object_or_404(Post, pk=id)
+            is_exist = Apply.objects.filter(writer = request.user, target_Post = post)
+            return render(request, 'post/crew_search.html', {'post': post, 'is_exist': is_exist})
     if request.method == 'POST':
         data = json.loads(request.body)
         reply = data.get('reply')

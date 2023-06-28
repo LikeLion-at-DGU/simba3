@@ -18,7 +18,6 @@
     {% if posts %}
         {% for post in posts %}
         <a href="{% url 'post:detail' post.id %}">   
-
             <div class="team">
                 <div id="team_pic">
                     <img src="{{ post.image.url }}" alt="사진">
