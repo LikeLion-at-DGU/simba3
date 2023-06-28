@@ -1,6 +1,6 @@
 .container{
     max-width: 430px;
-    background: #ECE3D9B2;
+    background: #ECE3D9;
 }
 
 .header{
@@ -13,6 +13,12 @@
     margin: 0px 0px 0px 15px;
     color: #747474;
     font-size: 13px;
+}
+
+a:link,
+a:visited {
+    color: inherit;
+    text-decoration: none;
 }
 
 /* 아이콘 */
@@ -33,10 +39,7 @@
     color:  #003A38;
 }
 
-a:link,
-a:visited {
-    color: inherit;
-}
+
 
 /*검색 창*/
 .searchbar {
@@ -155,9 +158,8 @@ input[name="word"]{
     height: 75%;
     width: 100%;  
     object-fit: fill;
-
 }
-  
+
 
 #result_exp{
     width:155px;
@@ -187,6 +189,7 @@ input[name="word"]{
 #result_cate>p{
     margin:0%;
     color:white;
+    text-decoration: none;
 }
 
 /*페이지 바*/
