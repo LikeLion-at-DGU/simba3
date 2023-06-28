@@ -5,12 +5,26 @@
     flex-direction: column;
 }
 
+
+
 .logo_bar{
     height: 100px;
     width:390x;
     display: flex;
     padding:20px 20px;
 }
+
+#logo {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+#logo i {
+    color: #66C081;
+    margin: 30px;
+}
+
 #logo_letter {
     align-self: center;
     margin-left: 15px;
@@ -19,21 +33,22 @@
 #logo_img{
     height:90%;
     width:30%;
-    background-image: url("/Project/static/images/logo.png");
+    background-image: url("../images/logo.png");
     background-size: 100% 100%;
 }
 
 #logo_letter{
     height:40%;
     width:50%;
-    background-image: url("/Project/static/images/name.png");
+    background-image: url("../images/name.png");
     background-size: 100% 100%;
 }
 
 .img
 {   height: 2000px;
     width:410px;
-    padding:0px 10px;
-    background-image: url("/Project/static/images/guide.jpg");
+    padding: 0px 10px;
+    background-image: url("../images/guide.jpg");
     background-size: 100% 100%;
 }
+

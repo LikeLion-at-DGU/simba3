@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/Project/static/css/guide.css">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/guide.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
 
     <title>이용 가이드</title>
 </head>
@@ -14,7 +17,11 @@
             <div id="logo_img"></div>
             <div id="logo_letter"></div>
         </div>
-        <div class="img"></div>
+        <div id="logo">
+            <a href="javascript:window.history.back();"><i class="fas fa-home" style="font-size: 40px;"></i></a>
+        </div>
+        <div class="img">
+        </div>
     </section>
 </body>
 </html>
