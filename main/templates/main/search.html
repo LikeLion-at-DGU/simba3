@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/search.css' %}?after"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/search.css' %}?after" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <title>post</title>
 </head>
 
@@ -15,9 +16,19 @@
         <section class="header">
             <div class="nav_top">
                 <div class="nav_box" style="border: solid 3px;">
+                    {% if user.is_authenticated %}
                     <a href="{% url 'post:wrote_post' %}"><i class="fas fa-pen" class="nav_i" id="nav_pen"></i></a>
-                    <a href="{% url 'main:mainpage_competition' %}"><i class="fas fa-home" class="nav_i" id="nav_home"></i></a>
+                    <a href="{% url 'main:mainpage_competition' %}"><i class="fas fa-home" class="nav_i"
+                            id="nav_home"></i></a>
                     <a href="{% url 'users:mypage' %}"><i class="fas fa-user" class="nav_i" id="nav_user"></i></a>
+                    {% else %}
+                    <a href="{% url 'accounts:login' %}" onclick="return confirm('로그인 후 이용해주세요');"><i class="fas fa-pen"
+                            class="nav_i" id="nav_pen"></i></a>
+                    <a href="{% url 'main:mainpage_competition' %}"><i class="fas fa-home" class="nav_i"
+                            id="nav_home"></i></a>
+                    <a href="{% url 'accounts:login' %}" onclick="return confirm('로그인 후 이용해주세요');"><i
+                            class="fas fa-user" class="nav_i" id="nav_user"></i></a>
+                    {% endif %}
                 </div>
             </div>
 
@@ -33,13 +44,13 @@
 
                     <div class="search_row2">
                         <div>
-                        <select name="field" id="search_field">
-                            <option value="전체">모집 분야</option>
-                            <option value="공모전">공모전</option>
-                            <option value="프로젝트">프로젝트</option>
-                            <option value="대외활동">대외활동</option>
-                            <option value="창업">창업</option>
-                        </select>
+                            <select name="field" id="search_field">
+                                <option value="전체">모집 분야</option>
+                                <option value="공모전">공모전</option>
+                                <option value="프로젝트">프로젝트</option>
+                                <option value="대외활동">대외활동</option>
+                                <option value="창업">창업</option>
+                            </select>
                         </div>
                         <div>
                             <select name="track" id="search_track">
@@ -47,14 +58,14 @@
                                 <option value="기획">기획</option>
                                 <option value="마케터">마케터</option>
                                 <option value="영상">영상</option>
-                                <option value="디자인">디자인</option>       
-                                <option value="개발">개발</option>                    
+                                <option value="디자인">디자인</option>
+                                <option value="개발">개발</option>
                                 <option value="기자단">기자단</option>
                                 <option value="봉사">봉사</option>
                                 <option value="기타">기타</option>
-                            </select>                        
+                            </select>
                         </div>
-                    </div>    
+                    </div>
                 </form>
             </section>
 
@@ -67,52 +78,51 @@
                 {% for post in posts %}
 
                 <div class="result_item">
-                  <div class="picture">
-                    <a href="{% url 'post:detail' post.id %}">
-                    <div id="result_pic">
-                    {% if post.fieldKey.first.fieldKey == "공모전" %}
-                      <div id="result_cate" style="background-color: #66C081;">
-                        <p>공모전</p>
-                      </div>
-                    {% elif post.fieldKey.first.fieldKey == "프로젝트" %}
-                    <div id="result_cate" style="background-color: #66C081;">
-                        <p>프로젝트</p>
+                    <div class="picture">
+                        <a href="{% url 'post:detail' post.id %}">
+                            <div id="result_pic">
+                                {% if post.fieldKey.first.fieldKey == "공모전" %}
+                                <div id="result_cate" style="background-color: #66C081;">
+                                    <p>공모전</p>
+                                </div>
+                                {% elif post.fieldKey.first.fieldKey == "프로젝트" %}
+                                <div id="result_cate" style="background-color: #66C081;">
+                                    <p>프로젝트</p>
+                                </div>
+                                {% elif post.fieldKey.first.fieldKey == "대외활동" %}
+                                <div id="result_cate" style="background-color: #FF8859">
+                                    <p>대외활동</p>
+                                </div>
+                                {% elif post.fieldKey.first.fieldKey == "대외활동" %}
+                                <div id="result_cate">
+                                    <p>대외활동</p>
+                                </div>
+                                {% else %}
+                                <div id="result_cate">
+                                    <p>창업</p>
+                                </div>
+                                {% endif %}
+                                <img src="{{ post.image.url }}" alt="사진">
+                            </div>
                     </div>
-                    {% elif post.fieldKey.first.fieldKey == "대외활동" %}
-                    <div id="result_cate" style="background-color: #FF8859">
-                        <p>대외활동</p>
-                      </div>
-                    {% elif post.fieldKey.first.fieldKey == "대외활동" %}
-                    <div id="result_cate">
-                       <p>대외활동</p>
+
+                    <div class="explain">
+                        <div id="result_exp">
+                            <p><a style="color:#66C081">{{ post.team_name }} </a>{{ post.title }}</p>
+                        </div>
                     </div>
-                    {% else %}
-                    <div id="result_cate">
-                        <p>창업</p>
-                    </div>
-                    {% endif %}
-                      <img src="{{ post.image.url }}" alt="사진">
-                    </div>
-                  </div>
-              
-                  <div class="explain">
-                    <div id="result_exp">
-                      <p><a style="color:#66C081">{{ post.team_name }} </a>{{ post.title }}</p>
-                    </div>
-                  </div>
                 </div>
                 </a>
                 {% endfor %}
                 {% else %}
                 {% endif %}
-              </section>
-              
-            
+            </section>
 
-           
+
+
+
         </section>
     </section>
 
 
 </body>
-
