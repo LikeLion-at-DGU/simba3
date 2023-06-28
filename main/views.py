@@ -22,12 +22,12 @@ def mainpage_competition(request):
 
 def mainpage_supporters(request):
     supporters = FieldKey.objects.get(fieldKey = "대외활동")
-    posts = supporters.post.all()[:4]
+    posts = supporters.post.filter(isSave=True)[:4]
     return render(request, 'main/mainpage_supporters.html', {'posts':posts})
 
 def mainpage_entrepreneur(request):
     entrepreneur = FieldKey.objects.get(fieldKey = "창업")
-    posts = entrepreneur.post.all()[:4]
+    posts = entrepreneur.post.filter(isSave=True)[:4]
     return render(request, 'main/mainpage_entrepreneur.html', {'posts':posts})
 
 def search(request, f):
@@ -65,17 +65,17 @@ def search(request, f):
         if f=='project':
             competition = FieldKey.objects.get(fieldKey = "공모전")
             project = FieldKey.objects.get(fieldKey = "프로젝트")
-            posts_com = competition.post.all()
-            posts_pro = project.post.all()
+            posts_com = competition.post.filter(isSave=True)
+            posts_pro = project.post.filter(isSave=True)
             posts = posts_com.union(posts_pro)
             return render(request, 'main/search.html', {'posts':posts})
         elif f=='supporters':
             supporters = FieldKey.objects.get(fieldKey = "대외활동")
-            posts = supporters.post.all()
+            posts = supporters.post.filter(isSave=True)
             return render(request, 'main/search.html', {'posts':posts})
         elif f=='entre':
             entrepreneur = FieldKey.objects.get(fieldKey = "창업")
-            posts = entrepreneur.post.all()
+            posts = entrepreneur.post.filter(isSave=True)
             return render(request, 'main/search.html', {'posts':posts})
 
 
