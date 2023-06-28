@@ -141,5 +141,5 @@ def update(request, id):
 def delete(request, id):
     delete_post = Post.objects.get(id=id)
     delete_post.delete()
-    return redirect('post:mainpage')
+    return redirect('post:wrote_post')
     # 삭제하면 어떤 페이지로 mainpage로 돌아간다(view의 mainpage 호출) -> 어떤 페이지로 돌아갈 것인지 추후 회의

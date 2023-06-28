@@ -53,7 +53,7 @@
                         <div class="right">
                             <div id="row">
                                 <h1>{{post.team_name}}</h1>
-                                <i class="fas fa-trash-alt"></i>
+                                <a href="{% url 'post:delete' post.id %}" onclick="return confirm('게시글을 삭제하시겠습니까?');"><i class="fas fa-trash-alt"></i></a>
                             </div>
                             <p>{{post.title}}</p>
                             <div class="repost_btn">
