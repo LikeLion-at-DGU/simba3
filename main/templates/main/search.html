@@ -65,12 +65,32 @@
             <section class="show_result">
                 {% if posts %}
                 {% for post in posts %}
+
                 <div class="result_item">
                   <div class="picture">
+                    <a href="{% url 'post:detail' post.id %}">
                     <div id="result_pic">
-                      <div id="result_cate">
-                        <p>창업</p>
+                    {% if post.fieldKey.first.fieldKey == "공모전" %}
+                      <div id="result_cate" style="background-color: #66C081;">
+                        <p>공모전,프로젝트</p>
                       </div>
+                    {% elif post.fieldKey.first.fieldKey == "프로젝트" %}
+                    <div id="result_cate" style="background-color: #66C081;">
+                        <p>공모전 프로젝트</p>
+                    </div>
+                    {% elif post.fieldKey.first.fieldKey == "대외활동" %}
+                    <div id="result_cate" style="background-color: #FF8859">
+                        <p>대외활동</p>
+                      </div>
+                    {% elif post.fieldKey.first.fieldKey == "대외활동" %}
+                    <div id="result_cate">
+                       <p>대외활동</p>
+                    </div>
+                    {% else %}
+                    <div id="result_cate">
+                        <p>창업</p>
+                    </div>
+                    {% endif %}
                       <img src="{{ post.image.url }}" alt="사진">
                     </div>
                   </div>
@@ -81,6 +101,7 @@
                     </div>
                   </div>
                 </div>
+                </a>
                 {% endfor %}
                 {% else %}
                 {% endif %}
