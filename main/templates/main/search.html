@@ -104,15 +104,17 @@
                                 {% endif %}
                                 <img src="{{ post.image.url }}" alt="사진">
                             </div>
+                        </a>
                     </div>
-
+                    
                     <div class="explain">
                         <div id="result_exp">
-                            <p><a style="color:#66C081">{{ post.team_name }} </a>{{ post.title }}</p>
+                            <p><a href="{% url 'post:detail' post.id %}" style="color:#66C081">{{ post.team_name }} </a> <a href="{% url 'post:detail' post.id %}">{{ post.title }} </a></p>
                         </div>
                     </div>
+
                 </div>
-                </a>
+
                 {% endfor %}
                 {% else %}
                 {% endif %}
