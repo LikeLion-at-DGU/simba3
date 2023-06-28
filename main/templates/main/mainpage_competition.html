@@ -17,12 +17,7 @@
     <p>지금 모집중인 팀</p>
     {% if posts %}
         {% for post in posts %}
-
-        {% if user.is_authenticated %}
         <a href="{% url 'post:detail' post.id %}">   
-        {% else %}
-        <a href="{% url 'accounts:login' %}" onclick="return confirm('로그인 후 지원하실 수 있습니다.\n로그인 페이지로 이동하시겠습니까?');">
-        {% endif %}
 
             <div class="team">
                 <div id="team_pic">
