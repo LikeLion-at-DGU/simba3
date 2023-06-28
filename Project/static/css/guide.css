@@ -1,0 +1,39 @@
+.container{
+    max-width: 430px;
+    border:1px solid gray;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo_bar{
+    height: 100px;
+    width:390x;
+    display: flex;
+    padding:20px 20px;
+}
+#logo_letter {
+    align-self: center;
+    margin-left: 15px;
+  }
+
+#logo_img{
+    height:90%;
+    width:30%;
+    background-image: url("/Project/static/images/logo.png");
+    background-size: 100% 100%;
+}
+
+#logo_letter{
+    height:40%;
+    width:50%;
+    background-image: url("/Project/static/images/name.png");
+    background-size: 100% 100%;
+}
+
+.img
+{   height: 2000px;
+    width:410px;
+    padding:0px 10px;
+    background-image: url("/Project/static/images/guide.jpg");
+    background-size: 100% 100%;
+}
