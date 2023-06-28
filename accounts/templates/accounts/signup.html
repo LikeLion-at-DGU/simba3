@@ -123,11 +123,11 @@
             var button = document.getElementById("signup");
             if (is_vaild_nickname && is_vaild_email && is_vaild_password && is_confirm_password) {
                 button.style.backgroundColor = '#FF8859';
-                button.disabled = true;
+                button.disabled = false;
             }
             else {
                 button.style.backgroundColor = 'gray';
-                button.disabled = false;
+                button.disabled = true;
             }
         }
 
