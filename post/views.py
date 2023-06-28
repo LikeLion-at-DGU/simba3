@@ -139,6 +139,7 @@ def update(request, id):
 
 # Delete
 def delete(request, id):
+
     delete_post = Post.objects.get(id=id)
     delete_post.delete()
     return redirect('post:wrote_post')
