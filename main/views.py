@@ -7,6 +7,9 @@ from django.db.models import Q
 def start(request):
     return render(request, 'main/start.html')
 
+def guide(request):
+    return render(request, 'main/guide.html')
+
 def mainpage_competition(request):
     competition = FieldKey.objects.get(fieldKey = "공모전")
     project = FieldKey.objects.get(fieldKey = "프로젝트")
