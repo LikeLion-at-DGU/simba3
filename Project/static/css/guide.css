@@ -5,12 +5,46 @@
     flex-direction: column;
 }
 
+
+
 .logo_bar{
     height: 100px;
     width:390x;
     display: flex;
     padding:20px 20px;
+    margin-bottom: 10px;
 }
+
+#logo {
+    display: flex;
+    justify-content: left;
+    align-content: center;
+    padding-left: 25px;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+}
+
+
+#logo i {
+    color: #003A38;
+    margin: 30px;
+}
+
+#logo a i {
+    margin: 0;
+    padding: 0;
+}
+
+#logo a {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+
+
 #logo_letter {
     align-self: center;
     margin-left: 15px;
@@ -19,21 +53,26 @@
 #logo_img{
     height:90%;
     width:30%;
-    background-image: url("/Project/static/images/logo.png");
+    background-image: url("../images/logo.png");
     background-size: 100% 100%;
 }
 
 #logo_letter{
     height:40%;
     width:50%;
-    background-image: url("/Project/static/images/name.png");
+    background-image: url("../images/name.png");
     background-size: 100% 100%;
 }
 
 .img
-{   height: 2000px;
-    width:410px;
-    padding:0px 10px;
-    background-image: url("/Project/static/images/guide.jpg");
+{   height: 2400px;
+    width: 430px;
+    background-image: url("../images/guide.jpg");
     background-size: 100% 100%;
+}
+
+a:link,
+a:visited {
+    color: inherit;
+    text-decoration: none;
 }

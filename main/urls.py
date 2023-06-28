@@ -11,4 +11,5 @@ urlpatterns = [
     path('search/<str:f>', search, name="search"),
     path('start', start, name="start"),
     path('second.html', second, name="second"),
+    path('guide/', guide, name="guide"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

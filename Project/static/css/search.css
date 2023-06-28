@@ -135,7 +135,7 @@ input[name="word"]{
     width:155px;
     height:175px;
     background-color: white;
-    border-radius: 5px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     padding: 10px 10px;
@@ -165,7 +165,7 @@ input[name="word"]{
     width:155px;
     height:60px;
     background-color: white;
-    border-radius: 5px;
+    border-radius: 10px;
     padding:10px;
     margin-top: 10px;
 }
