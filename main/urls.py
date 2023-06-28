@@ -10,4 +10,5 @@ urlpatterns = [
     path('mainpage_supporters/', mainpage_supporters, name="mainpage_supporters"),
     path('search/<str:f>', search, name="search"),
     path('start', start, name="start"),
+    path('second.html', second, name="second"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
