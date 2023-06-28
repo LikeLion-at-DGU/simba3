@@ -45,8 +45,14 @@
             <section class="iconbar">
                 <section class="iconbar_box">
                     <div class="icon_1">
-                        <a href="{% url 'post:wrote_post' %}"><i class="fas fa-pen-alt" style="color: #70c488;"></i></a>
-                        <p>글쓰기</p>
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'post:wrote_post' %}">
+                            {% else %}
+                            <a href="{% url 'accounts:login' %}" onclick="return confirm('로그인 후 이용해주세요');">
+                                {% endif %}
+                                <i class="fas fa-pen-alt" style="color: #70c488;"></i>
+                            </a>
+                            <p>글쓰기</p>
                     </div>
                     <div class="icon_2">
                         <i class="fas fa-home"></i>
@@ -54,10 +60,14 @@
                     </div>
 
                     <div class="icon_3">
+                        {% if user.is_authenticated %}
                         <a href="{% url 'users:mypage' %}">
-                            <i class="fas fa-user-alt" style="color: #66c081;"></i>
-                            <p>마이</p>
-                        </a>
+                            {% else %}
+                            <a href="{% url 'accounts:login' %}" onclick="return confirm('로그인 후 이용해주세요');">
+                                {% endif %}
+                                <i class="fas fa-user-alt" style="color: #66c081;"></i>
+                                <p>마이</p>
+                            </a>
                     </div>
                 </section>
             </section>
@@ -74,13 +84,13 @@
 
                     <div class="search_row2">
                         <div>
-                        <select name="field" id="search_field">
-                            <option value="전체">모집 분야</option>
-                            <option value="공모전">공모전</option>
-                            <option value="프로젝트">프로젝트</option>
-                            <option value="대외활동">대외활동</option>
-                            <option value="창업">창업</option>
-                        </select>
+                            <select name="field" id="search_field">
+                                <option value="전체">모집 분야</option>
+                                <option value="공모전">공모전</option>
+                                <option value="프로젝트">프로젝트</option>
+                                <option value="대외활동">대외활동</option>
+                                <option value="창업">창업</option>
+                            </select>
                         </div>
                         <div>
                             <select name="track" id="search_track">
@@ -88,15 +98,15 @@
                                 <option value="기획">기획</option>
                                 <option value="마케터">마케터</option>
                                 <option value="영상">영상</option>
-                                <option value="디자인">디자인</option>       
-                                <option value="개발">개발</option>                    
+                                <option value="디자인">디자인</option>
+                                <option value="개발">개발</option>
                                 <option value="기자단">기자단</option>
                                 <option value="봉사">봉사</option>
                                 <option value="기타">기타</option>
-                            </select>                        
+                            </select>
                         </div>
                     </div>
-                    
+
                 </form>
             </section>
 
