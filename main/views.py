@@ -7,6 +7,8 @@ from django.db.models import Q
 def start(request):
     return render(request, 'main/start.html')
 
+def second(request):
+    return render(request, 'main/second.html')
 def guide(request):
     return render(request, 'main/guide.html')
 
